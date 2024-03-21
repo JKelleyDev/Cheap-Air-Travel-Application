@@ -9,8 +9,8 @@ class TestFinalProject2
 
 	@Test
 	void test()
-	{
-		fail("Not yet implemented");
+	{ 
+		System.out.print("Testing Branch ");
 	}
 
 }
