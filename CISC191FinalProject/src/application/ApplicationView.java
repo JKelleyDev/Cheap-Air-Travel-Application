@@ -72,7 +72,7 @@ public class ApplicationView extends JFrame
 		aboutButton.setOpaque(true);
 		contentPane.add(aboutButton);
 		
-		JButton routeButton = new JButton("Routes");
+		JButton routeButton = new JButton("Check In");
 		routeButton.setForeground(new Color(255, 255, 255));
 		routeButton.setBackground(new Color(0, 0, 128));
 		routeButton.setFont(new Font("Tahoma", Font.BOLD, 12));

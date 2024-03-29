@@ -12,6 +12,7 @@ public class ApplicationModel
 	private Routes route; 
 	
 	
+	
 	public ApplicationModel(Routes route)
 	{
 		this.route = route; 

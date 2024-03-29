@@ -10,7 +10,8 @@ class TestFinalProject2
 	@Test
 	void test()
 	{ 
-		System.out.print("Testing Branch ");
+		System.out.print("Testing Branch");
 	}
 
 }
+
