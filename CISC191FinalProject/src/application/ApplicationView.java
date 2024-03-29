@@ -35,7 +35,8 @@ public class ApplicationView extends JFrame
 			{
 				try
 				{
-					ApplicationView frame = new ApplicationView(new ApplicationModel(), new Routes());
+					Routes route = new Routes();
+					ApplicationView frame = new ApplicationView(new ApplicationModel(route), route);
 					frame.setVisible(true);
 				}
 				catch (Exception e)
@@ -146,6 +147,7 @@ public class ApplicationView extends JFrame
 		departureCityListLabel.setBounds(196, 123, 75, 16);
 		contentPane.add(departureCityListLabel);
 		
+	
 		JButton seeFlightButton = new JButton("See Flights");
 		seeFlightButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeFlightButton.setBackground(new Color(0, 0, 128));
@@ -156,5 +158,7 @@ public class ApplicationView extends JFrame
 		departureCityList.addListSelectionListener(new DepartureListSelectionHandler(departureCityList,destinationCityList, model)); //listener
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnSpinner, returnLabel));
+		helpButton.addActionListener(new HelpButtonHandler(helpButton, this));
+		aboutButton.addActionListener(new AboutButtonHandler(aboutButton, this));
 	}
 }

@@ -9,11 +9,12 @@ public class ApplicationModel
 	private double baseFare = 50.00; 
 	@SuppressWarnings("unused")
 	private String departureCity, destinationCity; 
+	private Routes route; 
 	
 	
-	public ApplicationModel()
+	public ApplicationModel(Routes route)
 	{
-		
+		this.route = route; 
 	}
 	
 	public void setMonth(int month)
@@ -23,7 +24,7 @@ public class ApplicationModel
 	
 	public double getPrice()
 	{ 
-		return (baseFare*(getSeasonMultiplier() + getCapacity() + getMileageRate()));
+		return (baseFare*(getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity))));
 	}
 	
 	public double getSeasonMultiplier()
@@ -56,13 +57,15 @@ public class ApplicationModel
 	{ 
 		Random rand = new Random(); 
 		
-		double capacity = rand.nextDouble(1.0);
+		double capacity = rand.nextDouble(.80);
 		
 		return capacity; 
 	}
 	
-	public double getMileageRate() 
+	public double getMileageRate(int miles) 
 	{ 
+		this.miles = miles; 
+		
 		if( miles <= 500) 
 		{ 
 			return 5; 
@@ -75,10 +78,12 @@ public class ApplicationModel
 		{ 
 			return 15; 
 		}
-		else 
+		else if ( miles <= 4000)
 		{ 
 			return 20; 
 		}
+		else 
+			return 25;
 	}
 	
 	public void setDepartureCity(String departureCity) 
@@ -89,8 +94,6 @@ public class ApplicationModel
 	public void setDestinationCity(String destinationCity) 
 	{ 
 		this.destinationCity = destinationCity;  
-		
-		System.out.println(destinationCity);
 	}
 	
 	
