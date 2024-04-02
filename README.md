@@ -22,3 +22,6 @@ The proposed Airline Management System will streamline the operations of the air
 ## Weekly Updates 
 
 ### Week 1: 
+
+
+### Week 2: 
