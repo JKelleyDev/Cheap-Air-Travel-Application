@@ -19,3 +19,6 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 ## Conclusion: 
 The proposed Airline Management System will streamline the operations of the airline, enhance user experience, and improve overall efficiency. By leveraging modern technologies and best practices, we aim to deliver a high-quality solution that meets the needs of both the airline and its passengers
 
+## Weekly Updates 
+
+### Week 1: 
