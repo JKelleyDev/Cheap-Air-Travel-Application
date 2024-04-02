@@ -4,11 +4,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JSpinner;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -20,6 +23,7 @@ public class ApplicationView extends JFrame
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JPanel mainPage; 
 	private Routes route ;
 	@SuppressWarnings("unused")
 	private ApplicationModel model; 
@@ -72,7 +76,7 @@ public class ApplicationView extends JFrame
 		aboutButton.setOpaque(true);
 		contentPane.add(aboutButton);
 		
-		JButton routeButton = new JButton("Check In");
+		JButton routeButton = new JButton("Routes");
 		routeButton.setForeground(new Color(255, 255, 255));
 		routeButton.setBackground(new Color(0, 0, 128));
 		routeButton.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -154,11 +158,20 @@ public class ApplicationView extends JFrame
 		seeFlightButton.setBounds(327, 237, 117, 29);
 		contentPane.add(seeFlightButton);
 		
+		
 		//Action Listeners
 		departureCityList.addListSelectionListener(new DepartureListSelectionHandler(departureCityList,destinationCityList, model)); //listener
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnSpinner, returnLabel));
 		helpButton.addActionListener(new HelpButtonHandler(helpButton, this));
 		aboutButton.addActionListener(new AboutButtonHandler(aboutButton, this));
+
+		 
+
 	}
+
+	
+
+	
+	
 }
