@@ -72,14 +72,14 @@ public class ApplicationView extends JFrame
 		this.add(contentPane);
 		
 		mainPage = new JPanel(); 
-			contentPane.add(mainPage, "1"); 
+			contentPane.add(mainPage, "main"); 
 		flightsPage = new JPanel(); 
-			contentPane.add(flightsPage, "2");
+			contentPane.add(flightsPage, "flights");
 		bookingPage = new JPanel(); 
-			contentPane.add(bookingPage, "3");
+			contentPane.add(bookingPage, "bookingDetails");
 		
 		
-		c1.show(contentPane, "1"); // Start on the main page
+		c1.show(contentPane, "main"); // Start on the main page
 	    
 		
 		
@@ -181,7 +181,7 @@ public class ApplicationView extends JFrame
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnSpinner, returnLabel));
 		helpButton.addActionListener(new HelpButtonHandler(helpButton, this));
 		aboutButton.addActionListener(new AboutButtonHandler(aboutButton, this));
-		seeFlightButton.addActionListener(new SeeFlightButtonHandler(seeFlightButton, this,c1, contentPane));
+		seeFlightButton.addActionListener(new SeeFlightButtonHandler( this, c1, contentPane));
 		
 
 	}

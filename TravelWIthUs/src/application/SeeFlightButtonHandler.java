@@ -9,15 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class SeeFlightButtonHandler implements ActionListener
-{
-	private JButton seeFlightButton; 
+{ 
 	private JFrame frame;
 	private CardLayout c1; 
 	private JPanel contentPane; 
 
-	public SeeFlightButtonHandler(JButton seeFlightButton, JFrame frame, CardLayout c1, JPanel contentPane) 
+	public SeeFlightButtonHandler(JFrame frame, CardLayout c1, JPanel contentPane) 
 	{ 
-		this.seeFlightButton = seeFlightButton; 
+		
 		this.frame = frame; 
 		this.c1 = c1; 
 		this.contentPane = contentPane; 
@@ -26,7 +25,7 @@ public class SeeFlightButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		c1.show(contentPane, "2");
+		c1.show(contentPane, "flights");
 		frame.setTitle("Flights");
 	}
 
