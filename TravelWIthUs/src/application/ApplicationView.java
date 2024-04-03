@@ -63,16 +63,23 @@ public class ApplicationView extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 450, 300);
 		this.setTitle("Travel With Us: An Afforadable Air Travel Service");
-		this.setVisible(true);
+		
 		c1 = new CardLayout();
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//this.contentPane.setLayout(c1);
+		contentPane.setLayout(c1);
 		this.add(contentPane);
 		
 		mainPage = new JPanel(); 
-	
+			contentPane.add(mainPage, "1"); 
+		flightsPage = new JPanel(); 
+			contentPane.add(flightsPage, "2");
+		bookingPage = new JPanel(); 
+			contentPane.add(bookingPage, "3");
+		
+		
+		c1.show(contentPane, "1"); // Start on the main page
 	    
 		
 		
@@ -174,7 +181,7 @@ public class ApplicationView extends JFrame
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnSpinner, returnLabel));
 		helpButton.addActionListener(new HelpButtonHandler(helpButton, this));
 		aboutButton.addActionListener(new AboutButtonHandler(aboutButton, this));
-
+		seeFlightButton.addActionListener(new SeeFlightButtonHandler(seeFlightButton, this,c1, contentPane));
 		
 
 	}
