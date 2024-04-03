@@ -2,36 +2,35 @@ package application;
 
 public class MealOptions
 {
-	private Traveler traveler; 
+	private Traveler traveler;
+	private String name;
+	private int calories;
+	private double price;
 	
-	public MealOptions(Traveler traveler)
+	public MealOptions(Traveler traveler, String name, int calories, double price)
 	{ 
 		this.traveler = traveler; 
+		this.name = name;
+		this.calories =calories;
+		this.price = price;
 	}
 	
-	/// Create Meal Options 
-	
-		// Example 
-		/* 
-		 * String Meal_1_Name = "Steak and Potatoes"; 
-		 * 
-		 * int Meal_1_Calories = 560; 
-		 * 
-		 * double Meal_1_Price = 7.65; 
-		 * 
-		 * 
-		 */
-	
-	
-	// Create Getter Methods 
-	
-	// Return the name of the meal 
-	
-	// Return the price of the meal 
-	
-	// Return the calories of the meal 
-	
-	
-	// You do NOT need setter methods 
-	
+	public String getMealName() 
+	{
+		return name;
+	}
+	 
+	public int getMealCalories() 
+	{
+		return calories;
+	}
+	 
+	public double getMealPrice()
+	 {
+		return price;
+	 }
+	 
 }
+
+
+
