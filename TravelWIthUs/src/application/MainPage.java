@@ -3,6 +3,7 @@ package application;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -31,7 +32,7 @@ public class MainPage extends JFrame
 		this.c1 = c1; 
 		this.contentPane = contentPane;
 		
-		mainPage = new JPanel(); 
+		mainPage = new JPanel(new GridBagLayout()); 
 		
 		JButton aboutButton = new JButton("About");
 		aboutButton.setBackground(new Color(0, 0, 128));

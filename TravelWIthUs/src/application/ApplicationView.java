@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JSpinner;
 
 import java.awt.CardLayout;
@@ -69,6 +72,21 @@ public class ApplicationView extends JFrame
 		contentPane.setLayout(c1);
 		this.add(contentPane);
 		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+
+		JMenu menu = new JMenu("Options");
+			JMenuItem homePage = new JMenuItem("Home Page"); 
+			JMenu printOption = new JMenu("Print Confirmation");
+		JMenu exit = new JMenu("Exit");
+		
+		
+		menuBar.add(menu);
+			menu.add(homePage); 
+			menu.add(printOption);
+		menuBar.add(exit);
+		
+		
 		// Create our panels for each page
 		mainPage = (new MainPage(this, route, model, c1, contentPane).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
@@ -79,7 +97,7 @@ public class ApplicationView extends JFrame
 		bookingPage = new JPanel(); 
 			contentPane.add(bookingPage, "bookingDetails");
 		
-		c1.show(contentPane, "main"); // Start on the main page
+		c1.show(contentPane, "flights"); // Start on the main page
 	    
 		
 		
