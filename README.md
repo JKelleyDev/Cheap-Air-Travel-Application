@@ -22,13 +22,13 @@ The proposed Airline Management System will streamline the operations of the air
 ## Weekly Updates 
 
 ### Week 1: 
-•	Created the Application View (Primary GUI space)  
-•	Created the differt page views as seperate class (Utilizing CardLayout to switch between views)  
-•	Completed routes,Traveler, Payment, MealOptions, Baggage backend code 
-•	Completed CRC cards and ULM diagrams 
-•	GUI templates created in PDF  
-•	Project proposal finished 
-•	Project Manager attatched on GITHUB projects   
+•	Created the Application View (Primary GUI space)     
+•	Created the differt page views as seperate class (Utilizing CardLayout to switch between views)    
+•	Completed routes,Traveler, Payment, MealOptions, Baggage backend code   
+•	Completed CRC cards and ULM diagrams   
+•	GUI templates created in PDF    
+•	Project proposal finished   
+•	Project Manager attatched on GITHUB projects     
 
 
 ### Week 2: 
