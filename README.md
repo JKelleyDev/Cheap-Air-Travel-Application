@@ -19,9 +19,25 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 ## Conclusion: 
 The proposed Airline Management System will streamline the operations of the airline, enhance user experience, and improve overall efficiency. By leveraging modern technologies and best practices, we aim to deliver a high-quality solution that meets the needs of both the airline and its passengers
 
+
+
+![TravelWithUs ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/7fd40a5c-b8c8-4575-826e-895b426afa7b)
+
+
+
+
+
 ## Weekly Updates 
 
 ### Week 1: 
+•	Created the Application View (Primary GUI space)     
+•	Created the differt page views as seperate class (Utilizing CardLayout to switch between views)    
+•	Completed routes,Traveler, Payment, MealOptions, Baggage backend code   
+•	Completed CRC cards and ULM diagrams   
+•	GUI templates created in PDF    
+•	Project proposal finished   
+•	Project Manager attatched on GITHUB projects     
+
 
 ### Week 2: 
 
