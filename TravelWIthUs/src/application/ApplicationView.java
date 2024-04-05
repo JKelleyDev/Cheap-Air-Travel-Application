@@ -66,7 +66,7 @@ public class ApplicationView extends JFrame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(100, 100, 450, 300);
 		this.setTitle("Travel With Us: An Afforadable Air Travel Service");
-		
+			
 		c1 = new CardLayout();
 		contentPane = new JPanel();
 		contentPane.setLayout(c1);
@@ -97,7 +97,7 @@ public class ApplicationView extends JFrame
 		bookingPage = new JPanel(); 
 			contentPane.add(bookingPage, "bookingDetails");
 		
-		c1.show(contentPane, "flights"); // Start on the main page
+		c1.show(contentPane, "main"); // Start on the main page
 	    
 		
 		

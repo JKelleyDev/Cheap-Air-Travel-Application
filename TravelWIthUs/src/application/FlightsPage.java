@@ -34,4 +34,8 @@ public class FlightsPage extends JFrame
 		
 	}
 	
+	public JPanel returnPanel() 
+	{ 
+		return flightsPage; 
+	}
 }

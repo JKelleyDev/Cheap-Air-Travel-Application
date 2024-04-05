@@ -6,10 +6,10 @@ public class Baggage
 	private Boolean carryOn; 
 	private int numberOfCheckedBags;
 	private double totalCheckedBagFee; 
-	private double overweightBagFee = 25.0;
-	private double baseCheckedBagFee = 35.0;
-	public double oversizedBagFee = 50.0;
-	private double maxBagWeight = 40.0;
+	private final double overweightBagFee = 25.0;
+	private final double baseCheckedBagFee = 35.0;
+	private final double oversizedBagFee = 50.0;
+	private final double maxBagWeight = 40.0;
 	
 	public Baggage(Traveler traveler)
 	{
