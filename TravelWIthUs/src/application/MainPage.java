@@ -1,10 +1,16 @@
 package application;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.LayoutManager;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -13,7 +19,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainPage extends JFrame
 {
@@ -32,48 +41,50 @@ public class MainPage extends JFrame
 		this.c1 = c1; 
 		this.contentPane = contentPane;
 		
-		mainPage = new JPanel(new GridBagLayout()); 
+		mainPage = new JPanel(); 
+		mainPage.setSize(600,450);
+		mainPage.setLayout(null);
 		
-		JButton aboutButton = new JButton("About");
-		aboutButton.setBackground(new Color(0, 0, 128));
-		aboutButton.setForeground(new Color(255, 255, 255));
-		aboutButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		aboutButton.setBounds(358, 6, 86, 29);
-		aboutButton.setBorderPainted(false);
-		aboutButton.setOpaque(true);
-		mainPage.add(aboutButton);
 		
-		JButton routeButton = new JButton("Routes");
-		routeButton.setForeground(new Color(255, 255, 255));
-		routeButton.setBackground(new Color(0, 0, 128));
-		routeButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		routeButton.setBounds(173, 6, 86, 29);
-		routeButton.setBorderPainted(false);
-		routeButton.setOpaque(true);
-		mainPage.add(routeButton);
+//		JButton aboutButton = new JButton("About");
+//		aboutButton.setBackground(new Color(0, 0, 128));
+//		aboutButton.setForeground(new Color(255, 255, 255));
+//		aboutButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+//		aboutButton.setBorderPainted(false);
+//		aboutButton.setOpaque(true);
+//		mainPage.add(aboutButton, BorderLayout.NORTH);
+//		
+//		JButton routeButton = new JButton("Routes");
+//		routeButton.setForeground(new Color(255, 255, 255));
+//		routeButton.setBackground(new Color(0, 0, 128));
+//		routeButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+//		routeButton.setBorderPainted(false);
+//		routeButton.setOpaque(true);
+//		mainPage.add(routeButton, BorderLayout.NORTH);
+//		
+//		JButton helpButton = new JButton("Help");
+//		helpButton.setFont(new Font("Tahoma", Font.BOLD, 12));
+//		helpButton.setBackground(new Color(0, 0, 128));
+//		helpButton.setForeground(new Color(255, 255, 255));
+//		helpButton.setBorderPainted(false);
+//		helpButton.setOpaque(true);
+//		mainPage.add(helpButton, BorderLayout.NORTH);
 		
-		JButton helpButton = new JButton("Help");
-		helpButton.setFont(new Font("Tahoma", Font.BOLD, 12));
-		helpButton.setBackground(new Color(0, 0, 128));
-		helpButton.setForeground(new Color(255, 255, 255));
-		helpButton.setBounds(271, 6, 75, 29);
-		helpButton.setBorderPainted(false);
-		helpButton.setOpaque(true);
-		mainPage.add(helpButton);
-		
+
 		JLabel departureLabel = new JLabel("Departure:");
 		departureLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		departureLabel.setBounds(6, 79, 61, 16);
-		mainPage.add(departureLabel);
 		
+		mainPage.add(departureLabel); 
+		
+	
 		JLabel returnLabel = new JLabel("Return:");
 		returnLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		returnLabel.setBounds(6, 112, 61, 16);
+		
 		mainPage.add(returnLabel);
 		
 		JCheckBox oneWayCheckBox = new JCheckBox("One Way Flight");
 		oneWayCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		oneWayCheckBox.setBounds(6, 135, 128, 23);
+		oneWayCheckBox.setSize( 128, 23);
 		mainPage.add(oneWayCheckBox);
 		
 		JLabel lblNewLabel = new JLabel("Affordable \nAir \nTravel");
@@ -81,56 +92,62 @@ public class MainPage extends JFrame
 		lblNewLabel.setBackground(new Color(0, 0, 205));
 		lblNewLabel.setFont(new Font("SansSerif", Font.ITALIC, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(6, 6, 155, 61);
+		lblNewLabel.setBounds(0,0, 600, 61);
 		lblNewLabel.setOpaque(true);
 		mainPage.add(lblNewLabel);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setBounds(68, 74, 93, 26);
-		mainPage.add(spinner);
+		spinner.setSize( 93, 26);
+	//	mainPage.add(spinner);
 		
 		JSpinner returnSpinner = new JSpinner();
-		returnSpinner.setBounds(68, 107, 93, 26);
-		mainPage.add(returnSpinner);
+		returnSpinner.setSize(93, 26);
+		//mainPage.add(returnSpinner);
+		
+		JLabel departureCityListLabel = new JLabel("Departure City");
+		departureCityListLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		departureCityListLabel.setBounds(50, 125, 95, 30);
+		mainPage.add(departureCityListLabel);
 		
 		JList<String> departureCityList = new JList<String>(route.getDepartures());
 		departureCityList.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		departureCityList.setLayoutOrientation(JList.VERTICAL);
 		departureCityList.setVisibleRowCount(5);
 		JScrollPane departureScroll = new JScrollPane(departureCityList); 
-		departureScroll.setBounds(173, 145, 119, 85);
+		departureScroll.setBounds(25,149, 119, 100);
 		mainPage.add(departureScroll);
+		
+		JLabel destinationCityListLabel = new JLabel("Desination City");
+		destinationCityListLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		destinationCityListLabel.setBounds(200, 125, 95, 30);
+		mainPage.add(destinationCityListLabel);
 		
 		JList<String> destinationCityList = new JList<String>();
 		destinationCityList.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		JScrollPane destinationScroll = new JScrollPane(destinationCityList); 
 		destinationCityList.setVisibleRowCount(5);
-		destinationScroll.setBounds(317, 145, 123, 85);
+		destinationScroll.setBounds(175,149,123, 100);
 		mainPage.add(destinationScroll);
 	
-		JLabel destinationCityListLabel = new JLabel("Desination City");
-		destinationCityListLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		destinationCityListLabel.setBounds(342, 123, 75, 16);
-		mainPage.add(destinationCityListLabel);
 		
-		JLabel departureCityListLabel = new JLabel("Departure City");
-		departureCityListLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		departureCityListLabel.setBounds(196, 123, 75, 16);
-		mainPage.add(departureCityListLabel);
+		
+		
 		
 	
 		JButton seeFlightButton = new JButton("See Flights");
 		seeFlightButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeFlightButton.setBackground(new Color(0, 0, 128));
-		seeFlightButton.setBounds(327, 237, 117, 29);
+		seeFlightButton.setBounds(495, 410, 95, 30);
 		mainPage.add(seeFlightButton);
+		
+	
 		
 		//Action Listeners
 		departureCityList.addListSelectionListener(new DepartureListSelectionHandler(departureCityList,destinationCityList, model)); //listener
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnSpinner, returnLabel));
-		helpButton.addActionListener(new HelpButtonHandler(helpButton, frame));
-		aboutButton.addActionListener(new AboutButtonHandler(aboutButton, frame));
+	//	helpButton.addActionListener(new HelpButtonHandler(helpButton, frame));
+	//  aboutButton.addActionListener(new AboutButtonHandler(aboutButton, frame));
 		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane));
  
 	}

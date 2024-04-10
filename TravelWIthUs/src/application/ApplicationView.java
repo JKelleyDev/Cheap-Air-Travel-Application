@@ -14,8 +14,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSpinner;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
@@ -64,13 +66,14 @@ public class ApplicationView extends JFrame
 		this.model = model; 
 		this.route = route; 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 450, 300);
+		this.setPreferredSize(new Dimension(600, 500));
+		this.setResizable(false);
 		this.setTitle("Travel With Us: An Afforadable Air Travel Service");
 			
 		c1 = new CardLayout();
 		contentPane = new JPanel();
 		contentPane.setLayout(c1);
-		this.add(contentPane);
+		this.add(contentPane, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -101,7 +104,7 @@ public class ApplicationView extends JFrame
 	    
 		
 		
-
+		this.pack();
 
 	}
 
