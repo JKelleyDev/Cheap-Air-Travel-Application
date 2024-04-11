@@ -69,6 +69,8 @@ public class ApplicationView extends JFrame
 		this.setPreferredSize(new Dimension(600, 400));
 		this.setResizable(false);
 		this.setTitle("Travel With Us: An Afforadable Air Travel Service");
+		this.pack();
+		this.setLocationRelativeTo(null);
 			
 		c1 = new CardLayout();
 		contentPane = new JPanel();
@@ -104,7 +106,7 @@ public class ApplicationView extends JFrame
 	    
 		
 		
-		this.pack();
+		
 
 	}
 
