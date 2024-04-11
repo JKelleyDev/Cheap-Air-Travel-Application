@@ -10,7 +10,12 @@ public class ApplicationModel
 	@SuppressWarnings("unused")
 	private String departureCity, destinationCity; 
 	private Routes route; 
-	
+	private String departMonth; 
+	private int departDay; 
+	private int departYear; 
+	private String returnMonth; 
+	private int returnDay; 
+	private int returnYear;
 	
 	
 	public ApplicationModel(Routes route)
@@ -97,5 +102,21 @@ public class ApplicationModel
 		this.destinationCity = destinationCity;  
 	}
 	
+	public void setDepartMonth(String departMonth)
+	{ 
+		this.departMonth = departMonth; 
+	}
+	
+	public void setDepartDay(int departDay)
+	{ 
+		this.departDay = departDay; 
+	}
+	
+	public void setDepartYear(int departYear)
+	{
+		this.departYear = departYear; 
+	}
+	
+
 	
 }

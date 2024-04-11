@@ -66,7 +66,7 @@ public class ApplicationView extends JFrame
 		this.model = model; 
 		this.route = route; 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setPreferredSize(new Dimension(600, 500));
+		this.setPreferredSize(new Dimension(600, 400));
 		this.setResizable(false);
 		this.setTitle("Travel With Us: An Afforadable Air Travel Service");
 			
