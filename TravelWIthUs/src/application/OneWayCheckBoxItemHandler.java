@@ -23,7 +23,7 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 		this.returnDaySelection = returnDaySelection; 
 		this.returnYearSelection = returnYearSelection; 
 		this.returnLabel = returnLabel;   
-		String codeTest; 
+		
 		
 	}
 	
