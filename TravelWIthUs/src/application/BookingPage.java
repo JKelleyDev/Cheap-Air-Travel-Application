@@ -21,7 +21,14 @@ public class BookingPage
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
+		
 		bookingPage = new JPanel(); 
+	
+		bookingPage.setLayout(null);
+		
+		// Layout size 600 wide 400 tall
+		
+		
 		
 	}
 	

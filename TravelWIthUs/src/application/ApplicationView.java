@@ -102,7 +102,7 @@ public class ApplicationView extends JFrame
 		bookingPage = new JPanel(); 
 			contentPane.add(bookingPage, "bookingDetails");
 		
-		c1.show(contentPane, "main"); // Start on the main page
+		c1.show(contentPane, "bookingDetails"); // Start on the main page
 	    
 		
 		
