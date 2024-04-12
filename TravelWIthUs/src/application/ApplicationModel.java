@@ -11,11 +11,11 @@ public class ApplicationModel
 	private String departureCity, destinationCity; 
 	private Routes route; 
 	private String departMonth; 
-	private int departDay; 
-	private int departYear; 
+	private String departDay; 
+	private String departYear; 
 	private String returnMonth; 
-	private int returnDay; 
-	private int returnYear;
+	private String returnDay; 
+	private String returnYear;
 	
 	
 	public ApplicationModel(Routes route)
@@ -107,14 +107,32 @@ public class ApplicationModel
 		this.departMonth = departMonth; 
 	}
 	
-	public void setDepartDay(int departDay)
+	public void setDepartDay(String selectedValue)
 	{ 
-		this.departDay = departDay; 
+		this.departDay = selectedValue; 
 	}
 	
-	public void setDepartYear(int departYear)
+	public void setDepartYear(String departYear)
 	{
 		this.departYear = departYear; 
+	}
+
+	public void setReturnDay(String returnDay)
+	{
+		this.returnDay = returnDay; 
+		
+	}
+
+	public void setReturnMonth(String returnMonth)
+	{
+		this.returnMonth = returnMonth; 
+		
+	}
+
+	public void setReturnYear(String returnYear)
+	{
+		this.returnYear = returnYear;
+		
 	}
 	
 

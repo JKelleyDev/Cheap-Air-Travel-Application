@@ -85,7 +85,7 @@ public class MainPage extends JFrame
 		JComboBox<String> departMonthSelection = new JComboBox<String>(months);
 		departMonthSelection.setBounds(119, 152, 75, 30);
 		mainPage.add(departMonthSelection);
-		departMonthSelection.addItemListener(new MonthSelectionHandler(departMonthSelection, model));
+		departMonthSelection.addItemListener(new BookingDateHandler(departMonthSelection, model, "departure"));
 		
 		JComboBox<Integer> departDaySelection = new JComboBox<Integer>();
 		departDaySelection.setBounds(190, 152, 60, 30);
@@ -96,6 +96,7 @@ public class MainPage extends JFrame
 				departDaySelection.addItem(i);
 			}
 		mainPage.add(departDaySelection);
+		departDaySelection.addItemListener(new BookingDateHandler(departDaySelection, model, "departure"));
 	
 		JComboBox<Integer> departYearSelection = new JComboBox<Integer>(); 
 		departYearSelection.setBounds(245, 152, 88, 30);
@@ -103,10 +104,12 @@ public class MainPage extends JFrame
 		departYearSelection.addItem(Year.now().getValue()); 
 		departYearSelection.addItem(Year.now().getValue()+1);
 		mainPage.add(departYearSelection);
-	
+		departYearSelection.addItemListener(new BookingDateHandler(departYearSelection, model, "departure"));
+		
 		JComboBox<String> returnMonthSelection = new JComboBox<String>(months);
 		returnMonthSelection.setBounds(119, 204, 75, 30);
 		mainPage.add(returnMonthSelection);
+		returnMonthSelection.addItemListener(new BookingDateHandler(returnMonthSelection, model, "return"));
 		
 		JComboBox<Integer> returnDaySelection = new JComboBox<Integer>();
 		returnDaySelection.setBounds(190, 204, 60, 30);
@@ -116,6 +119,7 @@ public class MainPage extends JFrame
 			 returnDaySelection.addItem(i);
 			}
 		mainPage.add(returnDaySelection);
+		returnDaySelection.addItemListener(new BookingDateHandler(returnDaySelection, model, "return"));
 	
 		JComboBox<Integer> returnYearSelection = new JComboBox<Integer>(); 
 		returnYearSelection.setBounds(245, 204, 88, 30);
@@ -123,6 +127,7 @@ public class MainPage extends JFrame
 		returnYearSelection.addItem(Year.now().getValue()); 
 		returnYearSelection.addItem(Year.now().getValue()+1);
 		mainPage.add(returnYearSelection);
+		returnYearSelection.addItemListener(new BookingDateHandler(returnYearSelection, model, "return"));
 		
 		
 		JLabel departureCityListLabel = new JLabel("Departure City");

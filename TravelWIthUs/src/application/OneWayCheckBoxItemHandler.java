@@ -25,19 +25,24 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 		this.returnLabel = returnLabel; 
 		
 	}
-
-
-
+	
 	@Override
 	public void itemStateChanged(ItemEvent e)
 	{
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
 			returnMonthSelection.setVisible(false);
+				returnMonthSelection.setSelectedIndex(-1);
 			returnDaySelection.setVisible(false);
+				returnDaySelection.setSelectedIndex(-1);
 			returnYearSelection.setVisible(false);
+				returnYearSelection.setSelectedIndex(-1);
 			returnLabel.setVisible(false);
 			model.setOneWayFare(true);
+			model.setReturnDay(null);
+			model.setReturnMonth(null);
+			model.setReturnYear(null);
+			
 		}
 		else if(e.getStateChange() == ItemEvent.DESELECTED)
 		{
