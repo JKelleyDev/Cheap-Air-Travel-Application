@@ -97,9 +97,18 @@ public class ApplicationModel
 		this.departureCity = departureCity;  
 	}
 	
+	public String getDepartureCity()
+	{
+		return departureCity; 
+	}
+	
 	public void setDestinationCity(String destinationCity) 
 	{ 
 		this.destinationCity = destinationCity;  
+	}
+	public String getDestinationCity()
+	{
+		return destinationCity; 
 	}
 	
 	public void setDepartMonth(String departMonth)
