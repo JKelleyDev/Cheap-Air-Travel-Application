@@ -110,24 +110,24 @@ public class Routes
     	londonMileage.put("Stockholm", 911); 
     	londonFlightDuration.put("Stockholm", 133); 
     	
-    	londonMileage.put("Singapore", null); 
-    	londonFlightDuration.put("Singapore", null); 
+    	londonMileage.put("Singapore", 6765); 
+    	londonFlightDuration.put("Singapore", 798); 
     	
-    	londonMileage.put("Paris", null); 
-    	londonFlightDuration.put("Paris", null); 
+    	londonMileage.put("Paris", 216); 
+    	londonFlightDuration.put("Paris", 54); 
     	
-    	londonMileage.put("Hong Kong", null); 
-    	londonFlightDuration.put("Hong Kong", null); 
+    	londonMileage.put("Hong Kong", 5995); 
+    	londonFlightDuration.put("Hong Kong", 711); 
     	
     	/////////////////////////////////////////////
-    	tokyoMileage.put("New York", null); 
-    	tokyoFlightDuration.put("New York", null); 
+    	tokyoMileage.put("New York", 6734); 
+    	tokyoFlightDuration.put("New York", 794); 
     	
-    	tokyoMileage.put("London", null); 
-    	tokyoFlightDuration.put("London", null); 
+    	tokyoMileage.put("London", 5975); 
+    	tokyoFlightDuration.put("London", 708); 
     	
-    	tokyoMileage.put("Singapore", null); 
-    	tokyoFlightDuration.put("Singapore", null); 
+    	tokyoMileage.put("Singapore", 3324); 
+    	tokyoFlightDuration.put("Singapore", 407); 
     	/////////////////////////////////////////////
     	dohaMileage.put("New York", newYorkMileage.get("Doha"));
     	dohaFlightDuration.put("New York", newYorkFlightDuration.get("Doha")); 
@@ -146,8 +146,36 @@ public class Routes
     	
     	parisMileage.put("San Diego", sanDiegoMileage.get("Paris")); 
     	parisFlightDuration.put("San Diego", sanDiegoFlightDuration.get("Paris")); 
+    	//////////////////////////////////////////////
+    	stockholmMileage.put("New York", null); 
+    	stockholmFlightDuration.put("New York", null);
     	
-       
+    	stockholmMileage.put("London", null); 
+    	stockholmFlightDuration.put("London", null);
+        /////////////////////////////////////////////
+    	singaporeMileage.put("San Diego", null);
+    	singaporeFlightDuration.put("San Diego", null);
+    	
+    	singaporeMileage.put("New York", null);
+    	singaporeFlightDuration.put("New York", null);
+    	
+    	singaporeMileage.put("London", null);
+    	singaporeFlightDuration.put("London", null);
+    	
+    	singaporeMileage.put("Tokyo", null);
+    	singaporeFlightDuration.put("Tokyo", null);
+    	
+    	singaporeMileage.put("Hong Kong", null);
+    	singaporeFlightDuration.put("Hong Kong", null);
+    	//////////////////////////////////////////////
+    	hongKongMileage.put("London", null);
+    	hongKongFlightDuration.put("London", null);
+    	
+    	hongKongMileage.put("New York", null);
+    	hongKongFlightDuration.put("New York", null);
+    	
+    	hongKongMileage.put("Singapore", null);
+    	hongKongFlightDuration.put("Singapore", null);
     }
     
   
@@ -204,6 +232,36 @@ public class Routes
 		default: 
 			return 0;
 			
+		}
+	}
+	
+	public String getFlightDuration(String departureCity, String destinationCity)
+	{
+		int rawMinutes = 0; 
+		
+		switch(departureCity)
+		{
+		case "San Diego": 
+			rawMinutes = sanDiegoFlightDuration.get(destinationCity);
+//		case "New York":
+//			rawMinutes = newYorkFlightDuration.get(destinationCity);
+//		case "London":
+//			rawMinutes = londonFlightDuration.get(destinationCity); 
+//		case "Tokyo":
+//			rawMinutes = tokyoFlightDuration.get(destinationCity); 
+//		case "Doha":
+//			rawMinutes = dohaFlightDuration.get(destinationCity); 
+//		case "Paris":
+//			rawMinutes = parisFlightDuration.get(destinationCity); 
+//		case "Stockholm":
+//			rawMinutes = stockholmFlightDuration.get(destinationCity); 
+//		case "Singapore":
+//			rawMinutes = singaporeFlightDuration.get(destinationCity); 
+//		case "Hong Kong":
+//			rawMinutes = hongKongFlightDuration.get(destinationCity); 
+		default: 
+	
+			return rawMinutes/60 + " Hours" + " " + rawMinutes % 60 + " Minutes";
 		}
 	}
 	

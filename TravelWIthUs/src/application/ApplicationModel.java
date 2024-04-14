@@ -1,5 +1,6 @@
 package application;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class ApplicationModel
@@ -16,16 +17,31 @@ public class ApplicationModel
 	private String returnMonth; 
 	private String returnDay; 
 	private String returnYear;
-	
+	private HashMap<String, Integer> monthToInt; 
 	
 	public ApplicationModel(Routes route)
 	{
 		this.route = route; 
+		
+		this.monthToInt = new HashMap<String, Integer>();
+		monthToInt.put("Jan", 1);
+		monthToInt.put("Feb", 2);
+		monthToInt.put("Mar", 3);
+		monthToInt.put("Apr", 4);
+		monthToInt.put("May", 5);
+		monthToInt.put("Jun", 6);
+		monthToInt.put("Jul", 7);
+		monthToInt.put("Aug", 8);
+		monthToInt.put("Sep", 9);
+		monthToInt.put("Oct", 10);
+		monthToInt.put("Nov", 11);
+		monthToInt.put("Dec", 12);
+		
 	}
 	
-	public void setMonth(int month)
+	public void setMonth()
 	{ 
-		this.month = month; 
+		this.month = monthToInt.get(departMonth); 
 	}
 	
 	public double getPrice()
@@ -41,7 +57,7 @@ public class ApplicationModel
 		}
 		else if( month <= 8)
 		{ 
-			return 1.40;  
+			return 1.60;  
 		}
 		else if( month <= 12)
 		{ 
@@ -114,6 +130,7 @@ public class ApplicationModel
 	public void setDepartMonth(String departMonth)
 	{ 
 		this.departMonth = departMonth; 
+		setMonth();
 	}
 	
 	public void setDepartDay(String selectedValue)
