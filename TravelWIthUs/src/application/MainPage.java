@@ -155,11 +155,6 @@ public class MainPage extends JFrame
 		destinationScroll.setBounds(464, 150, 120, 150);
 		mainPage.add(destinationScroll);
 	
-		
-		
-		
-		
-	
 		JButton seeFlightButton = new JButton("See Flights");
 		seeFlightButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeFlightButton.setBackground(new Color(0, 0, 128));

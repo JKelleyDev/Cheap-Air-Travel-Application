@@ -32,6 +32,7 @@ public class ApplicationView extends JFrame
 	private JPanel flightsPage; 
 	private JPanel bookingPage; 
 	private Routes route ;
+	private JPanel optionPage;
 	@SuppressWarnings("unused")
 	private ApplicationModel model; 
 	private CardLayout c1;
@@ -96,15 +97,22 @@ public class ApplicationView extends JFrame
 		mainPage = (new MainPage(this, route, model, c1, contentPane).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
-		flightsPage = new JPanel(); 
+		flightsPage = (new FlightsPage(this, route, model, c1, contentPane).returnPanel()); 
 			contentPane.add(flightsPage, "flights");
 			
 		bookingPage = new JPanel(); 
 			contentPane.add(bookingPage, "bookingDetails");
 		
-		c1.show(contentPane, "bookingDetails"); // Start on the main page
+		c1.show(contentPane, "flights"); // Start on the main page
 	    
-		
+		optionPage = new JPanel(); 
+		contentPane.add(optionPage, "option");
+	
+	
+		//c1.show(contentPane, "bookingDetails"); // Start on the main page
+		//c1.show(contentPane, "option"); //
+		//c1.show(contentPane, "main"); // Start on the main page
+		//c1.show(contentPane, "flights"); // Start on the main page
 		
 		
 
