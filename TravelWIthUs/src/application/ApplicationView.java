@@ -37,6 +37,7 @@ public class ApplicationView extends JFrame
 	private ApplicationModel model; 
 	private CardLayout c1;
 	private Option option; 
+	private Traveler traveler;
 	/**
 	 * Launch the application.
 	 */
@@ -101,7 +102,7 @@ public class ApplicationView extends JFrame
 		flightsPage = (new FlightsPage(this, route, model, c1, contentPane).returnPanel()); 
 			contentPane.add(flightsPage, "flights");
 			
-		bookingPage = new JPanel(); 
+		bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
 			contentPane.add(bookingPage, "bookingDetails");
 	    
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
@@ -110,8 +111,8 @@ public class ApplicationView extends JFrame
 		//c1.show(contentPane, "main"); // Start on the main page
 	
 	
-		//c1.show(contentPane, "bookingDetails"); // Start on the main page
-		c1.show(contentPane, "option"); //
+		c1.show(contentPane, "bookingDetails"); // Start on the main page
+		//c1.show(contentPane, "option"); //
 		//c1.show(contentPane, "main"); // Start on the main page
 		//c1.show(contentPane, "flights"); // Start on the main page
 		
