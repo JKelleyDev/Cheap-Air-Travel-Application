@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.CardLayout; 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,6 +22,7 @@ public class Option
 	{
 		this.traveler = traveler;
 		this.paymentCard = paymentCard;	
+		wifi = false;
 		
 	}
 	
@@ -42,13 +43,13 @@ public class Option
 
 	public void setWifi(boolean selected) 
 	{
-		this.wifi = wifi;
+		wifi = selected;
 		
 	}
 
 	public void setMeal(boolean selected) 
 	{
-		this.meal = meal;	
+		this.meal = selected;	
 	}
 
 	

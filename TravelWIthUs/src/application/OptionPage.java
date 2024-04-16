@@ -6,6 +6,8 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -26,13 +28,14 @@ public class OptionPage extends JFrame
 	private JPanel contentPane; 
 	private Option option;
 	
-	public OptionPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane)
+	public OptionPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane, Option option)
 	{ 
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
+		this.option = option;
 	
 		optionPage = new JPanel(); 
 		
@@ -44,9 +47,20 @@ public class OptionPage extends JFrame
 		wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		wifiBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		wifiBox.setBounds(10,100, 145, 23);
-		wifiBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				option.setWifi(wifiBox.isSelected());
+		wifiBox.addItemListener(new ItemListener()
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e) 
+			{
+				if(e.getStateChange() == ItemEvent.SELECTED)
+				{
+					option.setWifi(true);
+				}
+				else if (e.getStateChange() == ItemEvent.DESELECTED)
+				{ 
+					option.setWifi(false);
+				}
+				//option.setWifi(wifiBox.isSelected());
 			}
 		});
 		optionPage.add(wifiBox);
