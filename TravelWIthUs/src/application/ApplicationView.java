@@ -110,8 +110,8 @@ public class ApplicationView extends JFrame
 		//c1.show(contentPane, "main"); // Start on the main page
 	
 	
-		//c1.show(contentPane, "bookingDetails"); // Start on the main page
-		c1.show(contentPane, "option"); //
+		c1.show(contentPane, "bookingDetails"); // Start on the main page
+		//c1.show(contentPane, "option"); //
 		//c1.show(contentPane, "main"); // Start on the main page
 		//c1.show(contentPane, "flights"); // Start on the main page
 		
