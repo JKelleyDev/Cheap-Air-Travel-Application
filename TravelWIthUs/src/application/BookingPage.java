@@ -136,6 +136,18 @@ public class BookingPage extends JFrame
 		
 		///////////////////////////////////
 		
+		JLabel lbTravelerLabel = new JLabel("Traveler:");
+		lbTravelerLabel.setBounds(255, 180, 80, 20);
+		bookingPage.add(lbTravelerLabel);
+		
+		String[] Traveler = {null,"1", "2", "3", "4","5"};
+		
+		JComboBox<String> travelerSelection = new JComboBox<String>(Traveler);
+		travelerSelection.setBounds(250,200,145,20);
+		bookingPage.add(travelerSelection);
+		
+		///////////////////////////////////
+		
 		
 		JLabel lbdobLabel = new JLabel("DOB:");
 		lbdobLabel.setBounds(105, 180, 80, 20);
