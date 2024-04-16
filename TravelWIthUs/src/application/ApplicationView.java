@@ -106,7 +106,7 @@ public class ApplicationView extends JFrame
 			contentPane.add(bookingPage, "bookingDetails");
 	    
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
-		contentPane.add(optionPage, "option");
+		contentPane.add(optionPage, "Option");
 		
 		//c1.show(contentPane, "main"); // Start on the main page
 	
