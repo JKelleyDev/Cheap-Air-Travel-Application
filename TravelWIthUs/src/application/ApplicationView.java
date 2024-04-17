@@ -29,7 +29,8 @@ public class ApplicationView extends JFrame
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel mainPage; 
-	private JPanel flightsPage; 
+	private JPanel departureFlightsPage; 
+	private JPanel returnFlightsPage;
 	private JPanel bookingPage; 
 	private Routes route ;
 	private JPanel optionPage;
@@ -96,11 +97,12 @@ public class ApplicationView extends JFrame
 		
 		
 		// Create our panels for each page
-		mainPage = (new MainPage(this, route, model, c1, contentPane).returnPanel()); 
+		FlightsPage flightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
+		departureFlightsPage = flightsPageClass.returnPanel(); 
+		contentPane.add(departureFlightsPage, "departure flights");
+		
+		mainPage = (new MainPage(this, route, model, c1, contentPane, flightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
-			
-		flightsPage = (new FlightsPage(this, route, model, c1, contentPane).returnPanel()); 
-			contentPane.add(flightsPage, "flights");
 			
 		bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
 			contentPane.add(bookingPage, "bookingDetails");
@@ -108,10 +110,10 @@ public class ApplicationView extends JFrame
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
 		contentPane.add(optionPage, "Option");
 		
-		//c1.show(contentPane, "main"); // Start on the main page
+		c1.show(contentPane, "main"); // Start on the main page
 	
 	
-		c1.show(contentPane, "bookingDetails"); // Start on the main page
+		//c1.show(contentPane, "bookingDetails"); // Start on the main page
 		//c1.show(contentPane, "option"); //
 		//c1.show(contentPane, "main"); // Start on the main page
 		//c1.show(contentPane, "flights"); // Start on the main page

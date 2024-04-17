@@ -37,14 +37,16 @@ public class MainPage extends JFrame
 	private ApplicationModel model;
 	private CardLayout c1; 
 	private JPanel contentPane; 
+	private FlightsPage departureFlightsPage; 
 	
-	public MainPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane)
+	public MainPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane, FlightsPage departureFlightsPage)
 	{ 
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
+		this.departureFlightsPage = departureFlightsPage; 
 		
 		mainPage = new JPanel(); 
 	
@@ -168,7 +170,7 @@ public class MainPage extends JFrame
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnMonthSelection, returnDaySelection, returnYearSelection, returnLabel));
 	
-		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane));
+		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane, departureFlightsPage));
  
 	}
 	
