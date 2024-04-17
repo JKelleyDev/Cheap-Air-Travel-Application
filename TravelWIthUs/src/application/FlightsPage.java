@@ -52,11 +52,12 @@ public class FlightsPage extends JFrame
 		this.c1 = c1; 
 		this.contentPane = contentPane;
 	
+		// Set up the page and layout // 
 		flightsPage = new JPanel(); 
 		flightsPage.setLayout(null);
 		
-		
-		
+		/////////////////////////////////////////////////////////
+	    // Create the first flight option box with all components
 		flight_option1 = new JPanel();
 		flight_option1.setLayout(null);
 		flight_option1.setBounds(0,10,600, 100);
@@ -97,7 +98,10 @@ public class FlightsPage extends JFrame
 			flightMileage1 = new JLabel(); 
 			flightMileage1.setBounds(103, 65, 100, 30);
 			flight_option1.add(flightMileage1); 
+			
 		////////////////////////////////////////////////////	
+			
+		// Create the second flight option box with all components 
 		flight_option2 = new JPanel();
 		flight_option2.setLayout(null);
 		flight_option2.setBounds(0,125, 600, 100);
@@ -110,14 +114,14 @@ public class FlightsPage extends JFrame
 		JLabel departureCityLabel_2 = new JLabel("Departure City:");
 			departureCityLabel_2.setBounds(3, 5, 95, 30);
 			flight_option2.add(departureCityLabel_2);
-			departureCity2 = new JLabel();
+				departureCity2 = new JLabel();
 				departureCity2.setBounds(103, 5, 95, 30);
 				flight_option2.add(departureCity2);
 			
 		JLabel destinationCityLabel_2 = new JLabel("Destination City:");
 			destinationCityLabel_2.setBounds(3, 25, 115, 30);
 			flight_option2.add(destinationCityLabel_2);
-			destinationCity2 = new JLabel(); 
+				destinationCity2 = new JLabel(); 
 				destinationCity2.setBounds(113, 25, 95, 30);
 				flight_option2.add(destinationCity2);
 		    
@@ -138,7 +142,9 @@ public class FlightsPage extends JFrame
 				flight_option2.add(flightMileage2);		
 				
 				
+		///////////////////////////////////////////////////////////////////////////		
 				
+		// Create the third flight option box with all components 
 		flight_option3 = new JPanel();
 		flight_option3.setLayout(null);
 		flight_option3.setBounds(0,240, 600, 100);
@@ -162,7 +168,22 @@ public class FlightsPage extends JFrame
 				destinationCity3.setBounds(113, 25, 95, 30);
 				flight_option3.add(destinationCity3);
 		    
-		
+		JLabel flightDurationLabel_3 = new JLabel("Flight Duration:"); 
+			flightDurationLabel_3.setBounds(3, 45, 100, 30);
+			flight_option3.add(flightDurationLabel_3);
+					
+				flightDuration3 = new JLabel(); 
+					flightDuration3.setBounds(103,45,135,30);
+					flight_option3.add(flightDuration3);
+						
+		JLabel flightMileageLabel_3 = new JLabel("Flight Mileage:");
+			flightMileageLabel_3.setBounds(3, 65, 100, 30);
+			flight_option3.add(flightMileageLabel_3);
+					
+				flightMileage3 = new JLabel(); 
+					flightMileage3.setBounds(103, 65, 100, 30);
+					flight_option3.add(flightMileage3);	
+				
 			flightsPage.add(flight_option1);
 			flightsPage.add(flight_option2);
 			flightsPage.add(flight_option3);
@@ -182,10 +203,8 @@ public class FlightsPage extends JFrame
 		
 		departureCity3.setText(model.getDepartureCity());
 		destinationCity3.setText(model.getDestinationCity());
-//		flightDuration3.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
-//		flightMileage3.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
-		
-		
+		flightDuration3.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
+		flightMileage3.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");	
 	}
 	
 	public JPanel returnPanel() 
