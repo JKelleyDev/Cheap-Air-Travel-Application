@@ -27,7 +27,7 @@ public class SeeFlightButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		departureFlightsPage.setCitiesText();
+		departureFlightsPage.setDepartureData();
 		c1.show(contentPane, "departure flights");
 		frame.setTitle("Flights");
 	}

@@ -189,7 +189,7 @@ public class FlightsPage extends JFrame
 			flightsPage.add(flight_option3);
 	}
 	
-	public void setCitiesText()
+	public void setDepartureData()
 	{ 			
 		departureCity1.setText(model.getDepartureCity());
 		destinationCity1.setText(model.getDestinationCity());
