@@ -50,7 +50,7 @@ The proposed Airline Management System will streamline the operations of the air
 
 ### Week 3: 
 
-Finish writing classes.
+• Finish writing classes.
 
 • Determine where exception handling is needed to ensure the program fails gracefully.
 
@@ -59,6 +59,15 @@ Finish writing classes.
 • Update project page with progress details.
 
 • Submit code written so far.
+
+<img width="598" alt="Screen Shot 2024-04-20 at 11 20 42 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/f854a1dd-053b-4910-9090-11f6eb3a4e64">
+
+
+<img width="597" alt="Screen Shot 2024-04-20 at 11 20 58 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/6ca6edae-396e-4462-a41f-6a5c6c7984da">
+
+
+<img width="593" alt="Screen Shot 2024-04-20 at 11 21 12 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/ac3abd76-bad4-4667-bf3e-1857382baf70">
+
 
 
 ### Week 4: 
