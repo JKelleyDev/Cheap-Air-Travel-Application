@@ -41,17 +41,12 @@ The proposed Airline Management System will streamline the operations of the air
 
 
 ### Week 2: 
-• Completed the main page GUI
+•	Completed the main page GUI   
 
-• Completed the BookingDateHandler / Used to set the dates of departure and return into the model
-
-• Completed JUnit Tests for Routes, DepartureDates, and price modeling.
-
-• Started Booking Page (Traveler details) GUI interface.
-=======
-•	Completed the main page GUI     
 •	Completed the BookingDateHandler / Used to set the dates of departure and return into the model  
+
 • Completed JUnit Tests for Routes, DepartureDates, and price modeling.   
+
 • Started Booking Page (Traveler details) GUI interface.   
 
 
