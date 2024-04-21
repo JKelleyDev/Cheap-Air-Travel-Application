@@ -260,7 +260,7 @@ public class Routes
 //		case "Hong Kong":
 //			rawMinutes = hongKongFlightDuration.get(destinationCity); 
 		default: 
-	
+				
 			return rawMinutes/60 + " Hours" + " " + rawMinutes % 60 + " Minutes";
 		}
 	}

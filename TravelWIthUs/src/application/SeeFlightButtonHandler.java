@@ -13,19 +13,22 @@ public class SeeFlightButtonHandler implements ActionListener
 	private JFrame frame;
 	private CardLayout c1; 
 	private JPanel contentPane; 
+	private FlightsPage departureFlightsPage;
 
-	public SeeFlightButtonHandler(JFrame frame, CardLayout c1, JPanel contentPane) 
+	public SeeFlightButtonHandler(JFrame frame, CardLayout c1, JPanel contentPane, FlightsPage departureFlightsPage) 
 	{ 
 		
 		this.frame = frame; 
 		this.c1 = c1; 
 		this.contentPane = contentPane; 
+		this.departureFlightsPage = departureFlightsPage; 
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		c1.show(contentPane, "flights");
+		departureFlightsPage.setDepartureData();
+		c1.show(contentPane, "departure flights");
 		frame.setTitle("Flights");
 	}
 

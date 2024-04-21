@@ -133,9 +133,9 @@ public class ApplicationModel
 		setMonth();
 	}
 	
-	public void setDepartDay(String selectedValue)
+	public void setDepartDay(String departDay)
 	{ 
-		this.departDay = selectedValue; 
+		this.departDay = departDay; 
 	}
 	
 	public void setDepartYear(String departYear)
@@ -161,6 +161,12 @@ public class ApplicationModel
 		
 	}
 	
-
+	public String getDepartureDate()
+	{ 
+		if(month < 10)
+			return "0" + month + "/" + departDay + "/" + departYear; 
+		else 
+			return month + "/" + departDay + "/" + departYear; 
+	}
 	
 }

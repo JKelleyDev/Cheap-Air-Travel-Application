@@ -43,4 +43,13 @@ class TravelWithUsTest
 		assertEquals(1.20, model.getSeasonMultiplier());
 	}
 
+	@Test 
+	void testDepartureDates() 
+	{ 
+		model.setDepartMonth("Jan");
+		model.setDepartDay("20");
+		model.setDepartYear("2024");
+		assertEquals("01/20/2024", model.getDepartureDate());
+		
+	}
 }
