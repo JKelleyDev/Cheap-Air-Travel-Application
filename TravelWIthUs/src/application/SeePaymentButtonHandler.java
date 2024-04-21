@@ -7,14 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-public class SeeOptionButtonHandler implements ActionListener
-{ 
+public class SeePaymentButtonHandler implements ActionListener
+{
 	private JFrame frame;
 	private CardLayout c1; 
 	private JPanel contentPane; 
 
-	public SeeOptionButtonHandler(JFrame frame, CardLayout c1, JPanel contentPane) 
+	public SeePaymentButtonHandler(JFrame frame, CardLayout c1, JPanel contentPane) 
 	{ 
 		
 		this.frame = frame; 
@@ -25,10 +24,7 @@ public class SeeOptionButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		c1.show(contentPane, "Option");
-		frame.setTitle("Option");
+		c1.show(contentPane, "Payment");
+		frame.setTitle("Payment");
 	}
-
 }
-
-

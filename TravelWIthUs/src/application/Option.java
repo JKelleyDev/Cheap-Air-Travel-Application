@@ -11,21 +11,40 @@ import javax.swing.JPanel;
 public class Option
 {
 	private Traveler traveler;
-	private PaymentCard paymentCard;
+	private Payment payment;
 	private boolean wifi;
 	private boolean meal;
 	private boolean baggage;
 	private boolean assistance;
+	private String selectedBag;
 	
 	
-	public Option(Traveler traveler, PaymentCard paymentCard)
+	public Option(Traveler traveler, Payment payment)
 	{
 		this.traveler = traveler;
-		this.paymentCard = paymentCard;	
+		this.payment = payment;	
 		wifi = false;
+		meal = false;
+		assistance = false;
+		baggage = false;
 		
 	}
 	
+	public boolean isBaggage() {
+		return baggage;
+	}
+	
+	public void setBaggage(boolean baggage) {
+		this.baggage = baggage;
+	}
+	
+	public String getSelectedBag() {
+		return selectedBag;
+	}
+	 public void setSelectedBag(String selectedBag) {
+		 this.selectedBag = selectedBag;
+	 }
+	///////////////////////////////////////////////
 	public Traveler getTraveler() 
 	{
 		return traveler;
@@ -35,12 +54,12 @@ public class Option
 	{
 		this.traveler = traveler;
 	}
-	
-	public PaymentCard getPaymentCard()
+	///////////////////////////////////////////////
+	public Payment getPaymentCard()
 	{
-		return paymentCard;	
+		return payment;	
 	}
-
+	///////////////////////////////////////////////
 	public void setWifi(boolean selected) 
 	{
 		wifi = selected;
@@ -52,5 +71,8 @@ public class Option
 		this.meal = selected;	
 	}
 
-	
+	public void setAssistance(boolean selected) 
+	{
+		this.assistance = selected;
+	}
 }
