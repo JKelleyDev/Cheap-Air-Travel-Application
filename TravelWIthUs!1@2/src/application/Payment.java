@@ -1,7 +1,7 @@
 package application;
 
 
-public class PaymentCard  
+public class Payment  
 {	
 	private String cardNumber; 
 	private String cardHolderName; 

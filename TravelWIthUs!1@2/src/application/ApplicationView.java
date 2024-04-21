@@ -33,11 +33,13 @@ public class ApplicationView extends JFrame
 	private JPanel bookingPage; 
 	private Routes route ;
 	private JPanel optionPage;
+	private JPanel paymentPage;
 	@SuppressWarnings("unused")
 	private ApplicationModel model; 
 	private CardLayout c1;
 	private Option option; 
 	private Traveler traveler;
+	private Payment payment;
 	/**
 	 * Launch the application.
 	 */
@@ -90,8 +92,8 @@ public class ApplicationView extends JFrame
 		
 		
 		menuBar.add(menu);
-			menu.add(homePage); 
-			menu.add(printOption);
+		menu.add(homePage); 
+		menu.add(printOption);
 		menuBar.add(exit);
 		
 		
@@ -108,9 +110,13 @@ public class ApplicationView extends JFrame
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
 		contentPane.add(optionPage, "Option");
 		
+		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
+		contentPane.add(paymentPage, "Payment");
+		
+		
 		//c1.show(contentPane, "main"); // Start on the main page
 	
-	
+		//c1.show(contentPane, "Payment");
 		c1.show(contentPane, "bookingDetails"); // Start on the main page
 		//c1.show(contentPane, "option"); //
 		//c1.show(contentPane, "main"); // Start on the main page
