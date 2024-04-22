@@ -16,6 +16,15 @@ class TravelWithUsTest
 		assertEquals(3261,routes.getFlightMiles("London", "Doha"));
 		assertEquals(6704,routes.getFlightMiles("Doha", "New York"));
 		assertEquals("17 Hours 18 Minutes", routes.getFlightDuration("San Diego","Singapore"));
+		assertEquals("11 Hours 17 Minutes", routes.getFlightDuration("Paris","San Diego"));
+		assertEquals("7 Hours 2 Minutes", routes.getFlightDuration("New York","London"));
+		
+		// Test the airport codes 
+		
+		assertEquals("SAN", routes.getAirportCode("San Diego"));
+		assertEquals("CDG", routes.getAirportCode("Paris"));
+		assertEquals("SIN", routes.getAirportCode("Singapore"));
+		assertEquals("LHR", routes.getAirportCode("London"));
 	}
 	
 	@Test 

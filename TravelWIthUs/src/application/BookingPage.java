@@ -119,7 +119,7 @@ public class BookingPage extends JFrame
 		lbTravelerLabel.setBounds(255, 180, 80, 20);
 		bookingPage.add(lbTravelerLabel);
 		
-		String[] Traveler = {null,"1", "2", "3", "4","5"};
+		String[] Traveler = {"1", "2", "3", "4","5"};
 		
 		JComboBox<String> travelerSelection = new JComboBox<String>(Traveler);
 		travelerSelection.setBounds(250,200,145,20);
@@ -143,6 +143,8 @@ public class BookingPage extends JFrame
 		///////////////////////////////////////////	
 		seeOptionButton.addActionListener(new SeeOptionButtonHandler( frame, c1, contentPane));
 	
+		
+		
 		}	
 		public JPanel returnPanel()
 		{ 
