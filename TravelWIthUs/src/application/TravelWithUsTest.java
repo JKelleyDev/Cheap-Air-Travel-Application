@@ -10,7 +10,7 @@ class TravelWithUsTest
 	private ApplicationModel model = new ApplicationModel(routes);
 	
 	@Test
-	void testRoutes()
+	void testRoutes() 
 	{
 		assertEquals(2267,routes.getFlightMiles("San Diego", "Miami")); 
 		assertEquals(3261,routes.getFlightMiles("London", "Doha"));
@@ -25,6 +25,15 @@ class TravelWithUsTest
 		assertEquals("CDG", routes.getAirportCode("Paris"));
 		assertEquals("SIN", routes.getAirportCode("Singapore"));
 		assertEquals("LHR", routes.getAirportCode("London"));
+		
+		// Test Flight times and Timezone adjustments 
+		FlightManager [] SAN_Array = routes.getListOfFlights("San Diego", "New York");
+    	FlightManager TestFlight1 = SAN_Array [0];	
+    	FlightManager TestFlight2 = SAN_Array [1]; 
+		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
+		assertEquals("06:00", TestFlight1.getDepartureTime());
+	
+		
 	}
 	
 	@Test 

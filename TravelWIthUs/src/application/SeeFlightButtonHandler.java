@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class SeeFlightButtonHandler implements ActionListener
@@ -27,9 +28,16 @@ public class SeeFlightButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
+		try {
 		departureFlightsPage.setDepartureData();
 		c1.show(contentPane, "departure flights");
 		frame.setTitle("Flights");
+		}
+		catch(NullPointerException n)
+		{
+			JOptionPane.showMessageDialog(null, "No Flights available, please change selections.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		
 	}
 
 }
