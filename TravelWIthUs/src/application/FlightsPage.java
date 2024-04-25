@@ -121,7 +121,7 @@ public class FlightsPage extends JFrame
 			flight_option1.add(flightDepartureTimeLabel_1);
 			
 			flightDeparture1 = new JLabel(); 
-			flightDeparture1.setBounds(380, 5, 100, 30);
+			flightDeparture1.setBounds(380, 5, 120, 30);
 			flight_option1.add(flightDeparture1);
 			
 		JLabel flightArrivalTimeLabel_1 = new JLabel("Arrival Time: "); 
@@ -178,7 +178,7 @@ public class FlightsPage extends JFrame
 				flight_option2.add(flightDepartureTimeLabel_2);
 				
 				flightDeparture2 = new JLabel(); 
-				flightDeparture2.setBounds(380, 5, 100, 30);
+				flightDeparture2.setBounds(380, 5, 120, 30);
 				flight_option2.add(flightDeparture2);
 				
 		JLabel flightArrivalTimeLabel_2 = new JLabel("Arrival Time: "); 
@@ -235,7 +235,7 @@ public class FlightsPage extends JFrame
 				flight_option3.add(flightDepartureTimeLabel_3);
 					
 				flightDeparture3 = new JLabel(); 
-				flightDeparture3.setBounds(380, 5, 100, 30);
+				flightDeparture3.setBounds(380, 5, 120, 30);
 				flight_option3.add(flightDeparture3);
 			
 		JLabel flightArrivalTimeLabel_3 = new JLabel("Arrival Time: "); 

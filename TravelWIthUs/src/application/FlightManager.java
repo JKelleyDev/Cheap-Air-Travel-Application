@@ -52,8 +52,6 @@ public class FlightManager
 	
 	public String getDepartureTime()
 	{ 
-		//return departureTime; 
-		
 		    String departureDateString = route.getDepartDate(); 
 		    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	        LocalDate departureDate = LocalDate.parse(departureDateString, dateFormatter);
@@ -63,7 +61,6 @@ public class FlightManager
 	        LocalTime departureLocalTime = LocalTime.parse(departureTime, timeFormatter);
 	        
 	        ZonedDateTime departureTime = ZonedDateTime.of(departureDate, departureLocalTime, timeZoneMap.get(departureAirport));
-
 	        
 	        // Extended DateTimeFormatter to include date
 	        DateTimeFormatter extendedFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
