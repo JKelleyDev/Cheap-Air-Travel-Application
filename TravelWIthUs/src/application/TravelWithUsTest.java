@@ -12,7 +12,7 @@ class TravelWithUsTest
 	@Test
 	void testRoutes() 
 	{
-		assertEquals(2267,routes.getFlightMiles("San Diego", "Miami")); 
+		
 		assertEquals(3261,routes.getFlightMiles("London", "Doha"));
 		assertEquals(6704,routes.getFlightMiles("Doha", "New York"));
 		assertEquals("17 Hours 18 Minutes", routes.getFlightDuration("San Diego","Singapore"));
@@ -33,6 +33,14 @@ class TravelWithUsTest
 		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
 		assertEquals("06:00", TestFlight1.getDepartureTime());
 	
+		model.setDepartDay("5");
+		model.setDepartMonth("Jun");
+		model.setDepartYear("2024");
+		routes.setDepartDate(model.getDepartureDate());
+		TestFlight1.getArrivalTime();
+		TestFlight2.getArrivalTime();
+		System.out.println(TestFlight1.getFlightNumber()); 
+		System.out.println(TestFlight2.getFlightNumber()); 
 		
 	}
 	

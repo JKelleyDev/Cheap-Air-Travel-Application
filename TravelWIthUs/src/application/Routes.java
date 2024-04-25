@@ -15,6 +15,8 @@ public class Routes
 
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
+	private String departDate; 
+	
 	
 	private String departures [] = {"San Diego", "New York", "London", "Tokyo", "Doha", "Paris","Stockholm", "Singapore", "Hong Kong"};
 	private Hashtable<String, String> airportCodes = new Hashtable<String, String>();
@@ -62,22 +64,22 @@ public class Routes
 	
     
     // setup HashMaps 
-    public Routes()
+    public Routes() 
     {
-    	airportCodes.put("San Diego", "SAN");
     	
+    	airportCodes.put("San Diego", "SAN");
     	sanDiegoMileage.put("New York", 2446);
     	sanDiegoFlightDuration.put("New York", 307); 
-    	FlightManager SAN_LGA_1 = new FlightManager("0600", "EST"); 
-    	FlightManager SAN_LGA_2 = new FlightManager("1200", "EST"); 
-    	FlightManager SAN_LGA_3 = new FlightManager("1800", "EST"); 
+    	FlightManager SAN_LGA_1 = new FlightManager("06:00", "SAN", "LGA" , sanDiegoFlightDuration.get("New York"), this); 
+    	FlightManager SAN_LGA_2 = new FlightManager("12:00",  "SAN", "LGA", sanDiegoFlightDuration.get("New York"), this); 
+    	FlightManager SAN_LGA_3 = new FlightManager("18:00",  "SAN", "LGA", sanDiegoFlightDuration.get("New York"), this); 
     	SAN_LGA_Flights = new FlightManager [] {SAN_LGA_1, SAN_LGA_2, SAN_LGA_3};
     	SanDiegoFlights.put("New York", SAN_LGA_Flights);
     		
     	sanDiegoMileage.put("Tokyo", 5557); 
     	sanDiegoFlightDuration.put("Tokyo", 661);
-      	FlightManager SAN_NRT_1 = new FlightManager("0600", "EST"); 
-    	FlightManager SAN_NRT_2 = new FlightManager("2000", "EST"); 
+      	FlightManager SAN_NRT_1 = new FlightManager("06:00", "SAN" , "NRT", sanDiegoFlightDuration.get("New York"), this); 
+    	FlightManager SAN_NRT_2 = new FlightManager("20:00", "SAN" , "NRT", sanDiegoFlightDuration.get("New York"), this); 
     	SAN_NRT_Flights = new FlightManager [] {SAN_NRT_1, SAN_NRT_2};
     	SanDiegoFlights.put("Tokyo", SAN_NRT_Flights);
     	
@@ -86,8 +88,6 @@ public class Routes
     	
     	sanDiegoMileage.put("Paris", 5698); 
     	sanDiegoFlightDuration.put("Paris", 677); 
-    	
-    	
     	
     	
     	/////////////////////////////////////////
@@ -320,7 +320,15 @@ public class Routes
 		}
 	}
 	
+	public void setDepartDate(String departDate)
+	{
+		this.departDate = departDate;
+	}
 	
+	public String getDepartDate()
+	{ 
+		return departDate;
+	}
 	
 	
 }

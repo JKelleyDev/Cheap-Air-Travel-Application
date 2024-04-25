@@ -52,6 +52,10 @@ public class FlightsPage extends JFrame
 	private JLabel flightDeparture2; 
 	private JLabel flightDeparture3; 
 	
+	private JLabel flightArrival1; 
+	private JLabel flightArrival2; 
+	private JLabel flightArrival3; 
+	
 	public FlightsPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane)
 	{ 
 		this.frame = frame; 
@@ -120,6 +124,13 @@ public class FlightsPage extends JFrame
 			flightDeparture1.setBounds(380, 5, 100, 30);
 			flight_option1.add(flightDeparture1);
 			
+		JLabel flightArrivalTimeLabel_1 = new JLabel("Arrival Time: "); 
+			flightArrivalTimeLabel_1.setBounds(275, 35, 120, 30); 
+			flight_option1.add(flightArrivalTimeLabel_1);
+			
+			flightArrival1 = new JLabel(); 
+			flightArrival1.setBounds(380, 35, 120, 30);
+			flight_option1.add(flightArrival1); 
 		////////////////////////////////////////////////////	
 			
 		// Create the second flight option box with all components 
@@ -170,6 +181,13 @@ public class FlightsPage extends JFrame
 				flightDeparture2.setBounds(380, 5, 100, 30);
 				flight_option2.add(flightDeparture2);
 				
+		JLabel flightArrivalTimeLabel_2 = new JLabel("Arrival Time: "); 
+				flightArrivalTimeLabel_2.setBounds(275, 35, 120, 30); 
+				flight_option2.add(flightArrivalTimeLabel_2);
+				
+				flightArrival2 = new JLabel(); 
+				flightArrival2.setBounds(380, 35, 120, 30);
+				flight_option2.add(flightArrival2); 
 		///////////////////////////////////////////////////////////////////////////		
 				
 		// Create the third flight option box with all components 
@@ -219,6 +237,15 @@ public class FlightsPage extends JFrame
 				flightDeparture3 = new JLabel(); 
 				flightDeparture3.setBounds(380, 5, 100, 30);
 				flight_option3.add(flightDeparture3);
+			
+		JLabel flightArrivalTimeLabel_3 = new JLabel("Arrival Time: "); 
+				flightArrivalTimeLabel_3.setBounds(275, 35, 120, 30); 
+				flight_option2.add(flightArrivalTimeLabel_3);
+				
+				flightArrival3 = new JLabel(); 
+				flightArrival3.setBounds(380, 35, 120, 30);
+				flight_option3.add(flightArrival3); 		
+				
 				
 				flightsPage.add(flight_option1);
 				flightsPage.add(flight_option2);
@@ -236,6 +263,7 @@ public class FlightsPage extends JFrame
 			flightDuration1.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage1.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
 			flightDeparture1.setText(flight1.getDepartureTime());
+			flightArrival1.setText(flight1.getArrivalTime());
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -248,6 +276,7 @@ public class FlightsPage extends JFrame
 			flightDuration2.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage2.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
 			flightDeparture2.setText(flight2.getDepartureTime());
+			flightArrival2.setText(flight2.getArrivalTime());
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -260,27 +289,13 @@ public class FlightsPage extends JFrame
 			flightDuration3.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage3.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");	
 			flightDeparture3.setText(flight3.getDepartureTime());
+			flightArrival3.setText(flight3.getArrivalTime());
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
 			flight_option3.setVisible(false);
 		}
 
-	
-//		departureCity1.setText(model.getDepartureCity());
-//		destinationCity1.setText(model.getDestinationCity());
-//		flightDuration1.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
-//		flightMileage1.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
-		
-//		departureCity2.setText(model.getDepartureCity());
-//		destinationCity2.setText(model.getDestinationCity());
-//		flightDuration2.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
-//		flightMileage2.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
-//		
-//		departureCity3.setText(model.getDepartureCity());
-//		destinationCity3.setText(model.getDestinationCity());
-//		flightDuration3.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
-//		flightMileage3.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");	
 	}
 	
 	public JPanel returnPanel() 

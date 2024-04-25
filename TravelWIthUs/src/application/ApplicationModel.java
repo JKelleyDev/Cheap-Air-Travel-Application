@@ -16,32 +16,33 @@ public class ApplicationModel
 	private String departYear; 
 	private String returnMonth; 
 	private String returnDay; 
-	private String returnYear;
-	private HashMap<String, Integer> monthToInt; 
+	private String returnYear; 
 	
+	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
+	 {
+	monthToInt.put("Jan", 1);
+	monthToInt.put("Feb", 2);
+	monthToInt.put("Mar", 3);
+	monthToInt.put("Apr", 4);
+	monthToInt.put("May", 5);
+	monthToInt.put("Jun", 6);
+	monthToInt.put("Jul", 7);
+	monthToInt.put("Aug", 8);
+	monthToInt.put("Sep", 9);
+	monthToInt.put("Oct", 10);
+	monthToInt.put("Nov", 11);
+	monthToInt.put("Dec", 12);
+	}
 	public ApplicationModel(Routes route)
 	{
-		this.route = route; 
-		
-		this.monthToInt = new HashMap<String, Integer>();
-		monthToInt.put("Jan", 1);
-		monthToInt.put("Feb", 2);
-		monthToInt.put("Mar", 3);
-		monthToInt.put("Apr", 4);
-		monthToInt.put("May", 5);
-		monthToInt.put("Jun", 6);
-		monthToInt.put("Jul", 7);
-		monthToInt.put("Aug", 8);
-		monthToInt.put("Sep", 9);
-		monthToInt.put("Oct", 10);
-		monthToInt.put("Nov", 11);
-		monthToInt.put("Dec", 12);
-		
+		this.route = route; 	
+
 	}
 	
 	public void setMonth()
 	{ 
-		this.month = monthToInt.get(departMonth); 
+//		this.month = monthToInt.get(departMonth);
+	
 	}
 	
 	public double getPrice()
@@ -130,12 +131,17 @@ public class ApplicationModel
 	public void setDepartMonth(String departMonth)
 	{ 
 		this.departMonth = departMonth; 
+		this.month = monthToInt.get(departMonth);
 		setMonth();
 	}
 	
 	public void setDepartDay(String departDay)
 	{ 
-		this.departDay = departDay; 
+		if(Integer.parseInt(departDay) < 10)
+			this.departDay = "0" + departDay; 
+		else 
+			this.departDay = departDay;
+		System.out.println(this.departDay);
 	}
 	
 	public void setDepartYear(String departYear)

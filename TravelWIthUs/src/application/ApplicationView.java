@@ -52,6 +52,7 @@ public class ApplicationView extends JFrame
 			{
 				try
 				{
+					
 					Routes route = new Routes();
 					ApplicationView frame = new ApplicationView(new ApplicationModel(route), route);
 					frame.setVisible(true);
@@ -98,7 +99,7 @@ public class ApplicationView extends JFrame
 		menuBar.add(exit);
 		
 		
-		// Create our panels for each page
+		// Create the panels for each page
 		FlightsPage flightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
 		departureFlightsPage = flightsPageClass.returnPanel(); 
 		contentPane.add(departureFlightsPage, "departure flights");
@@ -118,10 +119,7 @@ public class ApplicationView extends JFrame
 		c1.show(contentPane, "main"); // Start on the main page
 	
 	
-		//c1.show(contentPane, "bookingDetails"); // Start on the main page
-		//c1.show(contentPane, "option"); //
-		//c1.show(contentPane, "main"); // Start on the main page
-		//c1.show(contentPane, "flights"); // Start on the main page
+
 		
 	
 
