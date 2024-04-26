@@ -100,11 +100,15 @@ public class ApplicationView extends JFrame
 		
 		
 		// Create the panels for each page
-		FlightsPage flightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
-		departureFlightsPage = flightsPageClass.returnPanel(); 
+		FlightsPage departureFlightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
+		departureFlightsPage = departureFlightsPageClass.returnPanel(); 
 		contentPane.add(departureFlightsPage, "departure flights");
 		
-		mainPage = (new MainPage(this, route, model, c1, contentPane, flightsPageClass).returnPanel()); 
+		//FlightsPage returnFlightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
+		//returnFlightsPage = departureFlightsPageClass.returnPanel();
+		//contentPane.add(returnFlightsPage, "return flights");
+		
+		mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
 			bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 

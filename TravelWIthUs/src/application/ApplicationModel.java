@@ -6,6 +6,7 @@ import java.util.Random;
 public class ApplicationModel
 {
 	private int month; 
+	private int monthReturnInt;
 	private int miles; 
 	private double baseFare = 50.00; 
 	@SuppressWarnings("unused")
@@ -17,6 +18,8 @@ public class ApplicationModel
 	private String returnMonth; 
 	private String returnDay; 
 	private String returnYear; 
+	private FlightManager departureFlight; 
+	private FlightManager returnFlight; 
 	
 	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
 	 {
@@ -141,7 +144,7 @@ public class ApplicationModel
 			this.departDay = "0" + departDay; 
 		else 
 			this.departDay = departDay;
-		System.out.println(this.departDay);
+		
 	}
 	
 	public void setDepartYear(String departYear)
@@ -151,13 +154,18 @@ public class ApplicationModel
 
 	public void setReturnDay(String returnDay)
 	{
-		this.returnDay = returnDay; 
+		if(Integer.parseInt(returnDay) < 10)
+			this.returnDay = "0" + returnDay; 
+		else 
+			this.returnDay = returnDay;
 		
 	}
 
 	public void setReturnMonth(String returnMonth)
 	{
 		this.returnMonth = returnMonth; 
+		this.monthReturnInt = monthToInt.get(returnMonth);
+		setMonth(); 
 		
 	}
 
@@ -165,6 +173,13 @@ public class ApplicationModel
 	{
 		this.returnYear = returnYear;
 		
+	}
+	public String getReturnDate()
+	{ 
+		if(month < 10)
+			return "0" + monthReturnInt + "/" + returnDay + "/" + returnYear; 
+		else 
+			return monthReturnInt + "/" + returnDay + "/" + returnYear; 
 	}
 	
 	public String getDepartureDate()
@@ -174,5 +189,25 @@ public class ApplicationModel
 		else 
 			return month + "/" + departDay + "/" + departYear; 
 	}
+	
+	public void setDepartureFlight(FlightManager departureFlight) 
+	{ 
+		this.departureFlight = departureFlight; 
+	}
+	
+	public FlightManager getDepartureFlight()
+	{
+		return departureFlight; 
+	}
+	public void setReturnFlight(FlightManager returnFlight) 
+	{ 
+		this.returnFlight = returnFlight; 
+	}
+	
+	public FlightManager getReturnFlight()
+	{
+		return returnFlight; 
+	}
+	
 	
 }

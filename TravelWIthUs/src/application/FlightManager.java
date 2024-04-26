@@ -50,6 +50,8 @@ public class FlightManager
 		this.flightNumber = flightNumberCounter;
 	}
 	
+	
+	
 	public String getDepartureTime()
 	{ 
 		    String departureDateString = route.getDepartDate(); 
@@ -81,16 +83,15 @@ public class FlightManager
 			return flightNumberPrefix + "0" + flightNumber; 
 	}
 	
-	public String getArrivalTime() 
+	public String getArrivalTime(String takeOffDate) 
 	{ 
-		 String departureDateString = route.getDepartDate();
 		
 		 ZoneId departureZone = timeZoneMap.get(departureAirport);
 	     ZoneId destinationZone = timeZoneMap.get(destinationAirport);
 
 	     // Parse the departure date
 	        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-	        LocalDate departureDate = LocalDate.parse(departureDateString, dateFormatter);
+	        LocalDate departureDate = LocalDate.parse(takeOffDate, dateFormatter);
 
 	        // Parse the departure time using LocalTime
 	        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");

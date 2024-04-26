@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -83,6 +85,25 @@ public class FlightsPage extends JFrame
 		JButton chooseFlight_1 = new JButton("Select");
 			chooseFlight_1.setBounds(500, 35, 95, 30);
 			flight_option1.add(chooseFlight_1);
+			
+			chooseFlight_1.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) {
+			        // Code to execute when the button is clicked
+			        System.out.println("Button clicked!");
+			        
+			        if(model.getDepartureFlight() == null)
+			        { 
+			        	model.setDepartureFlight(flight1);
+			        	setReturnData();
+			        }
+			        else
+			        {
+			        	model.setReturnFlight(flight1);
+			        	setReturnData();
+			        }
+			    }
+			});
 			
 		JLabel departureCityLabel_1 = new JLabel("Departure City:");
 			departureCityLabel_1.setBounds(3, 5, 95, 30);
@@ -263,7 +284,7 @@ public class FlightsPage extends JFrame
 			flightDuration1.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage1.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
 			flightDeparture1.setText(flight1.getDepartureTime());
-			flightArrival1.setText(flight1.getArrivalTime());
+			flightArrival1.setText(flight1.getArrivalTime(model.getDepartureDate()));
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -276,7 +297,7 @@ public class FlightsPage extends JFrame
 			flightDuration2.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage2.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");
 			flightDeparture2.setText(flight2.getDepartureTime());
-			flightArrival2.setText(flight2.getArrivalTime());
+			flightArrival2.setText(flight2.getArrivalTime(model.getDepartureDate()));
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -289,7 +310,7 @@ public class FlightsPage extends JFrame
 			flightDuration3.setText(route.getFlightDuration(model.getDepartureCity(), model.getDestinationCity()));
 			flightMileage3.setText(route.getFlightMiles(model.getDepartureCity(), model.getDestinationCity()) + " Miles");	
 			flightDeparture3.setText(flight3.getDepartureTime());
-			flightArrival3.setText(flight3.getArrivalTime());
+			flightArrival3.setText(flight3.getArrivalTime(model.getDepartureDate()));
 			
 		}catch(ArrayIndexOutOfBoundsException e)
 		{
@@ -297,6 +318,54 @@ public class FlightsPage extends JFrame
 		}
 
 	}
+	
+	public void setReturnData()
+	{ 		
+		FlightManager [] flightOptions = route.getListOfFlights(model.getDestinationCity(), model.getDepartureCity());
+		
+		try { 
+			flight1 = flightOptions[0];
+			departureCity1.setText(model.getDestinationCity());
+			destinationCity1.setText(model.getDepartureCity());
+			flightDuration1.setText(route.getFlightDuration(model.getDestinationCity(), model.getDepartureCity()));
+			flightMileage1.setText(route.getFlightMiles(model.getDestinationCity(), model.getDepartureCity()) + " Miles");
+			flightDeparture1.setText(flight1.getDepartureTime());
+			flightArrival1.setText(flight1.getArrivalTime(model.getReturnDate()));
+			
+		}catch(ArrayIndexOutOfBoundsException e)
+		{
+			flight_option1.setVisible(false);
+		}
+		try { 
+			flight2 = flightOptions[1];
+			departureCity2.setText(model.getDestinationCity());
+			destinationCity2.setText(model.getDepartureCity());
+			flightDuration2.setText(route.getFlightDuration(model.getDestinationCity(), model.getDepartureCity()));
+			flightMileage2.setText(route.getFlightMiles(model.getDestinationCity(), model.getDepartureCity()) + " Miles");
+			flightDeparture2.setText(flight2.getDepartureTime());
+			flightArrival2.setText(flight2.getArrivalTime(model.getReturnDate()));
+			
+		}catch(ArrayIndexOutOfBoundsException e)
+		{
+			flight_option2.setVisible(false);
+		}
+		try { 
+			flight3 = flightOptions[2];
+			departureCity3.setText(model.getDestinationCity());
+			destinationCity3.setText(model.getDepartureCity());
+			flightDuration3.setText(route.getFlightDuration(model.getDestinationCity(), model.getDepartureCity()));
+			flightMileage3.setText(route.getFlightMiles(model.getDestinationCity(), model.getDepartureCity()) + " Miles");	
+			flightDeparture3.setText(flight3.getDepartureTime());
+			flightArrival3.setText(flight3.getArrivalTime(model.getReturnDate()));
+			
+		}catch(ArrayIndexOutOfBoundsException e)
+		{
+			flight_option3.setVisible(false);
+		}
+
+	}
+	
+	
 	
 	public JPanel returnPanel() 
 	{ 

@@ -31,16 +31,16 @@ class TravelWithUsTest
     	FlightManager TestFlight1 = SAN_Array [0];	
     	FlightManager TestFlight2 = SAN_Array [1]; 
 		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
-		assertEquals("06:00", TestFlight1.getDepartureTime());
-	
 		model.setDepartDay("5");
 		model.setDepartMonth("Jun");
 		model.setDepartYear("2024");
-		routes.setDepartDate(model.getDepartureDate());
-		TestFlight1.getArrivalTime();
-		TestFlight2.getArrivalTime();
-		System.out.println(TestFlight1.getFlightNumber()); 
-		System.out.println(TestFlight2.getFlightNumber()); 
+	    routes.setDepartDate(model.getDepartureDate());
+		assertEquals("2024-06-05 06:00", TestFlight1.getDepartureTime());
+	
+	
+	    
+		TestFlight1.getArrivalTime(model.getDepartureDate());
+		TestFlight2.getArrivalTime(model.getDepartureDate()); 
 		
 	}
 	
