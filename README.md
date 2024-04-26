@@ -1,4 +1,4 @@
-# Cheap Air Travel Application
+# Cheap Air Travel Application.
 
 ## Introduction: 
 Our project aims to develop an Airline Management System using Java and Eclipse. This system will offer a comprehensive solution for managing various aspects of an airline's operations, including flight destination, passenger information handling, transactions, baggage,  boarding passes, and additional passenger options. The system will provide a user friendly  interface for both administrators and users, ensuring a smooth and efficient operations for the airline.
