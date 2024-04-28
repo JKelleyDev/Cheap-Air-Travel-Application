@@ -79,6 +79,14 @@ The proposed Airline Management System will streamline the operations of the air
 
 
 ### Week 4: 
+<img width="1040" alt="Screen Shot 2024-04-28 at 8 47 48 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/74ccfd48-d59a-449a-a38f-fb0d253d2fac">
+
+Test, test, test, debug, and test some more.
+
+Update project page with progress details.
+
+Submit code written so far.
+
 
 ### Week 5: 
 
