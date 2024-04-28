@@ -25,44 +25,70 @@ public class Routes
 	private String sanDiego[] = { "New York", "Tokyo",  "Singapore", "Paris" };
 	private HashMap<String, Integer> sanDiegoMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> sanDiegoFlightDuration = new HashMap<String, Integer>(); // Time in minutes
+	
 	private HashMap<String, FlightManager[]> SanDiegoFlights = new HashMap<String, FlightManager[]>();
 	private FlightManager [] SAN_LGA_Flights; 
 	private FlightManager [] SAN_NRT_Flights;
-	
+	private FlightManager [] SAN_SIN_Flights;
+	private FlightManager [] SAN_CDG_Flights;
 	
 	private	String newYork [] = { "London", "Doha", "Stockholm", "Tokyo", "Singapore", "Paris", "Hong Kong", "San Diego" };
 	private HashMap<String, Integer> newYorkMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> newYorkFlightDuration = new HashMap<String, Integer>(); // Time in minutes
 	
+	private HashMap<String, FlightManager[]> NewYorkFlights = new HashMap<String, FlightManager[]>();
+	private FlightManager [] LGA_LHR_Flights;
+	private FlightManager [] LGA_DOH_Flights;
+	private FlightManager [] LGA_ARN_Flights;
+	private FlightManager [] LGA_NRT_Flights;
+	private FlightManager [] LGA_SIN_Flights;
+	private FlightManager [] LGA_CDG_Flights;
+	private FlightManager [] LGA_HKG_Flights;
+	private FlightManager [] LGA_SAN_Flights;
+	
 	private String london [] = {"New York", "Tokyo", "Doha", "Stockholm", "Singapore", "Paris", "Hong Kong"};
 	private HashMap<String, Integer> londonMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> londonFlightDuration = new HashMap<String, Integer>(); // Time in minutes
+	
+	private HashMap<String, FlightManager[]> LondonFlights = new HashMap<String, FlightManager[]>();
 	
 	private String tokyo [] = {"New York", "London", "Singapore"};
 	private HashMap<String, Integer> tokyoMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> tokyoFlightDuration = new HashMap<String, Integer>(); // Time in minutes
 	
+	private HashMap<String, FlightManager[]> TokyoFlights = new HashMap<String, FlightManager[]>();
+	
 	private String doha [] = {"New York", "London"};
 	private HashMap<String, Integer> dohaMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> dohaFlightDuration = new HashMap<String, Integer>(); // Time in minutes
+	
+	private HashMap<String, FlightManager[]> DohaFlights = new HashMap<String, FlightManager[]>();
 	
     private String paris [] = {"New York", "London","Singapore", "San Diego"};
     private HashMap<String, Integer> parisMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> parisFlightDuration = new HashMap<String, Integer>(); // Time in minutes
 	
+	private HashMap<String, FlightManager[]> ParisFlights = new HashMap<String, FlightManager[]>();
+	
     private String stockholm [] = {"New York", "London"};
     private HashMap<String, Integer> stockholmMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> stockholmFlightDuration = new HashMap<String, Integer>(); // Time in minutes
+	
+	private HashMap<String, FlightManager[]> StockholmFlights = new HashMap<String, FlightManager[]>();
 	
     private String singapore [] = {"San Diego", "New York", "Tokyo", "London", "Hong Kong"};
     private HashMap<String, Integer> singaporeMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> singaporeFlightDuration = new HashMap<String, Integer>(); // Time in minutes
 	
+	private HashMap<String, FlightManager[]> SingaporeFlights = new HashMap<String, FlightManager[]>();
+	
     private String hongKong [] = { "London", "New York", "Singapore" }; 
     private HashMap<String, Integer> hongKongMileage = new HashMap<String, Integer>(); 
 	private HashMap<String, Integer> hongKongFlightDuration = new HashMap<String, Integer>(); // Time in minutes
 	
-    
+	private HashMap<String, FlightManager[]> HongKongFlights = new HashMap<String, FlightManager[]>();
+	
+	
     // setup HashMaps 
     public Routes() 
     {
@@ -85,15 +111,27 @@ public class Routes
     	
     	sanDiegoMileage.put("Singapore", 8874); 
     	sanDiegoFlightDuration.put("Singapore", 1038); 
+    	FlightManager SAN_SIN_1 = new FlightManager("07:25", "SAN" , "SIN", sanDiegoFlightDuration.get("Singapore"), this);
+    	SAN_NRT_Flights = new FlightManager [] {SAN_SIN_1};
+    	SanDiegoFlights.put("Singapore", SAN_SIN_Flights);
     	
     	sanDiegoMileage.put("Paris", 5698); 
     	sanDiegoFlightDuration.put("Paris", 677); 
+    	FlightManager SAN_CDG_1 = new FlightManager("06:45", "SAN" , "CDG", sanDiegoFlightDuration.get("Paris"), this); 
+    	FlightManager SAN_CDG_2 = new FlightManager("15:20", "SAN" , "CDG", sanDiegoFlightDuration.get("Paris"), this); 
+    	SAN_CDG_Flights = new FlightManager [] {SAN_CDG_1, SAN_CDG_2};
+    	SanDiegoFlights.put("Paris", SAN_CDG_Flights);
     	
     	
     	/////////////////////////////////////////
     	airportCodes.put("New York", "LGA");
     	newYorkMileage.put("London", 3451); 
     	newYorkFlightDuration.put("London", 422); 
+    	FlightManager LGA_LHR_1 = new FlightManager("05:00", "LGA", "LHR" , newYorkFlightDuration.get("London"), this); 
+    	FlightManager LGA_LHR_2 = new FlightManager("09:00",  "LGA", "LHR", newYorkFlightDuration.get("London"), this); 
+    	FlightManager LGA_LHR_3 = new FlightManager("19:30",  "LGA", "LHR", newYorkFlightDuration.get("London"), this);
+    	LGA_LHR_Flights = new FlightManager [] {LGA_LHR_1, LGA_LHR_2, LGA_LHR_3};
+    	NewYorkFlights.put("London", LGA_LHR_Flights);
     	
     	newYorkMileage.put("Doha", 6704); 
     	newYorkFlightDuration.put("Doha", 791); 
@@ -115,6 +153,11 @@ public class Routes
     	
     	newYorkMileage.put("San Diego", 2446); 
     	newYorkFlightDuration.put("San Diego", 307); 
+    	FlightManager LGA_SAN_1 = new FlightManager("06:00", "LGA", "SAN" , newYorkFlightDuration.get("San Diego"), this); 
+    	FlightManager LGA_SAN_2 = new FlightManager("12:00",  "LGA", "SAN", newYorkFlightDuration.get("San Diego"), this); 
+    	FlightManager LGA_SAN_3 = new FlightManager("18:00",  "LGA", "SAN", newYorkFlightDuration.get("San Diego"), this);
+    	LGA_SAN_Flights = new FlightManager [] {LGA_SAN_1, LGA_SAN_2, LGA_SAN_3};
+    	NewYorkFlights.put("San Diego", LGA_SAN_Flights);
     
     	////////////////////////////////////////
     	airportCodes.put("London", "LHR");
@@ -314,7 +357,21 @@ public class Routes
 			case "San Diego": 
 				return SanDiegoFlights.get(destinationCity); 
 			case "New York": 
-				return null; 	
+				return NewYorkFlights.get(destinationCity); 
+//			case "London": 
+//				return LondonFlights.get(destinationCity);
+//			case "Tokyo": 
+//				return TokyoFlights.get(destinationCity);
+//			case "Doha": 
+//				return DohaFlights.get(destinationCity);
+//			case "Paris": 
+//				return ParisFlights.get(destinationCity); 
+//			case "Stockholm": 
+//				return StockholmFlights.get(destinationCity);
+//			case "Singapore": 
+//				return SingaporeFlights.get(destinationCity); 
+//			case "Hong Kong": 
+//				return HongKongFlights.get(destinationCity); 
 			default: 
 				return null; 
 		}

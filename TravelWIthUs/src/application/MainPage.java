@@ -12,7 +12,9 @@ import java.awt.LayoutManager;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -94,8 +96,8 @@ public class MainPage extends JFrame
 		    {
 		        if (e.getStateChange() == ItemEvent.SELECTED) 
 		        {
-		           model.setDepartMonth((String) e.getItem()); 
-		            
+		  
+		           model.setDepartMonth((String) e.getItem());      
 		        }
 		    }
 		});

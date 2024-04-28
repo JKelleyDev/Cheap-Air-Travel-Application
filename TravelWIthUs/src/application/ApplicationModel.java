@@ -20,6 +20,7 @@ public class ApplicationModel
 	private String returnYear; 
 	private FlightManager departureFlight; 
 	private FlightManager returnFlight; 
+	private boolean oneWayFare;
 	
 	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
 	 {
@@ -73,10 +74,17 @@ public class ApplicationModel
 	
 	public void setOneWayFare(boolean value)
 	{ 
+		oneWayFare = value;
+		
 		if(value == true) 
 			baseFare = 25; 
 		else
 			baseFare = 50; 
+	}
+	
+	public boolean getOneWayFareValue()
+	{
+		return oneWayFare; 
 	}
 	
 	public double getCapacity() 

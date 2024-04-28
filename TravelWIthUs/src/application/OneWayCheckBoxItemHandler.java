@@ -40,9 +40,7 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 				returnYearSelection.setSelectedIndex(-1);
 			returnLabel.setVisible(false);
 			model.setOneWayFare(true);
-			model.setReturnDay(null);
-			model.setReturnMonth(null);
-			model.setReturnYear(null);
+		
 			
 		}
 		else if(e.getStateChange() == ItemEvent.DESELECTED)

@@ -95,12 +95,22 @@ public class FlightsPage extends JFrame
 			        if(model.getDepartureFlight() == null)
 			        { 
 			        	model.setDepartureFlight(flight1);
+			        	
+			        	if(model.getOneWayFareValue() == true)
+			        	{
+			        		c1.show(contentPane, "bookingDetails");
+			        	}
+			        	
 			        	setReturnData();
+			        }
+			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
+			        { 
+			        	model.setReturnFlight(flight1);
+			        	c1.show(contentPane, "bookingDetails");
 			        }
 			        else
 			        {
-			        	model.setReturnFlight(flight1);
-			        	setReturnData();
+			        
 			        }
 			    }
 			});
@@ -163,6 +173,33 @@ public class FlightsPage extends JFrame
 		JButton chooseFlight_2 = new JButton("Select");
 			chooseFlight_2.setBounds(500, 35, 95, 30);
 			flight_option2.add(chooseFlight_2);
+			
+			chooseFlight_2.addActionListener(new ActionListener() 
+			{
+			    @Override
+			    public void actionPerformed(ActionEvent e) 
+			    {
+			        // Code to execute when the button is clicked
+			        if(model.getDepartureFlight() == null)
+			        { 
+			        	model.setDepartureFlight(flight2);
+			        	setReturnData();
+			        }
+			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
+			        { 
+			        	model.setReturnFlight(flight1);
+			        	c1.show(contentPane, "bookingDetails");
+			        }
+			        else
+			        {
+			    
+			        }
+			    }
+			});
+			
+			
+			
+			
 	    
 		JLabel departureCityLabel_2 = new JLabel("Departure City:");
 			departureCityLabel_2.setBounds(3, 5, 95, 30);
@@ -322,6 +359,7 @@ public class FlightsPage extends JFrame
 	public void setReturnData()
 	{ 		
 		FlightManager [] flightOptions = route.getListOfFlights(model.getDestinationCity(), model.getDepartureCity());
+		route.setDepartDate(model.getReturnDate());
 		
 		try { 
 			flight1 = flightOptions[0];

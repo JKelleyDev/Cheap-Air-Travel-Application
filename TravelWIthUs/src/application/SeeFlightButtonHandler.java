@@ -3,6 +3,8 @@ package application;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,19 +32,41 @@ public class SeeFlightButtonHandler implements ActionListener
 		
 	}
 	@Override
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent e) 
 	{
+		String errorDateMessage = ""; 
+		
 		try {
-		route.setDepartDate(model.getDepartureDate());
-		System.out.println(model.getDepartureDate());
-		System.out.println(route.getDepartDate());
-		departureFlightsPage.setDepartureData();
-		c1.show(contentPane, "departure flights");
-		frame.setTitle("Flights");
+			String departureDateString = model.getDepartureDate(); // Fetch the date from the model
+			String returnDateString = model.getReturnDate(); // Fetch the return date from the model 
+		    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		    LocalDate departureDate = LocalDate.parse(departureDateString, dateFormatter);
+		    LocalDate returnDate ;
+		    LocalDate currentDate = LocalDate.now();
+
+		    // Compare the parsed date with the current date
+		    if (departureDate.isBefore(currentDate)) 
+		    {
+		    	errorDateMessage = "The departure date cannot be before today.";
+		    	throw new Exception(); 
+		    }
+	    
+	
+	    
+			route.setDepartDate(model.getDepartureDate());
+			System.out.println(model.getDepartureDate());
+			System.out.println(route.getDepartDate());
+			departureFlightsPage.setDepartureData();
+			c1.show(contentPane, "departure flights");
+			frame.setTitle("Flights");
 		}
 		catch(NullPointerException n)
 		{
 			JOptionPane.showMessageDialog(null, "No Flights available, please change selections.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		catch(Exception f)
+		{ 
+			JOptionPane.showMessageDialog(null, errorDateMessage, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}
