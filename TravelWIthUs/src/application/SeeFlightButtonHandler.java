@@ -51,8 +51,6 @@ public class SeeFlightButtonHandler implements ActionListener
 		    	throw new Exception(); 
 		    }
 	    
-	
-	    
 			route.setDepartDate(model.getDepartureDate());
 			System.out.println(model.getDepartureDate());
 			System.out.println(route.getDepartDate());
