@@ -1,6 +1,7 @@
 package application;
 
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,10 +17,13 @@ public class Option
 	private boolean meal;
 	private boolean baggage;
 	private boolean assistance;
+	//private boolean traveler;
 	private String selectedBag;
 	
+
 	
-	public Option(Traveler traveler, Payment payment)
+	
+	public Option()
 	{
 		this.traveler = traveler;
 		this.payment = payment;	
@@ -27,7 +31,6 @@ public class Option
 		meal = false;
 		assistance = false;
 		baggage = false;
-		
 	}
 	
 	public boolean isBaggage() {

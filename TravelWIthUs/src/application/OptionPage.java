@@ -16,6 +16,7 @@ public class OptionPage extends JFrame
 	private Payment payment;
 	private JTextField cardNumberField;
 	private JPanel seatDiagramPanel;
+	private Option finalOption;
 
 	
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
@@ -27,10 +28,10 @@ public class OptionPage extends JFrame
 		this.c1 = c1; 
 		this.contentPane = contentPane;
 		this.option = option;
+		this.finalOption = option;
 	
 		optionPage = new JPanel(); 
-		optionPage.setLayout(null);
-		
+		optionPage.setLayout(null);		
 		
 		JLabel lblNewLabel = new JLabel("Travel With Us: Add-ons");
 		lblNewLabel.setForeground(new Color(240, 255, 255));
@@ -74,148 +75,151 @@ public class OptionPage extends JFrame
 				JPopupMenu mealMenu = new JPopupMenu();
 				JMenuItem Item1 = new JMenuItem("vegetarian");
 				JMenuItem Item2= new JMenuItem("Non-vegetarian");
-				Item1.setToolTipText("rice and beans with veggies");
-				Item2.setToolTipText("");
+				Item1.setToolTipText("Roasted Vegetable Penne Pasta\", \"Price: $14.99");
+				Item2.setToolTipText("Grilled Salmon with Lemon Butter Sauce\", \"Price: $15.99");
 				mealMenu.add(Item1);
 				mealMenu.add(Item2);
 				mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
 
-		//		option.setMeal(mealBox.isSelected());
 						}
 					}
 				});
 				optionPage.add(mealBox);
+		/////////////////////////////////////////////////////////
+				JCheckBox TravelerBox = new JCheckBox("Traveler");
+				TravelerBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+				TravelerBox.setHorizontalTextPosition(SwingConstants.RIGHT);
+				TravelerBox.setBounds(255,200, 100, 20);
+				TravelerBox.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e)
+					{
+						if(option != null) {
+							option.setMeal(TravelerBox.isSelected());	
+							}
+							if(TravelerBox.isSelected()) 
+							
+					{
+					JPopupMenu travelerMenu = new JPopupMenu();
+					JMenuItem Item1 = new JMenuItem("Traveler 1");
+					JMenuItem Item2= new JMenuItem("Traveler 2");
+					//Item1.setToolTipText("");
+					//Item2.setToolTipText("");
+					travelerMenu.add(Item1);
+					travelerMenu.add(Item2);
+					travelerMenu.show(TravelerBox, TravelerBox.getWidth(), TravelerBox.getHeight());
+
+							}
+						}
+					});
+				optionPage.add(TravelerBox);
+				
+				
+			
 			
 		/////////////////////////////////////////////////////////
-		JCheckBox assistanceBox = new JCheckBox("assistance");
+		JCheckBox assistanceBox = new JCheckBox("Assistance");
 		assistanceBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		assistanceBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		assistanceBox.setBounds(10,200, 145, 23);
-		optionPage.add(assistanceBox);
-//		assistanceBox.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e)
-//			{
-//				if(option != null) 
-//				{
-//				option.setAssistance(assistanceBox.isSelected());
-//						}
-//					}
-//				});
-//				optionPage.add(assistanceBox);
-		
 		assistanceBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				if(option != null) 
-				{
-				option.setBaggage(assistanceBox.isSelected());
-				}
-				if(assistanceBox.isSelected()) {
-					String[] bagOption = {"Carri on bag", "Personal item"};
-					String selectedBag = (String) JOptionPane.showInputDialog(
-							optionPage,
-							"Select the Type of bag:",
-							"Bag Selected",
-							JOptionPane.PLAIN_MESSAGE,
-							null, 
-							bagOption,
-							bagOption[0]
-					);
-					if (selectedBag != null) {
-						option.setSelectedBag(selectedBag);
-					}else {
-						assistanceBox.setSelected(false);
-						option.setBaggage(false);
+
+		
+			if(option != null) {
+			option.setMeal(assistanceBox.isSelected());	
+			}
+			if(assistanceBox.isSelected()) 
+			{
+			JPopupMenu assistanceMenu = new JPopupMenu();
+			JMenuItem Item1 = new JMenuItem("Baggage");
+			JMenuItem Item2= new JMenuItem("Fast Track bording pass");
+			Item1.setToolTipText("Baggage Assistance: $10");
+			Item2.setToolTipText("Fast Track Immigration: $10");
+			assistanceMenu.add(Item1);
+			assistanceMenu.add(Item2);
+			assistanceMenu.show(assistanceBox, assistanceBox.getWidth(), assistanceBox.getHeight());
+
 					}
 				}
-			}		
-		});
+			});
+			optionPage.add(assistanceBox);
+		
 	
-		///////////////////////////////
-		JCheckBox seatBox = new JCheckBox("Choose your seats*");
+		///////////////////////////////	
+		JCheckBox seatBox = new JCheckBox("Choose your seats");
 		seatBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		seatBox.setHorizontalTextPosition(SwingConstants.RIGHT);
+		seatBox.setHorizontalTextPosition(SwingConstants.RIGHT);			
 		seatBox.setBounds(255,100, 200, 20);
 		optionPage.add(seatBox);
-		seatBox.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e)
-			{
-				if(option != null) 
-				{
-				option.setAssistance(seatBox.isSelected());
-				}
-							}
-				});
-				optionPage.add(seatBox);
-				
-		JPanel seatDiagramPanel = new JPanel();
-		seatDiagramPanel.setBounds(50,130,300,200);
-		seatDiagramPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		optionPage.add(seatDiagramPanel);
-		
-		seatDiagramPanel.setLayout(new GridLayout(5,5));
-		for(int i = 0; i < 25; i++) {
-			final int seatNumber = i + 1;
-			JButton seatButton = new JButton("Seat " + seatNumber);
-			seatDiagramPanel.add(seatButton);
-			
-			seatButton.addActionListener(e ->{
-				System.out.println("seat " + seatNumber + " selected");
-			});
-		}
-		
-		seatDiagramPanel.setVisible(false);
-		optionPage.add(seatDiagramPanel);
-		
-		seatBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (seatBox.isSelected()) {
-					seatDiagramPanel.setVisible(true);
+
+		JPanel seatSelectionPanel = new JPanel();
+		seatSelectionPanel.setLayout(new GridLayout(5, 5)); 
+		seatSelectionPanel.setBounds(50, 130, 300, 200);
+		seatSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		optionPage.add(seatSelectionPanel);
+		seatSelectionPanel.setVisible(false); 
+
+		for (int i = 0; i < 25; i++) 
+		{
+		final int seatNumber = i + 1;
+		JButton seatButton = new JButton("Seat " + seatNumber);
+		seatButton.addActionListener(e -> {
+				boolean isSelected = seatButton.getBackground() == Color.green;
+				if (isSelected) {
+					System.out.println("Seat " + seatNumber );
+
 				}else {
-					seatDiagramPanel.setVisible(false);
+					System.out.println("Seat " + seatNumber + " selected");
+
 				}
+			});
+			    seatSelectionPanel.add(seatButton);
 			}
-		});
+
+			seatBox.addActionListener(e ->
+			{
+			    if (seatBox.isSelected()) 
+			    {
+			        seatSelectionPanel.setVisible(true); 
+			    } else {
+			        seatSelectionPanel.setVisible(false); 
+			    }
+			});
+			
+			optionPage.add(seatSelectionPanel);
+			
+
+			      
 				
 		///////////////////////////////
-		JCheckBox bagsBox = new JCheckBox("Bags:");
+		JCheckBox bagsBox = new JCheckBox("Bags");
 		bagsBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		bagsBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-		bagsBox.setBounds(255,200, 80, 20);
-		optionPage.add(bagsBox);
+		bagsBox.setBounds(255,150, 145, 20);
 		bagsBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				if(option != null) 
-				{
-				option.setBaggage(bagsBox.isSelected());
-				}
-				if(bagsBox.isSelected()) {
-					String[] bagOption = {"Carri on bag", "Personal item"};
-					String selectedBag = (String) JOptionPane.showInputDialog(
-							optionPage,
-							"Select the Type of bag:",
-							"Bag Selected",
-							JOptionPane.PLAIN_MESSAGE,
-							null, 
-							bagOption,
-							bagOption[0]
-					);
-					if (selectedBag != null) {
-						option.setSelectedBag(selectedBag);
-					}else {
-						bagsBox.setSelected(false);
-						option.setBaggage(false);
+
+		
+			if(option != null) {
+			option.setMeal(bagsBox.isSelected());	
+			}
+			if(bagsBox.isSelected()) 
+			{
+			JPopupMenu bagsMenu = new JPopupMenu();
+			JMenuItem Item1 = new JMenuItem("Carry-on");
+			JMenuItem Item2= new JMenuItem("checked baggage");
+			Item1.setToolTipText("$10");
+			Item2.setToolTipText("$35");
+			bagsMenu.add(Item1);
+			bagsMenu.add(Item2);
+			bagsMenu.show(bagsBox, bagsBox.getWidth(), bagsBox.getHeight());
+
 					}
 				}
-			}		
-		});
-			//optionPage.add(bagsBox);
-		
-		////////////////////////////////
-		
-		
-		
+			});
+			optionPage.add(bagsBox);		
 		///////////////////////////////
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -224,10 +228,6 @@ public class OptionPage extends JFrame
 		optionPage.add(seePaymentButton);
 	
 		///////////////////////////////////////////
-		
-		
-		
-		
 		seePaymentButton.addActionListener(new SeePaymentButtonHandler( frame, c1, contentPane));
 		
 		}	
