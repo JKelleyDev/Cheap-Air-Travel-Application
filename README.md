@@ -23,6 +23,7 @@ The proposed Airline Management System will streamline the operations of the air
 
 ![TravelWithUs ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/7fd40a5c-b8c8-4575-826e-895b426afa7b)
 
+![Screenshot 2024-04-28 at 8 28 23 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/3e60760e-1294-4b42-b03b-5b8eaa586f53)
 
 
 
@@ -70,7 +71,6 @@ The proposed Airline Management System will streamline the operations of the air
 
 <img width="593" alt="Screen Shot 2024-04-20 at 11 21 12 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/ac3abd76-bad4-4667-bf3e-1857382baf70">
 
-![Screenshot 2024-04-28 at 8 28 23 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/0be75da1-615e-4ddf-ad37-c2630e9239ce)
 
 
 ### Week 4: 
