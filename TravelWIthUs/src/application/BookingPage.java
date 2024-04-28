@@ -37,7 +37,7 @@ public class BookingPage extends JFrame
 	private JTextField phoneNumberField;
 	private JComboBox<String> genderComboBox;
 	
-	public BookingPage(JFrame frame, Routes route, ApplicationModel model, 
+	BookingPage(JFrame frame, Routes route, ApplicationModel model, 
 			CardLayout c1, JPanel contentPane, Option option, Traveler traveler)
 	{ 
 		this.frame = frame; 
@@ -142,8 +142,9 @@ public class BookingPage extends JFrame
 		
 		///////////////////////////////////////////	
 		seeOptionButton.addActionListener(new SeeOptionButtonHandler( frame, c1, contentPane));
-	
-		}	
+		
+		}
+		
 		public JPanel returnPanel()
 		{ 
 		return bookingPage; 
