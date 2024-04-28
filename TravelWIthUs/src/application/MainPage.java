@@ -12,7 +12,9 @@ import java.awt.LayoutManager;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -87,18 +89,40 @@ public class MainPage extends JFrame
 		JComboBox<String> departMonthSelection = new JComboBox<String>(months);
 		departMonthSelection.setBounds(119, 152, 75, 30);
 		mainPage.add(departMonthSelection);
-		departMonthSelection.addItemListener(new BookingDateHandler(departMonthSelection, model, "departure"));
+		
+		departMonthSelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		  
+		           model.setDepartMonth((String) e.getItem());      
+		        }
+		    }
+		});
 		
 		JComboBox<Integer> departDaySelection = new JComboBox<Integer>();
 		departDaySelection.setBounds(190, 152, 60, 30);
 		departDaySelection.addItem(null);
 		 for(int i = 1; i <= 31; i++) 
 			{
-				
 				departDaySelection.addItem(i);
 			}
 		mainPage.add(departDaySelection);
-		departDaySelection.addItemListener(new BookingDateHandler(departDaySelection, model, "departure"));
+		
+		departDaySelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		           model.setDepartDay(String.valueOf(e.getItem())); 
+		        }
+		    }
+		});
+		
+
 	
 		JComboBox<Integer> departYearSelection = new JComboBox<Integer>(); 
 		departYearSelection.setBounds(245, 152, 88, 30);
@@ -106,12 +130,36 @@ public class MainPage extends JFrame
 		departYearSelection.addItem(Year.now().getValue()); 
 		departYearSelection.addItem(Year.now().getValue()+1);
 		mainPage.add(departYearSelection);
-		departYearSelection.addItemListener(new BookingDateHandler(departYearSelection, model, "departure"));
+		
+		departYearSelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		           model.setDepartYear(String.valueOf(e.getItem())); 
+		            
+		        }
+		    }
+		});
+		
+
 		
 		JComboBox<String> returnMonthSelection = new JComboBox<String>(months);
 		returnMonthSelection.setBounds(119, 204, 75, 30);
 		mainPage.add(returnMonthSelection);
-		returnMonthSelection.addItemListener(new BookingDateHandler(returnMonthSelection, model, "return"));
+		
+		returnMonthSelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		           model.setReturnMonth((String) e.getItem()); 
+		            
+		        }
+		    }
+		});
 		
 		JComboBox<Integer> returnDaySelection = new JComboBox<Integer>();
 		returnDaySelection.setBounds(190, 204, 60, 30);
@@ -121,7 +169,17 @@ public class MainPage extends JFrame
 			 returnDaySelection.addItem(i);
 			}
 		mainPage.add(returnDaySelection);
-		returnDaySelection.addItemListener(new BookingDateHandler(returnDaySelection, model, "return"));
+		
+		returnDaySelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		           model.setReturnDay(String.valueOf(e.getItem())); 
+		        }
+		    }
+		});
 	
 		JComboBox<Integer> returnYearSelection = new JComboBox<Integer>(); 
 		returnYearSelection.setBounds(245, 204, 88, 30);
@@ -129,7 +187,18 @@ public class MainPage extends JFrame
 		returnYearSelection.addItem(Year.now().getValue()); 
 		returnYearSelection.addItem(Year.now().getValue()+1);
 		mainPage.add(returnYearSelection);
-		returnYearSelection.addItemListener(new BookingDateHandler(returnYearSelection, model, "return"));
+		
+		returnYearSelection.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) 
+		    {
+		        if (e.getStateChange() == ItemEvent.SELECTED) 
+		        {
+		           model.setReturnYear(String.valueOf(e.getItem())); 
+		            
+		        }
+		    }
+		});
 		
 		
 		JLabel departureCityListLabel = new JLabel("Departure City");
@@ -170,7 +239,7 @@ public class MainPage extends JFrame
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnMonthSelection, returnDaySelection, returnYearSelection, returnLabel));
 	
-		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane, departureFlightsPage));
+		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane, departureFlightsPage, model, route));
  
 	}
 	
