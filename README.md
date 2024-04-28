@@ -41,13 +41,9 @@ The proposed Airline Management System will streamline the operations of the air
 
 ### Week 2: 
 • Completed the main page GUI
-
 • Completed the BookingDateHandler / Used to set the dates of departure and return into the model
-
 • Completed JUnit Tests for Routes, DepartureDates, and price modeling.
-
 • Started Booking Page (Traveler details) GUI interface.
-=======
 •	Completed the main page GUI     
 •	Completed the BookingDateHandler / Used to set the dates of departure and return into the model  
 • Completed JUnit Tests for Routes, DepartureDates, and price modeling.   
@@ -74,6 +70,7 @@ The proposed Airline Management System will streamline the operations of the air
 
 <img width="593" alt="Screen Shot 2024-04-20 at 11 21 12 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/ac3abd76-bad4-4667-bf3e-1857382baf70">
 
+![Screenshot 2024-04-28 at 8 28 23 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/0be75da1-615e-4ddf-ad37-c2630e9239ce)
 
 
 ### Week 4: 
