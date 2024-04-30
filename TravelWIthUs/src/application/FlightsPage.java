@@ -89,8 +89,7 @@ public class FlightsPage extends JFrame
 			chooseFlight_1.addActionListener(new ActionListener() {
 			    @Override
 			    public void actionPerformed(ActionEvent e) {
-			        // Code to execute when the button is clicked
-			        System.out.println("Button clicked!");
+			        // Code to execute when the button is clickd
 			        
 			        if(model.getDepartureFlight() == null)
 			        { 
@@ -99,18 +98,17 @@ public class FlightsPage extends JFrame
 			        	if(model.getOneWayFareValue() == true)
 			        	{
 			        		c1.show(contentPane, "bookingDetails");
+			        		
 			        	}
-			        	
+			        	else
+			        	{
 			        	setReturnData();
+			        	}
 			        }
 			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
 			        { 
 			        	model.setReturnFlight(flight1);
 			        	c1.show(contentPane, "bookingDetails");
-			        }
-			        else
-			        {
-			        
 			        }
 			    }
 			});
@@ -177,22 +175,27 @@ public class FlightsPage extends JFrame
 			chooseFlight_2.addActionListener(new ActionListener() 
 			{
 			    @Override
-			    public void actionPerformed(ActionEvent e) 
-			    {
-			        // Code to execute when the button is clicked
+			    public void actionPerformed(ActionEvent e) {
+			        // Code to execute when the button is clickd
+			        
 			        if(model.getDepartureFlight() == null)
 			        { 
-			        	model.setDepartureFlight(flight2);
+			        	model.setDepartureFlight(flight1);
+			        	
+			        	if(model.getOneWayFareValue() == true)
+			        	{
+			        		c1.show(contentPane, "bookingDetails");
+			        		
+			        	}
+			        	else
+			        	{
 			        	setReturnData();
+			        	}
 			        }
 			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
 			        { 
 			        	model.setReturnFlight(flight1);
 			        	c1.show(contentPane, "bookingDetails");
-			        }
-			        else
-			        {
-			    
 			        }
 			    }
 			});
@@ -257,6 +260,34 @@ public class FlightsPage extends JFrame
 		JButton chooseFlight_3 = new JButton("Select");
 			chooseFlight_3.setBounds(500, 35, 95, 30);
 			flight_option3.add(chooseFlight_3);
+			
+			chooseFlight_3.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) {
+			        // Code to execute when the button is clickd
+			        
+			        if(model.getDepartureFlight() == null)
+			        { 
+			        	model.setDepartureFlight(flight1);
+			        	
+			        	if(model.getOneWayFareValue() == true)
+			        	{
+			        		c1.show(contentPane, "bookingDetails");
+			        		
+			        	}
+			        	else
+			        	{
+			        	setReturnData();
+			        	}
+			        }
+			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
+			        { 
+			        	model.setReturnFlight(flight1);
+			        	c1.show(contentPane, "bookingDetails");
+			        }
+			    }
+			});
+			
 			
 		JLabel departureCityLabel_3 = new JLabel("Departure City:");
 			departureCityLabel_3.setBounds(3, 5, 95, 30);
