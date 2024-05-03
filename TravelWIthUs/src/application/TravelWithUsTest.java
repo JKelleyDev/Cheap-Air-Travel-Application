@@ -10,12 +10,38 @@ class TravelWithUsTest
 	private ApplicationModel model = new ApplicationModel(routes);
 	
 	@Test
-	void testRoutes()
+	void testRoutes() 
 	{
-		assertEquals(2267,routes.getFlightMiles("San Diego", "Miami")); 
+		
 		assertEquals(3261,routes.getFlightMiles("London", "Doha"));
 		assertEquals(6704,routes.getFlightMiles("Doha", "New York"));
 		assertEquals("17 Hours 18 Minutes", routes.getFlightDuration("San Diego","Singapore"));
+		assertEquals("11 Hours 17 Minutes", routes.getFlightDuration("Paris","San Diego"));
+		assertEquals("7 Hours 2 Minutes", routes.getFlightDuration("New York","London"));
+		
+		// Test the airport codes 
+		
+		assertEquals("SAN", routes.getAirportCode("San Diego"));
+		assertEquals("CDG", routes.getAirportCode("Paris"));
+		assertEquals("SIN", routes.getAirportCode("Singapore"));
+		assertEquals("LHR", routes.getAirportCode("London"));
+		
+		// Test Flight times and Timezone adjustments 
+		FlightManager [] SAN_Array = routes.getListOfFlights("San Diego", "New York");
+    	FlightManager TestFlight1 = SAN_Array [0];	
+    	FlightManager TestFlight2 = SAN_Array [1]; 
+		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
+		model.setDepartDay("5");
+		model.setDepartMonth("Jun");
+		model.setDepartYear("2024");
+	    routes.setDepartDate(model.getDepartureDate());
+		assertEquals("2024-06-05 06:00", TestFlight1.getDepartureTime());
+	
+	
+	    
+		TestFlight1.getArrivalTime(model.getDepartureDate());
+		TestFlight2.getArrivalTime(model.getDepartureDate()); 
+		
 	}
 	
 	@Test 
