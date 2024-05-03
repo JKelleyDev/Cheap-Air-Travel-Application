@@ -71,7 +71,7 @@ public class FlightsPage extends JFrame
 		flightsPage.setLayout(null);
 		Color backgroundColor = new Color(236, 240, 241);
 		
-		// Retrieve each flight
+		
 		
 		
 		
@@ -435,8 +435,6 @@ public class FlightsPage extends JFrame
 		}
 
 	}
-	
-	
 	
 	public JPanel returnPanel() 
 	{ 
