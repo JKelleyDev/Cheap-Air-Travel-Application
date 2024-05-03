@@ -34,31 +34,39 @@ public class SeeFlightButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		String errorDateMessage = ""; 
+		String errorDateMessage = "              Missing Information! \n Ensure you have completed all selections"; 
 		
 		try {
+			 
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			LocalDate currentDate = LocalDate.now();
 			String departureDateString = model.getDepartureDate(); // Fetch the date from the model
-			String returnDateString = model.getReturnDate(); // Fetch the return date from the model 
-		    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 		    LocalDate departureDate = LocalDate.parse(departureDateString, dateFormatter);
-		    LocalDate returnDate ;
-		    LocalDate currentDate = LocalDate.now();
-
-		    // Compare the parsed date with the current date
+		    
+		    if(model.getOneWayFareValue() != true)
+		    {
+		    	String returnDateString = model.getReturnDate(); // Fetch the return date from the model ]
+		    	LocalDate returnDate = LocalDate.parse(returnDateString, dateFormatter);
+		    	
+			    // Compare the parsed return date with the current date
+		    	if(returnDate.isBefore(departureDate) || returnDate.isEqual(departureDate))
+				    {
+				    	errorDateMessage = "The return date must be at least the day after departure."; 
+				    	throw new Exception();
+				    }
+		    }
+		    
+		    // Compare the parsed departure date with the current date
 		    if (departureDate.isBefore(currentDate)) 
 		    {
 		    	errorDateMessage = "The departure date cannot be before today.";
 		    	throw new Exception(); 
 		    }
-	    
-	
-	    
+		    
 			route.setDepartDate(model.getDepartureDate());
-			System.out.println(model.getDepartureDate());
-			System.out.println(route.getDepartDate());
 			departureFlightsPage.setDepartureData();
 			c1.show(contentPane, "departure flights");
-			frame.setTitle("Flights");
+			frame.setTitle("Departure Flights");
 		}
 		catch(NullPointerException n)
 		{

@@ -19,6 +19,9 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 
@@ -32,6 +35,7 @@ public class ApplicationView extends JFrame
 	private JPanel departureFlightsPage; 
 	private JPanel returnFlightsPage;
 	private JPanel bookingPage; 
+	private JPanel confirmationPage; 
 	private Routes route ;
     private JPanel paymentPage;
 	private JPanel optionPage;
@@ -41,6 +45,7 @@ public class ApplicationView extends JFrame
 	private Option option; 
 	private Traveler traveler;
 	private Payment payment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -89,49 +94,54 @@ public class ApplicationView extends JFrame
 
 		JMenu menu = new JMenu("Options");
 			JMenuItem homePage = new JMenuItem("Home Page"); 
-			JMenu printOption = new JMenu("Print Confirmation");
-		JMenu exit = new JMenu("Exit");
+			homePage.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) 
+			    {
+			      c1.show(contentPane, "main");
+			      resetModel();
+			    }
+			});
+			
+		JMenu printOption = new JMenu("Print Confirmation");
+
 			
 		menuBar.add(menu);
 			menu.add(homePage); 
 			menu.add(printOption);
-		menuBar.add(exit);
+		
 			
 		// Create the panels for each page
 		FlightsPage departureFlightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
 		departureFlightsPage = departureFlightsPageClass.returnPanel(); 
 		contentPane.add(departureFlightsPage, "departure flights");
-		
-
-		
+	
 		mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
 		bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
 		contentPane.add(bookingPage, "bookingDetails");
-	    
+    
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
-		contentPane.add(optionPage, "Option");
+			contentPane.add(optionPage, "Option");
 		
 		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
-		contentPane.add(paymentPage, "Payment");
-		
-		
-		c1.show(contentPane, "main"); // Start on the main page
 
-	
-
-		//c1.show(contentPane, "bookingDetails"); // Start on the main page
-		//c1.show(contentPane, "option"); //
-		//c1.show(contentPane, "main"); // Start on the main page
-		//c1.show(contentPane, "flights"); // Start on the main page
-		
+			contentPane.add(paymentPage, "Payment");
+			
+		confirmationPage = (new ConfirmationPage(this, route, model, c1, contentPane).returnPanel());
+			contentPane.add(confirmationPage, "Confirmation");
+			
+		c1.show(contentPane, "main"); // Start on the main page		
 
 
+		c1.show(contentPane, "Confirmation"); 
 	}
 
-	
-
+	public void resetModel() 
+	{ 
+		main(null); 
+	}
 	
 	
 }

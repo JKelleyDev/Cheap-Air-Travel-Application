@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class ApplicationModel
 {
-	private int month; 
+	private int monthDepartInt; 
 	private int monthReturnInt;
 	private int miles; 
 	private double baseFare = 50.00; 
@@ -43,12 +43,7 @@ public class ApplicationModel
 
 	}
 	
-	public void setMonth()
-	{ 
-//		this.month = monthToInt.get(departMonth);
-	
-	}
-	
+
 	public double getPrice()
 	{ 
 		return (baseFare*(getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity))));
@@ -56,15 +51,15 @@ public class ApplicationModel
 	
 	public double getSeasonMultiplier()
 	{ 	
-		if(1 <= month && month <= 4)
+		if(1 <= monthDepartInt && monthDepartInt <= 4)
 		{
 			return 0.80;
 		}
-		else if( month <= 8)
+		else if( monthDepartInt <= 8)
 		{ 
 			return 1.60;  
 		}
-		else if( month <= 12)
+		else if( monthDepartInt <= 12)
 		{ 
 			return 1.20; 
 		}
@@ -142,8 +137,8 @@ public class ApplicationModel
 	public void setDepartMonth(String departMonth)
 	{ 
 		this.departMonth = departMonth; 
-		this.month = monthToInt.get(departMonth);
-		setMonth();
+		this.monthDepartInt = monthToInt.get(departMonth);
+
 	}
 	
 	public void setDepartDay(String departDay)
@@ -173,7 +168,6 @@ public class ApplicationModel
 	{
 		this.returnMonth = returnMonth; 
 		this.monthReturnInt = monthToInt.get(returnMonth);
-		setMonth(); 
 		
 	}
 
@@ -184,7 +178,7 @@ public class ApplicationModel
 	}
 	public String getReturnDate()
 	{ 
-		if(month < 10)
+		if(monthReturnInt < 10)
 			return "0" + monthReturnInt + "/" + returnDay + "/" + returnYear; 
 		else 
 			return monthReturnInt + "/" + returnDay + "/" + returnYear; 
@@ -192,10 +186,10 @@ public class ApplicationModel
 	
 	public String getDepartureDate()
 	{ 
-		if(month < 10)
-			return "0" + month + "/" + departDay + "/" + departYear; 
+		if(monthDepartInt < 10)
+			return "0" + monthDepartInt + "/" + departDay + "/" + departYear; 
 		else 
-			return month + "/" + departDay + "/" + departYear; 
+			return monthDepartInt + "/" + departDay + "/" + departYear; 
 	}
 	
 	public void setDepartureFlight(FlightManager departureFlight) 
@@ -217,5 +211,6 @@ public class ApplicationModel
 		return returnFlight; 
 	}
 	
+
 	
 }
