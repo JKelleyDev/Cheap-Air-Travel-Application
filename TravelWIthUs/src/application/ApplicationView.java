@@ -133,7 +133,7 @@ public class ApplicationView extends JFrame
 			
 		c1.show(contentPane, "main"); // Start on the main page		
 
-		c1.show(contentPane, "Confirmation"); 
+		c1.show(contentPane, "bookingDetails"); 
 	}
 
 	public void resetModel() 

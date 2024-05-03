@@ -69,25 +69,42 @@ public class ConfirmationPage
 		frame.setTitle("Confirmation Page");
 		
 		
-		
+		/////// Flight Information Panel ////////
 		flightInformation = new JPanel(); 
+			flightInformation.setLayout(null);
 			flightInformation.setBounds(0, 0, 425, 200); 
 			flightInformation.setBackground(Color.red);
 		
+		
+		JLabel departureFlightLabel = new JLabel();
+			departureFlightLabel.setText("Departure");
+			departureFlightLabel.setBounds(5, 20, 80, 30);
+			flightInformation.add(departureFlightLabel);
+			
+	    JLabel returnFlightLabel = new JLabel(); 
+	    	returnFlightLabel.setText("Return"); 
+	    	returnFlightLabel.setBounds(5, 100, 80, 30);
+			flightInformation.add(returnFlightLabel);
+			
+			
+			
 			confirmationPage.add(flightInformation); 
 		
-		
+			
+		////// Travler Information Panel /////////
 		travlerInformation = new JPanel(); 
+			travlerInformation.setLayout(null);
 			travlerInformation.setBounds(0, 200, 425, 200); 
 			travlerInformation.setBackground(Color.BLUE);
 		
 			confirmationPage.add(travlerInformation);
 		
-		
+		////// Cost Information Panel ///////////
 		costInformation = new JPanel(); 
-			costInformation.setBounds(430, 0, 165, 300); 
+			costInformation.setLayout(null);
+			costInformation.setBounds(429, 0, 165, 300); 
 			costInformation.setBackground(Color.BLACK);
-		
+
 			confirmationPage.add(costInformation);
 		
 		
@@ -110,10 +127,8 @@ public class ConfirmationPage
 			});
 		
 		
+
 			
-		
-		
-		
 	}
 	
 	public JPanel returnPanel()
