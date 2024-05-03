@@ -78,6 +78,7 @@ public class Routes
 	private FlightManager [] NRT_LGA_Flights;
 	private FlightManager [] NRT_LHR_Flights;
 	private FlightManager [] NRT_SIN_Flights;
+	private FlightManager [] NRT_SAN_Flights;
 	
 	////////////////////////////////////
 	////// Doha(DOH) Flight Data  //////
@@ -158,15 +159,15 @@ public class Routes
     		
     	sanDiegoMileage.put("Tokyo", 5557); 
     	sanDiegoFlightDuration.put("Tokyo", 661);
-      	FlightManager SAN_NRT_1 = new FlightManager("06:00", "SAN" , "NRT", sanDiegoFlightDuration.get("New York"), this); 
-    	FlightManager SAN_NRT_2 = new FlightManager("20:00", "SAN" , "NRT", sanDiegoFlightDuration.get("New York"), this); 
+      	FlightManager SAN_NRT_1 = new FlightManager("06:00", "SAN" , "NRT", sanDiegoFlightDuration.get("Tokyo"), this); 
+    	FlightManager SAN_NRT_2 = new FlightManager("20:00", "SAN" , "NRT", sanDiegoFlightDuration.get("Tokyo"), this); 
     	SAN_NRT_Flights = new FlightManager [] {SAN_NRT_1, SAN_NRT_2};
     	SanDiegoFlights.put("Tokyo", SAN_NRT_Flights);
     	
     	sanDiegoMileage.put("Singapore", 8874); 
     	sanDiegoFlightDuration.put("Singapore", 1038); 
     	FlightManager SAN_SIN_1 = new FlightManager("07:25", "SAN" , "SIN", sanDiegoFlightDuration.get("Singapore"), this);
-    	SAN_NRT_Flights = new FlightManager [] {SAN_SIN_1};
+    	SAN_SIN_Flights = new FlightManager [] {SAN_SIN_1};
     	SanDiegoFlights.put("Singapore", SAN_SIN_Flights);
     	
     	sanDiegoMileage.put("Paris", 5698); 
@@ -205,7 +206,7 @@ public class Routes
     	
     	newYorkMileage.put("Tokyo", 6745); 
     	newYorkFlightDuration.put("Tokyo", 796); 
-    	FlightManager LGA_NRT_1 = new FlightManager("05:35", "LGA",  "NRt" , newYorkFlightDuration.get("Tokyo"), this); 
+    	FlightManager LGA_NRT_1 = new FlightManager("05:35", "LGA",  "NRT" , newYorkFlightDuration.get("Tokyo"), this); 
     	FlightManager LGA_NRT_2 = new FlightManager("14:20",  "LGA", "NRT", newYorkFlightDuration.get("Tokyo"), this); 
     	FlightManager LGA_NRT_3 = new FlightManager("18:30",  "LGA", "NRT", newYorkFlightDuration.get("Tokyo"), this);
     	LGA_NRT_Flights = new FlightManager [] {LGA_NRT_1, LGA_NRT_2, LGA_NRT_3};
@@ -213,9 +214,9 @@ public class Routes
     	
     	newYorkMileage.put("Singapore", 9537); 
     	newYorkFlightDuration.put("Singapore", 1113); 
-    	FlightManager LGA_SIN_1 = new FlightManager("05:35", "LGA",  "DOH" , newYorkFlightDuration.get("Singapore"), this); 
-    	FlightManager LGA_SIN_2 = new FlightManager("13:20",  "LGA", "DOH", newYorkFlightDuration.get("Singapore"), this); 
-    	FlightManager LGA_SIN_3 = new FlightManager("16:30",  "LGA", "DOH", newYorkFlightDuration.get("Singapore"), this);
+    	FlightManager LGA_SIN_1 = new FlightManager("05:35", "LGA",  "SIN" , newYorkFlightDuration.get("Singapore"), this); 
+    	FlightManager LGA_SIN_2 = new FlightManager("13:20",  "LGA", "SIN", newYorkFlightDuration.get("Singapore"), this); 
+    	FlightManager LGA_SIN_3 = new FlightManager("16:30",  "LGA", "SIN", newYorkFlightDuration.get("Singapore"), this);
     	LGA_SIN_Flights = new FlightManager [] {LGA_SIN_1, LGA_SIN_2, LGA_SIN_3};
     	NewYorkFlights.put("Singapore", LGA_SIN_Flights);
     	
@@ -320,6 +321,13 @@ public class Routes
     	FlightManager NRT_SIN_1 = new FlightManager("10:00", "NRT", "SIN", tokyoFlightDuration.get("Singapore"), this);
     	NRT_SIN_Flights = new FlightManager[] {NRT_SIN_1};
     	TokyoFlights.put("Singapore", NRT_SIN_Flights);
+    	
+    	tokyoMileage.put("San Diego", 5557); 
+    	tokyoFlightDuration.put("San Diego", 661); 
+    	FlightManager NRT_SAN_1 = new FlightManager("08:00", "NRT", "SAN", tokyoFlightDuration.get("San Diego"), this);
+    	FlightManager NRT_SAN_2 = new FlightManager("21:15", "NRT", "SAN", tokyoFlightDuration.get("San Diego"), this);
+        NRT_SAN_Flights = new FlightManager[] {NRT_SAN_1, NRT_SAN_2};
+    	TokyoFlights.put("San Diego", NRT_SAN_Flights);
     	
     	////////////////////////////////////
     	////// Doha(DOH) Flight Data  //////

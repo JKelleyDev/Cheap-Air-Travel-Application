@@ -19,6 +19,9 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 
@@ -41,6 +44,7 @@ public class ApplicationView extends JFrame
 	private Option option; 
 	private Traveler traveler;
 	private Payment payment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -89,6 +93,15 @@ public class ApplicationView extends JFrame
 
 		JMenu menu = new JMenu("Options");
 			JMenuItem homePage = new JMenuItem("Home Page"); 
+			homePage.addActionListener(new ActionListener() {
+			    @Override
+			    public void actionPerformed(ActionEvent e) 
+			    {
+			      c1.show(contentPane, "main");
+			      resetModel();
+			    }
+			});
+			
 			JMenu printOption = new JMenu("Print Confirmation");
 		JMenu exit = new JMenu("Exit");
 			
@@ -125,12 +138,14 @@ public class ApplicationView extends JFrame
 		//c1.show(contentPane, "main"); // Start on the main page
 		//c1.show(contentPane, "flights"); // Start on the main page
 		
-
+		
 
 	}
 
-	
-
+	public void resetModel() 
+	{ 
+		main(null); 
+	}
 	
 	
 }

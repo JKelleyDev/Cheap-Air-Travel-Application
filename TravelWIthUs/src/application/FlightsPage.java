@@ -88,9 +88,10 @@ public class FlightsPage extends JFrame
 			
 			chooseFlight_1.addActionListener(new ActionListener() {
 			    @Override
-			    public void actionPerformed(ActionEvent e) {
-			        // Code to execute when the button is clickd
-			        
+			    public void actionPerformed(ActionEvent e) 
+			    {
+			   
+			    	
 			        if(model.getDepartureFlight() == null)
 			        { 
 			        	model.setDepartureFlight(flight1);
@@ -102,7 +103,7 @@ public class FlightsPage extends JFrame
 			        	}
 			        	else
 			        	{
-			        	setReturnData();
+			        		setReturnData();
 			        	}
 			        }
 			        else if(model.getDepartureFlight() != null && model.getReturnFlight() == null)
@@ -112,7 +113,7 @@ public class FlightsPage extends JFrame
 			        }
 			    }
 			});
-			
+		
 		JLabel departureCityLabel_1 = new JLabel("Departure City:");
 			departureCityLabel_1.setBounds(3, 5, 95, 30);
 			flight_option1.add(departureCityLabel_1);
@@ -391,6 +392,7 @@ public class FlightsPage extends JFrame
 	{ 		
 		FlightManager [] flightOptions = route.getListOfFlights(model.getDestinationCity(), model.getDepartureCity());
 		route.setDepartDate(model.getReturnDate());
+		frame.setTitle("Return Flights");
 		
 		try { 
 			flight1 = flightOptions[0];
