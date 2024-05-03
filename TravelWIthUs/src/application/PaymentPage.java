@@ -153,8 +153,15 @@ public class PaymentPage extends JFrame
 	    zipField.setBounds(250,200,145,20);
 	    paymentPage.add(zipField);
 	    
+	    ///////////////////////////////////////////////
+	    JButton seePriceSummaryButton = new JButton("Summary");
+	    seePriceSummaryButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    seePriceSummaryButton.setBackground(new Color(0, 0, 128));
+	    seePriceSummaryButton.setBounds(495, 310, 100, 30);
+		paymentPage.add(seePriceSummaryButton);
+	
+		///////////////////////////////////////////
 	}
-
 	public JPanel returnPanel()
 	{ 
 		return paymentPage; 

@@ -106,8 +106,8 @@ public class ApplicationView extends JFrame
 		mainPage = (new MainPage(this, route, model, c1, contentPane, flightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
-			bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
-			contentPane.add(bookingPage, "bookingDetails");
+		bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
+		contentPane.add(bookingPage, "bookingDetails");
 	    
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
 		contentPane.add(optionPage, "Option");
@@ -115,10 +115,11 @@ public class ApplicationView extends JFrame
 		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
 		contentPane.add(paymentPage, "Payment");
 		
+		
 		c1.show(contentPane, "main"); // Start on the main page
 	
-	
-		c1.show(contentPane, "bookingDetails"); // Start on the main page
+
+		//c1.show(contentPane, "bookingDetails"); // Start on the main page
 		//c1.show(contentPane, "option"); //
 		//c1.show(contentPane, "main"); // Start on the main page
 		//c1.show(contentPane, "flights"); // Start on the main page
