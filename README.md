@@ -89,6 +89,21 @@ Submit code written so far.
 
 
 ### Week 5: 
+Write code to create a non-functional GUI (the "view" part of MVC).
+
+Update project page with progress details.
+
+Submit code written so far.
+
+<img width="597" alt="Screen Shot 2024-05-05 at 10 02 09 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/862ea8f3-4ab6-4e85-8514-fcc761cab60b">
+
+<img width="596" alt="Screen Shot 2024-05-05 at 10 02 32 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/b5192aaa-f044-439f-b628-336f55e5c6aa">
+
+<img width="589" alt="Screen Shot 2024-05-05 at 10 03 04 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/951a7155-67b5-4670-8bb8-63e87f965acc">
+
+<img width="598" alt="Screen Shot 2024-05-05 at 10 03 20 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/c540e176-1663-4a89-b35d-38ea3e7d52b0">
+
+
 
 ### Week 6: 
 
