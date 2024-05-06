@@ -25,9 +25,6 @@ public class BookingPage extends JFrame
 	private CardLayout c1; 
 	private JPanel contentPane; 
 	private Option option;
-	private JLabel wifiLabel;
-	private JCheckBox wifiCheckBox;
-	private JCheckBox mealBox;
 	private Traveler traveler;
 	private JTextField firstNameField;
 	private JTextField middleNameField;
@@ -48,8 +45,8 @@ public class BookingPage extends JFrame
 		this.option = option;
 		this.traveler = traveler;
 		
-		frame.setTitle("Booking Information");
 		bookingPage = new JPanel(); 
+	
 		bookingPage.setLayout(null);
 				 
 		
@@ -71,7 +68,7 @@ public class BookingPage extends JFrame
 		bookingPage.add(firstNameField);
 		
 		//////////////////////////////////////////
-		JLabel lbMIddleNameLabel = new JLabel("Middle Name:");
+		JLabel lbMIddleNameLabel = new JLabel("MIddle Name:");
 		lbMIddleNameLabel.setBounds(255,80,90,20);
 		bookingPage.add(lbMIddleNameLabel);
 	    middleNameField = new JTextField();
@@ -129,12 +126,12 @@ public class BookingPage extends JFrame
 		JLabel lbdobLabel = new JLabel("DOB:");
 		lbdobLabel.setBounds(105, 180, 80, 20);
 		bookingPage.add(lbdobLabel);
-	    dobField = new JTextField("mm/dd/yyyy");
+	    dobField = new JTextField();
 	    dobField.setBounds(100,200,145,20);
 		bookingPage.add(dobField);
 		
         /////////////////////////////////////////////////	
-		JButton seeOptionButton = new JButton("Options");
+		JButton seeOptionButton = new JButton("Option");
 		seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeOptionButton.setBackground(new Color(0, 0, 128));
 		seeOptionButton.setBounds(495, 310, 95, 30);
@@ -142,13 +139,23 @@ public class BookingPage extends JFrame
 		
 		///////////////////////////////////////////	
 		seeOptionButton.addActionListener(new SeeOptionButtonHandler( frame, c1, contentPane));
+		
+		 JButton backButton = new JButton("Back");
+			backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		    backButton.setBackground(new Color(0, 0, 128));
+			        backButton.setBounds(10, 310, 95, 30);
+			        bookingPage.add(backButton);
 
-		
-		}
-		
-	
-		
-		
+			        backButton.addActionListener(new ActionListener() {
+			            @Override
+			            public void actionPerformed(ActionEvent e) {
+			                // Go back to the previous page (BookingPage)
+			                c1.previous(contentPane);
+			            }
+			        });	
+			       
+			        
+	}
 			
 
 		public JPanel returnPanel()

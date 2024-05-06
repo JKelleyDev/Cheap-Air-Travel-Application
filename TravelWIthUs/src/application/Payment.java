@@ -52,5 +52,14 @@ public class Payment
 	{ 
 		return cvv; 
 	}
+	  @Override
+	    public String toString() {
+	        return "Payment{" +
+	                "cardNumber='" + cardNumber + '\'' +
+	                ", cardHolderName='" + cardHolderName + '\'' +
+	                ", expiryDate='" + expiryDate + '\'' +
+	                ", cvv='" + cvv + '\'' +
+	                '}';
+	    }
 	
 }

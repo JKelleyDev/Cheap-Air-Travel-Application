@@ -49,7 +49,8 @@ public class Traveler
 	
 	////////////////////////////// Setter Methods 
 	
-	public void setAge(String dob) 
+	
+	public void setDob(String dob) 
 	{
 		this.dob = dob;
 	}
@@ -73,5 +74,17 @@ public class Traveler
 	{
 		this.lastName = lastName;
 	}
+	 @Override
+	    public String toString() {
+	        return "Traveler{" +
+	                "firstName='" + firstName + '\'' +
+	                ", middleName='" + middleName + '\'' +
+	                ", lastName='" + lastName + '\'' +
+	                ", dob='" + dob + '\'' +
+	                ", gender='" + gender + '\'' +
+	                ", email='" + email + '\'' +
+	                ", phoneNumber='" + phoneNumber + '\'' +
+	                '}';
+	    }
 	
 }

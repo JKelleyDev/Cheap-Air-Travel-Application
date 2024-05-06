@@ -78,4 +78,26 @@ public class Option
 	{
 		this.assistance = selected;
 	}
+	
+	public String generateSummary() {
+        StringBuilder summary = new StringBuilder();
+        summary.append("Traveler Information:\n")
+                .append("Name: ").append(traveler.getFirstName()).append(" ")
+                .append(traveler.getLastName()).append("\n")
+                .append("Email: ").append(traveler.getEmail()).append("\n")
+                .append("Phone: ").append(traveler.getPhoneNumber()).append("\n");
+
+        summary.append("\nSelected Options:\n")
+                .append("Wi-Fi: ").append(wifi ? "Yes" : "No").append("\n")
+                .append("Meal: ").append(meal ? "Yes" : "No").append("\n")
+                .append("Baggage: ").append(baggage ? "Yes" : "No").append("\n")
+                .append("Assistance: ").append(assistance ? "Yes" : "No").append("\n");
+
+        if (selectedBag != null) {
+            summary.append("Selected Bag: ").append(selectedBag).append("\n");
+        }
+
+        return summary.toString();
+    }
+	
 }

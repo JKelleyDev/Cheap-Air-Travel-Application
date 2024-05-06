@@ -132,12 +132,17 @@ public class ApplicationView extends JFrame
 		confirmationPage = (new ConfirmationPage(this, route, model, c1, contentPane).returnPanel());
 			contentPane.add(confirmationPage, "Confirmation");
 			
-		c1.show(contentPane, "main"); // Start on the main page		
+			
+			c1.show(contentPane, "main"); // Start on the main page		
 
-
-		c1.show(contentPane, "bookingDetails"); 
-
-		c1.show(contentPane, "Confirmation"); 
+			//c1.show(contentPane, "Confirmation"); 
+			
+			
+		
+			//c1.show(contentPane, "bookingDetails"); // Start on the main page
+			//c1.show(contentPane, "option"); //
+			//c1.show(contentPane, "main"); // Start on the main page
+			//c1.show(contentPane, "flights"); // Start on the main page
 
 	}
 
