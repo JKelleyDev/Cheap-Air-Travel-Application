@@ -117,7 +117,7 @@ public class ApplicationView extends JFrame
 		mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
-		BookingPage bookingPageClass = new BookingPage(this,route,model,c1,contentPane, optionPage);
+		BookingPage bookingPageClass = new BookingPage(this,route,model,c1,contentPane);
 		bookingPage = (bookingPageClass.returnPanel()); 
 		contentPane.add(bookingPage, "bookingDetails");
     

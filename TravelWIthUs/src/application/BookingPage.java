@@ -24,7 +24,6 @@ public class BookingPage extends JFrame
 	private ApplicationModel model;
 	private CardLayout c1; 
 	private JPanel contentPane; 
-	private Option option;
 	private Traveler traveler;
 	private JTextField firstNameField;
 	private JTextField middleNameField;
@@ -33,17 +32,17 @@ public class BookingPage extends JFrame
 	private JTextField dobField;
 	private JTextField phoneNumberField;
 	private JComboBox<String> genderComboBox;
-	private JPanel optionPage; 
+
 	
 	BookingPage(JFrame frame, Routes route, ApplicationModel model, 
-			CardLayout c1, JPanel contentPane, JPanel optionPage)
+			CardLayout c1, JPanel contentPane)
 	{ 
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
-		this.optionPage = optionPage; 
+	
 
 		this.traveler = new Traveler();
 		
@@ -137,6 +136,8 @@ public class BookingPage extends JFrame
 		    	traveler.setFirstName(firstNameField.getText());
 		    	traveler.setMiddleName(middleNameField.getText());
 		    	traveler.setLastName(lastNameField.getText());
+		    	traveler.setEmail(emailField.getText());
+		    	
 		    	model.addTraveler(traveler);
 		    	c1.show(contentPane, "Option");
 				frame.setTitle("Option");

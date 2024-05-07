@@ -46,7 +46,6 @@ public class ApplicationModel
 
 	}
 	
-
 	public double getPrice()
 	{ 
 		return (baseFare*(getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity))));
