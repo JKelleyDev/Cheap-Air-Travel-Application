@@ -208,6 +208,7 @@ public class OptionPage extends JFrame
 		                c1.previous(contentPane);
 		            }
 		        });	
+
 		        
 		////////////////////////////////////////////////////////////////
 		JButton anotherTravelerButton = new JButton("Next Traveler"); 
@@ -228,6 +229,7 @@ public class OptionPage extends JFrame
 			}
 		});
 		 
+
 		//////////////////////////////	
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -258,6 +260,7 @@ public class OptionPage extends JFrame
 			bagsBox.setSelected(false);
 		}
 		
+
 		public JPanel returnPanel()
 		{ 
 			return optionPage; 
@@ -266,5 +269,8 @@ public class OptionPage extends JFrame
 }
 	
 	
+
+
+
 
 
