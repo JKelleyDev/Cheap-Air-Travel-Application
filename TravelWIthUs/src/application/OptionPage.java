@@ -15,18 +15,23 @@ public class OptionPage extends JFrame
 	private Option option;
 	private JPanel seatDiagramPanel;
 	private Option finalOption;
+	private BookingPage bookingPage; 
+	private JCheckBox wifiBox; 
+	private JCheckBox mealBox; 
+	private JCheckBox assistanceBox;
+	private JCheckBox bagsBox; 
 
 	
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
-						CardLayout c1, JPanel contentPane, Option option)
+						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
 	{ 
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
-		this.option = option;
-		this.finalOption = option;
+		this.bookingPage = bookingPage; 
+		this.option = new Option(model); 
 	
 		optionPage = new JPanel(); 
 		optionPage.setLayout(null);		
@@ -41,7 +46,7 @@ public class OptionPage extends JFrame
 		optionPage.add(lblNewLabel);
 	
 		/////////////////////////////////
-		JCheckBox wifiBox = new JCheckBox("wi-fi");
+		wifiBox = new JCheckBox("wi-fi");
 		wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		wifiBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		wifiBox.setBounds(10,100, 145, 23);
@@ -58,7 +63,7 @@ public class OptionPage extends JFrame
 			optionPage.add(wifiBox);
 
 		////////////////////////////////////////////////////////
-		JCheckBox mealBox = new JCheckBox("Meal");
+		mealBox = new JCheckBox("Meal");
 		mealBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		mealBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		mealBox.setBounds(10,150, 145, 23);
@@ -83,39 +88,10 @@ public class OptionPage extends JFrame
 					}
 				});
 				optionPage.add(mealBox);
-		/////////////////////////////////////////////////////////
-				JCheckBox TravelerBox = new JCheckBox("Traveler");
-				TravelerBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-				TravelerBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-				TravelerBox.setBounds(255,200, 100, 20);
-				TravelerBox.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e)
-					{
-						if(option != null) {
-							option.setMeal(TravelerBox.isSelected());	
-							}
-							if(TravelerBox.isSelected()) 
-							
-					{
-					JPopupMenu travelerMenu = new JPopupMenu();
-					JMenuItem Item1 = new JMenuItem("Traveler 1");
-					JMenuItem Item2= new JMenuItem("Traveler 2");
-					//Item1.setToolTipText("");
-					//Item2.setToolTipText("");
-					travelerMenu.add(Item1);
-					travelerMenu.add(Item2);
-					travelerMenu.show(TravelerBox, TravelerBox.getWidth(), TravelerBox.getHeight());
-
-							}
-						}
-					});
-				optionPage.add(TravelerBox);
-				
-				
-			
+						
 			
 		/////////////////////////////////////////////////////////
-		JCheckBox assistanceBox = new JCheckBox("Assistance");
+		assistanceBox = new JCheckBox("Assistance");
 		assistanceBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		assistanceBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		assistanceBox.setBounds(10,200, 145, 23);
@@ -191,7 +167,7 @@ public class OptionPage extends JFrame
 			      
 				
 		///////////////////////////////
-		JCheckBox bagsBox = new JCheckBox("Bags");
+		bagsBox = new JCheckBox("Bags");
 		bagsBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		bagsBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		bagsBox.setBounds(255,150, 145, 20);
@@ -232,8 +208,26 @@ public class OptionPage extends JFrame
 		                c1.previous(contentPane);
 		            }
 		        });	
+		        
+		////////////////////////////////////////////////////////////////
+		JButton anotherTravelerButton = new JButton("Next Traveler"); 
+		anotherTravelerButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		anotherTravelerButton.setBackground(new Color(0, 0, 128));
+		anotherTravelerButton.setBounds(495, 280, 95, 30);
+		optionPage.add(anotherTravelerButton);
 			
-			
+		anotherTravelerButton.addActionListener(new ActionListener() { 
+			@Override 
+			public void actionPerformed(ActionEvent e)
+			{
+				model.getCurrentTraveler().setOptions(option);
+				bookingPage.clearDetails();
+				clearPage();
+				option = new Option(model); 
+				c1.show(contentPane, "bookingDetails");
+			}
+		});
+		 
 		//////////////////////////////	
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -241,16 +235,32 @@ public class OptionPage extends JFrame
 		seePaymentButton.setBounds(495, 310, 95, 30);
 		optionPage.add(seePaymentButton);
 	
-		///////////////////////////////////////////
-		seePaymentButton.addActionListener(new SeePaymentButtonHandler( frame, c1, contentPane));
+		seePaymentButton.addActionListener(new ActionListener() { 
+			@Override 
+			public void actionPerformed(ActionEvent e)
+			{
+				model.getCurrentTraveler().setOptions(option);
+				c1.show(contentPane, "Payment");
+				frame.setTitle("Payment");
+			}
+		});
+	
 		
 		////////////////////////////////////////////////////////////////////////////////////////
 			    
 	}
 			
+		public void clearPage()
+		{
+			wifiBox.setSelected(false);
+			mealBox.setSelected(false);
+			assistanceBox.setSelected(false);
+			bagsBox.setSelected(false);
+		}
+		
 		public JPanel returnPanel()
 		{ 
-		return optionPage; 
+			return optionPage; 
 		}	
 	
 }

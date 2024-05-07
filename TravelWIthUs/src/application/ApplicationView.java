@@ -42,8 +42,6 @@ public class ApplicationView extends JFrame
 	@SuppressWarnings("unused")
 	private ApplicationModel model; 
 	private CardLayout c1;
-	private Option option; 
-	private Traveler traveler;
 	private Payment payment;
 	
 	/**
@@ -92,7 +90,7 @@ public class ApplicationView extends JFrame
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu menu = new JMenu("Options");
+		JMenu menu = new JMenu("Menu");
 			JMenuItem homePage = new JMenuItem("Home Page"); 
 			homePage.addActionListener(new ActionListener() {
 			    @Override
@@ -119,28 +117,28 @@ public class ApplicationView extends JFrame
 		mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
 			contentPane.add(mainPage, "main"); 
 			
-		bookingPage = (new BookingPage(this,route,model,c1,contentPane, option, traveler).returnPanel()); 
+		BookingPage bookingPageClass = new BookingPage(this,route,model,c1,contentPane, optionPage);
+		bookingPage = (bookingPageClass.returnPanel()); 
 		contentPane.add(bookingPage, "bookingDetails");
     
-		optionPage = (new OptionPage(this,route,model,c1,contentPane, option).returnPanel()); 
+		optionPage = (new OptionPage(this,route,model,c1,contentPane, bookingPageClass).returnPanel()); 
 			contentPane.add(optionPage, "Option");
 		
 		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
-
 			contentPane.add(paymentPage, "Payment");
 			
 		confirmationPage = (new ConfirmationPage(this, route, model, c1, contentPane).returnPanel());
 			contentPane.add(confirmationPage, "Confirmation");
 			
 			
-			c1.show(contentPane, "main"); // Start on the main page		
+			//c1.show(contentPane, "main"); // Start on the main page		
 
 			//c1.show(contentPane, "Confirmation"); 
 			
 			
 		
-			//c1.show(contentPane, "bookingDetails"); // Start on the main page
-			//c1.show(contentPane, "option"); //
+			c1.show(contentPane, "bookingDetails"); // Start on the main page
+			//c1.show(contentPane, "Option"); //
 			//c1.show(contentPane, "main"); // Start on the main page
 			//c1.show(contentPane, "flights"); // Start on the main page
 

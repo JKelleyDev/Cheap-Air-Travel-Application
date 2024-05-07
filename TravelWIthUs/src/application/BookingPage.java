@@ -33,17 +33,19 @@ public class BookingPage extends JFrame
 	private JTextField dobField;
 	private JTextField phoneNumberField;
 	private JComboBox<String> genderComboBox;
+	private JPanel optionPage; 
 	
 	BookingPage(JFrame frame, Routes route, ApplicationModel model, 
-			CardLayout c1, JPanel contentPane, Option option, Traveler traveler)
+			CardLayout c1, JPanel contentPane, JPanel optionPage)
 	{ 
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
-		this.option = option;
-		this.traveler = traveler;
+		this.optionPage = optionPage; 
+
+		this.traveler = new Traveler();
 		
 		bookingPage = new JPanel(); 
 	
@@ -67,10 +69,11 @@ public class BookingPage extends JFrame
 		firstNameField.setBounds(100,100,150,20);
 		bookingPage.add(firstNameField);
 		
+		
 		//////////////////////////////////////////
-		JLabel lbMIddleNameLabel = new JLabel("MIddle Name:");
-		lbMIddleNameLabel.setBounds(255,80,90,20);
-		bookingPage.add(lbMIddleNameLabel);
+		JLabel lbMiddleNameLabel = new JLabel("Middle Name:");
+		lbMiddleNameLabel.setBounds(255,80,90,20);
+		bookingPage.add(lbMiddleNameLabel);
 	    middleNameField = new JTextField();
 		middleNameField.setBounds(250,100,150,20);
 		bookingPage.add(middleNameField);
@@ -109,19 +112,8 @@ public class BookingPage extends JFrame
 		
 		JComboBox<String> genderSelection = new JComboBox<String>(gender);
 		genderSelection.setBounds(405, 150, 150, 23);
-		bookingPage.add(genderSelection);
-		
-		///////////////////////////////////	
-		JLabel lbTravelerLabel = new JLabel("Traveler:");
-		lbTravelerLabel.setBounds(255, 180, 80, 20);
-		bookingPage.add(lbTravelerLabel);
-		
-		String[] Traveler = {"1", "2", "3", "4","5"};
-		
-		JComboBox<String> travelerSelection = new JComboBox<String>(Traveler);
-		travelerSelection.setBounds(250,200,145,20);
-		bookingPage.add(travelerSelection);
-		
+		bookingPage.add(genderSelection);	
+
 		///////////////////////////////////
 		JLabel lbdobLabel = new JLabel("DOB:");
 		lbdobLabel.setBounds(105, 180, 80, 20);
@@ -131,36 +123,40 @@ public class BookingPage extends JFrame
 		bookingPage.add(dobField);
 		
         /////////////////////////////////////////////////	
-		JButton seeOptionButton = new JButton("Option");
+		JButton seeOptionButton = new JButton("Select Options");
 		seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeOptionButton.setBackground(new Color(0, 0, 128));
-		seeOptionButton.setBounds(495, 310, 95, 30);
+		seeOptionButton.setBounds(475, 310, 120, 30);
 		bookingPage.add(seeOptionButton);
 		
 		///////////////////////////////////////////	
-		seeOptionButton.addActionListener(new SeeOptionButtonHandler( frame, c1, contentPane));
-		
-		 JButton backButton = new JButton("Back");
-			backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		    backButton.setBackground(new Color(0, 0, 128));
-			        backButton.setBounds(10, 310, 95, 30);
-			        bookingPage.add(backButton);
-
-			        backButton.addActionListener(new ActionListener() {
-			            @Override
-			            public void actionPerformed(ActionEvent e) {
-			                // Go back to the previous page (BookingPage)
-			                c1.previous(contentPane);
-			            }
-			        });	
-			       
-			        
+		seeOptionButton.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) 
+		    {
+		    	traveler.setFirstName(firstNameField.getText());
+		    	traveler.setMiddleName(middleNameField.getText());
+		    	traveler.setLastName(lastNameField.getText());
+		    	model.addTraveler(traveler);
+		    	c1.show(contentPane, "Option");
+				frame.setTitle("Option");
+		    }
+		});
+		    
+			       	        
 	}
 			
+		public void clearDetails() 
+		{ 
+			traveler = new Traveler();
+			firstNameField.setText("");
+			middleNameField.setText("");
+			lastNameField.setText("");
+		}
 
 		public JPanel returnPanel()
 		{ 
-		return bookingPage; 
+			return bookingPage; 
 		}
 	
 }

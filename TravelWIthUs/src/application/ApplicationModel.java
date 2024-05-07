@@ -1,5 +1,6 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -21,6 +22,8 @@ public class ApplicationModel
 	private FlightManager departureFlight; 
 	private FlightManager returnFlight; 
 	private boolean oneWayFare;
+	private Traveler currentTraveler; 
+	private ArrayList<Traveler> travelerList = new ArrayList<Traveler>(); 
 	
 	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
 	 {
@@ -211,6 +214,15 @@ public class ApplicationModel
 		return returnFlight; 
 	}
 	
+	public void addTraveler(Traveler traveler)
+	{ 
+		travelerList.add(traveler);
+		currentTraveler = traveler;
+	}
 
+	public Traveler getCurrentTraveler()
+	{
+		return currentTraveler;
+	}
 	
 }

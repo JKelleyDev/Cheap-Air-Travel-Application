@@ -9,6 +9,7 @@ public class Traveler
 	private String gender;
 	private String email;
 	private String phoneNumber;
+	private Option option;
 
 	
 	///////////////////////////// Getter Methods 
@@ -70,10 +71,26 @@ public class Traveler
 		this.phoneNumber = phoneNumber;
 	}
 
+	public void setFirstName(String firstName)
+	{ 
+		this.firstName = firstName; 
+	}
+	
+	public void setMiddleName(String middleName)
+	{
+		this.middleName = middleName; 
+	}
 	public void setLastName(String lastName) 
 	{
 		this.lastName = lastName;
 	}
+	
+	public void setOptions(Option option)
+	{
+		this.option = option;
+	}
+	
+	
 	 @Override
 	    public String toString() {
 	        return "Traveler{" +
