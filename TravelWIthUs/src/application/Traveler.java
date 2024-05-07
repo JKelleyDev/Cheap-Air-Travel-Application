@@ -9,6 +9,7 @@ public class Traveler
 	private String gender;
 	private String email;
 	private String phoneNumber;
+	private Option option;
 
 	
 	///////////////////////////// Getter Methods 
@@ -49,7 +50,8 @@ public class Traveler
 	
 	////////////////////////////// Setter Methods 
 	
-	public void setAge(String dob) 
+	
+	public void setDob(String dob) 
 	{
 		this.dob = dob;
 	}
@@ -69,9 +71,37 @@ public class Traveler
 		this.phoneNumber = phoneNumber;
 	}
 
+	public void setFirstName(String firstName)
+	{ 
+		this.firstName = firstName; 
+	}
+	
+	public void setMiddleName(String middleName)
+	{
+		this.middleName = middleName; 
+	}
 	public void setLastName(String lastName) 
 	{
 		this.lastName = lastName;
 	}
+	
+	public void setOptions(Option option)
+	{
+		this.option = option;
+	}
+	
+	
+	 @Override
+	    public String toString() {
+	        return "Traveler{" +
+	                "firstName='" + firstName + '\'' +
+	                ", middleName='" + middleName + '\'' +
+	                ", lastName='" + lastName + '\'' +
+	                ", dob='" + dob + '\'' +
+	                ", gender='" + gender + '\'' +
+	                ", email='" + email + '\'' +
+	                ", phoneNumber='" + phoneNumber + '\'' +
+	                '}';
+	    }
 	
 }

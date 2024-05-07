@@ -42,8 +42,6 @@ public class ApplicationView extends JFrame
 	@SuppressWarnings("unused")
 	private ApplicationModel model; 
 	private CardLayout c1;
-	private Option option; 
-	private Traveler traveler;
 	private Payment payment;
 	
 	/**
@@ -92,7 +90,7 @@ public class ApplicationView extends JFrame
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu menu = new JMenu("Options");
+		JMenu menu = new JMenu("Menu");
 			JMenuItem homePage = new JMenuItem("Home Page"); 
 			homePage.addActionListener(new ActionListener() {
 			    @Override
@@ -112,9 +110,7 @@ public class ApplicationView extends JFrame
 		
 			
 		// Create the panels for each page
-				FlightsPage departureFlightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
-				departureFlightsPage = departureFlightsPageClass.returnPanel(); 
-				contentPane.add(departureFlightsPage, "departure flights");
+
 			
 				mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
 					contentPane.add(mainPage, "main"); 
@@ -132,19 +128,7 @@ public class ApplicationView extends JFrame
 					contentPane.add(confirmationPage, "Confirmation");
 					
 			
-		c1.show(contentPane, "main"); // Start on the main page		
 
-		//c1.show(contentPane, "Confirmation"); 
-		
-		
-		
-		//c1.show(contentPane, "main"); // Start on the main page
-	
-	
-		//c1.show(contentPane, "bookingDetails"); // Start on the main page
-		//c1.show(contentPane, "option"); //
-		//c1.show(contentPane, "main"); // Start on the main page
-		//c1.show(contentPane, "flights"); // Start on the main page
 	}
 
 	public void resetModel() 

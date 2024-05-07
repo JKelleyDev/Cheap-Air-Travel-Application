@@ -68,22 +68,29 @@ public class ConfirmationPage
 		confirmationPage.setLayout(null);
 		frame.setTitle("Confirmation Page");
 		
-		
+		try { 
 		/////// Flight Information Panel ////////
 		flightInformation = new JPanel(); 
 			flightInformation.setLayout(null);
 			flightInformation.setBounds(0, 0, 425, 200); 
 			flightInformation.setBackground(Color.red);
-		
+		JLabel flight1Label = new JLabel(); 
+			flight1Label.setText(departureFlight.getFlightNumber());
+			flight1Label.setBounds(0, 10, 80, 30);
 		
 		JLabel departureFlightLabel = new JLabel();
-			departureFlightLabel.setText("Departure");
-			departureFlightLabel.setBounds(5, 20, 80, 30);
+			departureFlightLabel.setText("Departure City:");
+			departureFlightLabel.setBounds(5, 20, 120, 30);
 			flightInformation.add(departureFlightLabel);
 			
+		JLabel departureFlightCity = new JLabel(); 
+			departureFlightCity.setText(departureCity);
+			departureFlightCity.setBounds(85, 20, 95, 30);
+			flightInformation.add(departureFlightCity); 
+			
 	    JLabel returnFlightLabel = new JLabel(); 
-	    	returnFlightLabel.setText("Return"); 
-	    	returnFlightLabel.setBounds(5, 100, 80, 30);
+	    	returnFlightLabel.setText("Arrival City:"); 
+	    	returnFlightLabel.setBounds(5, 45, 80, 30);
 			flightInformation.add(returnFlightLabel);
 			
 			
@@ -127,7 +134,11 @@ public class ConfirmationPage
 			});
 		
 		
-
+		} 
+		catch(NullPointerException f)
+		{ 
+			System.out.println("Waiting for model to update....");
+		}
 			
 	}
 	
