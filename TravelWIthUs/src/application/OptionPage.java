@@ -13,8 +13,6 @@ public class OptionPage extends JFrame
 	private CardLayout c1; 
 	private JPanel contentPane; 
 	private Option option;
-	private Payment payment;
-	private JTextField cardNumberField;
 	private JPanel seatDiagramPanel;
 	private Option finalOption;
 
@@ -221,6 +219,22 @@ public class OptionPage extends JFrame
 			});
 			optionPage.add(bagsBox);		
 		///////////////////////////////
+	    JButton backButton = new JButton("Back");
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    backButton.setBackground(new Color(0, 0, 128));
+		        backButton.setBounds(10, 310, 95, 30);
+		        optionPage.add(backButton);
+
+		        backButton.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Go back to the previous page (BookingPage)
+		                c1.previous(contentPane);
+		            }
+		        });	
+			
+			
+		//////////////////////////////	
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seePaymentButton.setBackground(new Color(0, 0, 128));
@@ -230,7 +244,10 @@ public class OptionPage extends JFrame
 		///////////////////////////////////////////
 		seePaymentButton.addActionListener(new SeePaymentButtonHandler( frame, c1, contentPane));
 		
-		}	
+		////////////////////////////////////////////////////////////////////////////////////////
+			    
+	}
+			
 		public JPanel returnPanel()
 		{ 
 		return optionPage; 
@@ -239,5 +256,8 @@ public class OptionPage extends JFrame
 }
 	
 	
+
+
+
 
 

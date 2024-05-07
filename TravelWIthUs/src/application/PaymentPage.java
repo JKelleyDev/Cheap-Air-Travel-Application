@@ -28,12 +28,7 @@ public class PaymentPage extends JFrame
 	private ApplicationModel model;
 	private CardLayout c1; 
 	private JPanel contentPane; 
-	private Payment payment;
-	private JPanel bookingPage;
 	private Option option;
-	private JLabel wifiLabel;
-	private JCheckBox wifiCheckBox;
-	private JCheckBox mealBox;
 	private Traveler traveler;
 	private JTextField firstNameField;
 	private JTextField cardNumberField;
@@ -45,8 +40,8 @@ public class PaymentPage extends JFrame
 	private JComboBox<String> contryTerritoryComboBox;
 	
 
-	public PaymentPage(ApplicationView applicationView, Routes route2, ApplicationModel model2, CardLayout c12,
-			JPanel contentPane2, Payment payment2) 
+	public PaymentPage(ApplicationView applicationView, Routes route, ApplicationModel model, CardLayout c1,
+			JPanel contentPane, Payment payment) 
 	{
 		this.frame = frame; 
 		this.route = route; 
@@ -152,16 +147,23 @@ public class PaymentPage extends JFrame
 	    zipField = new JTextField();
 	    zipField.setBounds(250,200,145,20);
 	    paymentPage.add(zipField);
-	    
-	    ///////////////////////////////////////////////
-	    JButton seePriceSummaryButton = new JButton("Summary");
-	    seePriceSummaryButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-	    seePriceSummaryButton.setBackground(new Color(0, 0, 128));
-	    seePriceSummaryButton.setBounds(495, 310, 100, 30);
-		paymentPage.add(seePriceSummaryButton);
-	
-		///////////////////////////////////////////
-	}
+	    ///////////////////////////////////////////
+	    JButton backButton = new JButton("Back");
+		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    backButton.setBackground(new Color(0, 0, 128));
+		        backButton.setBounds(10, 310, 95, 30);
+		        paymentPage.add(backButton);
+
+		        backButton.addActionListener(new ActionListener() {
+		            @Override
+		            public void actionPerformed(ActionEvent e) {
+		                // Go back to the previous page (BookingPage)
+		                c1.previous(contentPane);
+		            }
+		        });	
+	}   
+
+
 	public JPanel returnPanel()
 	{ 
 		return paymentPage; 
