@@ -133,25 +133,8 @@ public class ApplicationView extends JFrame
 			
 			
 			//c1.show(contentPane, "main"); // Start on the main page		
-
-
-			
-				mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
-					contentPane.add(mainPage, "main"); 
 					
-				bookingPage = (new BookingPage(this,route,model,c1,contentPane).returnPanel()); 
-					contentPane.add(bookingPage, "bookingDetails");
-					
-				optionPage = (new OptionPage(this,route,model,c1,contentPane).returnPanel()); 
-					contentPane.add(optionPage, "Option");
-				
-				paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
-					contentPane.add(paymentPage, "Payment");
-					
-				confirmationPage = (new ConfirmationPage(this, route, model, c1, contentPane).returnPanel());
-					contentPane.add(confirmationPage, "Confirmation");
-					
-			
+			c1.show(contentPane, "bookingDetails");
 
 	}
 
