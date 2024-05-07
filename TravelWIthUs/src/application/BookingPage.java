@@ -70,9 +70,11 @@ public class BookingPage extends JFrame
 		
 		
 		//////////////////////////////////////////
+
 		JLabel lbMiddleNameLabel = new JLabel("Middle Name:");
 		lbMiddleNameLabel.setBounds(255,80,90,20);
 		bookingPage.add(lbMiddleNameLabel);
+
 	    middleNameField = new JTextField();
 		middleNameField.setBounds(250,100,150,20);
 		bookingPage.add(middleNameField);
@@ -122,13 +124,16 @@ public class BookingPage extends JFrame
 		bookingPage.add(dobField);
 		
         /////////////////////////////////////////////////	
+
 		JButton seeOptionButton = new JButton("Select Options");
+
 		seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seeOptionButton.setBackground(new Color(0, 0, 128));
 		seeOptionButton.setBounds(475, 310, 120, 30);
 		bookingPage.add(seeOptionButton);
 		
 		///////////////////////////////////////////	
+
 		seeOptionButton.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) 
@@ -145,6 +150,7 @@ public class BookingPage extends JFrame
 		});
 		    
 			       	        
+
 	}
 			
 		public void clearDetails() 
