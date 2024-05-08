@@ -128,13 +128,12 @@ public class ApplicationView extends JFrame
 		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
 			contentPane.add(paymentPage, "Payment");
 			
-		confirmationPage = (new ConfirmationPage(this, route, model, c1, contentPane).returnPanel());
-			contentPane.add(confirmationPage, "Confirmation");
+
 			
 			
-			//c1.show(contentPane, "main"); // Start on the main page		
+			c1.show(contentPane, "main"); // Start on the main page		
 					
-			c1.show(contentPane, "bookingDetails");
+			//c1.show(contentPane, "Payment");
 
 	}
 

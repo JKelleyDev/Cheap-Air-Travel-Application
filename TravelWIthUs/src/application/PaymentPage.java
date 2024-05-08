@@ -28,8 +28,6 @@ public class PaymentPage extends JFrame
 	private ApplicationModel model;
 	private CardLayout c1; 
 	private JPanel contentPane; 
-	private Option option;
-	private Traveler traveler;
 	private JTextField firstNameField;
 	private JTextField cardNumberField;
 	private JTextField securityCodeField;
@@ -40,7 +38,7 @@ public class PaymentPage extends JFrame
 	private JComboBox<String> contryTerritoryComboBox;
 	
 
-	public PaymentPage(ApplicationView applicationView, Routes route, ApplicationModel model, CardLayout c1,
+	public PaymentPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1,
 			JPanel contentPane, Payment payment) 
 	{
 		this.frame = frame; 
@@ -48,8 +46,8 @@ public class PaymentPage extends JFrame
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
-		this.option = option;
-		this.traveler = traveler;
+
+
 		
 		paymentPage = new JPanel(); 
 	
@@ -106,7 +104,7 @@ public class PaymentPage extends JFrame
 	    paymentPage.add(expirationDateField);
 		
 		/////////////////////////////////////////////////////////
-		JLabel lbContryTerritoryLabel = new JLabel("Contry/Territory:");
+		JLabel lbContryTerritoryLabel = new JLabel("Country/Territory:");
 		lbContryTerritoryLabel.setBounds(405,130,150,20);
 		paymentPage.add(lbContryTerritoryLabel);
 				
@@ -161,6 +159,21 @@ public class PaymentPage extends JFrame
 		                c1.previous(contentPane);
 		            }
 		        });	
+		        
+		JButton bookingButton = new JButton("Continue");
+			bookingButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			bookingButton.setBounds(495, 310, 100, 30);
+			paymentPage.add(bookingButton);
+			
+			bookingButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) 
+	            {
+	                JPanel confirmationPage = (new ConfirmationPage(frame, route, model, c1, contentPane).returnPanel());
+	                contentPane.add(confirmationPage, "Confirmation");
+	                c1.show(contentPane, "Confirmation");
+	            }
+	        });	
 	}   
 
 

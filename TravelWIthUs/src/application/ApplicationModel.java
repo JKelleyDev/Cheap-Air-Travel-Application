@@ -224,4 +224,9 @@ public class ApplicationModel
 		return currentTraveler;
 	}
 	
+	public Traveler getTraveler(int index) 
+	{
+		return travelerList.get(index);
+	}
+	
 }

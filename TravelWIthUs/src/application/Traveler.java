@@ -92,16 +92,9 @@ public class Traveler
 	
 	
 	 @Override
-	    public String toString() {
-	        return "Traveler{" +
-	                "firstName='" + firstName + '\'' +
-	                ", middleName='" + middleName + '\'' +
-	                ", lastName='" + lastName + '\'' +
-	                ", dob='" + dob + '\'' +
-	                ", gender='" + gender + '\'' +
-	                ", email='" + email + '\'' +
-	                ", phoneNumber='" + phoneNumber + '\'' +
-	                '}';
+	    public String toString() 
+	 	{
+	        return firstName + " " + lastName ;
 	    }
 	
 }
