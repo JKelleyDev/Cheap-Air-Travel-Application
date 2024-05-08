@@ -7,7 +7,7 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 •	Design a GUI for flight scheduling, and passenger handling.  
 •	Ensure data integrity and security by implementing proper authentication and authorization mechanisms.  
 •	Provide booking confirmations and other relevant information at time of booking.  
-•	Optimize system performance to handle a large volume of transactions efficiently.  
+•	Optimize system performance to handle a large volume of transactions efficiently. 
 •	Facilitate easy integration with other systems such as payments, option selections, and meal selections.  
 
 ### Features: 
