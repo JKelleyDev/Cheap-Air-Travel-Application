@@ -21,7 +21,15 @@ public class OptionPage extends JFrame
 	private JCheckBox assistanceBox;
 	private JCheckBox bagsBox; 
 
-	
+	/** 
+	 * Purpose: Constructor that creates the page view for options
+	 * @param frame
+	 * @param route
+	 * @param model
+	 * @param c1
+	 * @param contentPane
+	 * @param bookingPage
+	 */
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
 						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
 	{ 
@@ -56,8 +64,8 @@ public class OptionPage extends JFrame
 		{
 			if(option != null) 
 			{
-			option.setWifi(wifiBox.isSelected());
-					}
+				option.setWifi(wifiBox.isSelected());
+			}
 				}
 			});
 			optionPage.add(wifiBox);
