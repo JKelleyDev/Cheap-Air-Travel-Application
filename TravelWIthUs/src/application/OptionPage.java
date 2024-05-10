@@ -120,49 +120,6 @@ public class OptionPage extends JFrame
 			optionPage.add(assistanceBox);
 		
 	
-		///////////////////////////////	
-		JCheckBox seatBox = new JCheckBox("Choose your seats");
-		seatBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		seatBox.setHorizontalTextPosition(SwingConstants.RIGHT);			
-		seatBox.setBounds(255,100, 200, 20);
-		optionPage.add(seatBox);
-
-		JPanel seatSelectionPanel = new JPanel();
-		seatSelectionPanel.setLayout(new GridLayout(5, 5)); 
-		seatSelectionPanel.setBounds(50, 130, 300, 200);
-		seatSelectionPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		optionPage.add(seatSelectionPanel);
-		seatSelectionPanel.setVisible(false); 
-
-		for (int i = 0; i < 25; i++) 
-		{
-		final int seatNumber = i + 1;
-		JButton seatButton = new JButton("Seat " + seatNumber);
-		seatButton.addActionListener(e -> {
-				boolean isSelected = seatButton.getBackground() == Color.green;
-				if (isSelected) {
-					System.out.println("Seat " + seatNumber );
-
-				}else {
-					System.out.println("Seat " + seatNumber + " selected");
-
-				}
-			});
-			    seatSelectionPanel.add(seatButton);
-			}
-
-			seatBox.addActionListener(e ->
-			{
-			    if (seatBox.isSelected()) 
-			    {
-			        seatSelectionPanel.setVisible(true); 
-			    } else {
-			        seatSelectionPanel.setVisible(false); 
-			    }
-			});
-			
-			optionPage.add(seatSelectionPanel);
-			
 
 			      
 				
