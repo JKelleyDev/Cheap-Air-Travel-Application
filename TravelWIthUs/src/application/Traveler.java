@@ -73,7 +73,8 @@ public class Traveler
 
 	public void setFirstName(String firstName)
 	{ 
-		this.firstName = firstName; 
+		
+		this.firstName = (firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase());
 	}
 	
 	public void setMiddleName(String middleName)

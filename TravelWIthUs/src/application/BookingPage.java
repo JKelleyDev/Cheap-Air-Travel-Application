@@ -138,11 +138,12 @@ public class BookingPage extends JFrame
 		    @Override
 		    public void actionPerformed(ActionEvent e) 
 		    {
-		    	traveler.setFirstName(firstNameField.getText());
+		    	
+		    	traveler.setFirstName(firstNameField.getText().trim());
 		    	traveler.setMiddleName(middleNameField.getText());
 		    	traveler.setLastName(lastNameField.getText());
 		    	traveler.setEmail(emailField.getText());
-		    	
+	
 		    	model.addTraveler(traveler);
 		    	c1.show(contentPane, "Option");
 				frame.setTitle("Option");

@@ -101,7 +101,7 @@ public class ConfirmationPage
 		travelerInformation = new JPanel(); 
 			travelerInformation.setLayout(null);
 			travelerInformation.setBounds(0, 145, 375, 255); 
-			travelerInformation.setBackground(Color.BLUE);
+			travelerInformation.setBackground(Color.WHITE);
 		
 			JLabel travelersLabel = new JLabel("Travelers"); 
 				travelersLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -116,6 +116,18 @@ public class ConfirmationPage
 			traveler1Label.setBounds(2, 30, 375, 30);
 			traveler1Label.setText("Traveler 1: " + model.getTraveler(0).toString());
 			travelerInformation.add(traveler1Label);
+			
+			JLabel traveler2Label = new JLabel(); 
+			traveler2Label.setFont(new Font("Tahoma", Font.BOLD, 12));
+			traveler2Label.setBounds(2, 50, 375, 30);
+			traveler2Label.setText("Traveler 2: " + model.getTraveler(1).toString());
+			travelerInformation.add(traveler2Label);
+			
+			JLabel traveler3Label = new JLabel(); 
+			traveler3Label.setFont(new Font("Tahoma", Font.BOLD, 12));
+			traveler3Label.setBounds(2, 70, 375, 30);
+			traveler3Label.setText("Traveler 3: " + model.getTraveler(2).toString());
+			travelerInformation.add(traveler3Label);
 			
 		}catch(NullPointerException e )
 		{
