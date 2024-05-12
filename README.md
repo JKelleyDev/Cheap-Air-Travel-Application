@@ -81,6 +81,11 @@ The proposed Airline Management System will streamline the operations of the air
 
 
 ### Week 5: 
+This week, our team achieved a significant milestone with our graphical user interface (GUI), successfully implementing seamless navigation across different pages. We are diligently testing the input functionalities to ensure robust error handling, as demonstrated in the video where the system correctly identifies dates that are not set before the current date.
+
+We are now developing the final page of our GUI, which will feature a confirmation page. This page will display all pertinent details before allowing users to finalize their booking with a "Book" button.
+
+In the upcoming week, our focus will be on ensuring that traveler information is accurately stored and retrieved. We will also start making graphic design enhancements to enhance user experience. Additionally, we plan to begin committing our code and conducting necessary refactoring to improve code quality and maintainability
 
 ### Week 6: 
 
