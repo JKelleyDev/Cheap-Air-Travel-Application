@@ -80,7 +80,7 @@ public class OptionPage extends JFrame
 			{
 				if(option != null) 
 				{
-					option.setMeal(mealBox.isSelected());	
+					//option.setMeal(mealBox.isSelected());	
 				}
 				
 				if(mealBox.isSelected()) 
@@ -111,7 +111,7 @@ public class OptionPage extends JFrame
 
 		
 			if(option != null) {
-			option.setMeal(assistanceBox.isSelected());	
+			//option.setMeal(assistanceBox.isSelected());	
 			}
 			if(assistanceBox.isSelected()) 
 			{
