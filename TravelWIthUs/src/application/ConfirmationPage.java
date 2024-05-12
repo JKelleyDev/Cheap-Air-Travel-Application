@@ -109,7 +109,8 @@ public class ConfirmationPage
 				travelerInformation.add(travelersLabel);
 			
 			
-		try {
+		try 
+		{
 			
 			JLabel traveler1Label = new JLabel(); 
 			traveler1Label.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -129,38 +130,53 @@ public class ConfirmationPage
 			traveler3Label.setText("Traveler 3: " + model.getTraveler(2).toString());
 			travelerInformation.add(traveler3Label);
 			
-		}catch(NullPointerException e )
+			JLabel traveler4Label = new JLabel(); 
+			traveler4Label.setFont(new Font("Tahoma", Font.BOLD, 12));
+			traveler4Label.setBounds(2, 90, 375, 30);
+			traveler4Label.setText("Traveler 4: " + model.getTraveler(3).toString());
+			travelerInformation.add(traveler4Label);
+			
+			JLabel traveler5Label = new JLabel(); 
+			traveler5Label.setFont(new Font("Tahoma", Font.BOLD, 12));
+			traveler5Label.setBounds(2, 110, 375, 30);
+			traveler5Label.setText("Traveler 5: " + model.getTraveler(4).toString());
+			travelerInformation.add(traveler5Label);
+			
+			
+		}catch(Exception e )
 		{
 			
 		}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			confirmationPage.add(travelerInformation);
+		confirmationPage.add(travelerInformation);
 		
 		////// Cost Information Panel ///////////
 		costInformation = new JPanel(); 
 			costInformation.setLayout(null);
-			costInformation.setBounds(375, 0, 225, 300); 
+			costInformation.setBounds(375, 0, 275, 300); 
 			costInformation.setBackground(Color.GRAY);
 
 			
-		
-		JLabel pricePerPassenger = new JLabel("Price per Passenger: $"); 
-			pricePerPassenger.setBounds(5, 5, 145, 30);
+		JLabel pricePerPassenger = new JLabel("Price per Passenger: $" + model.getPrice());
+			pricePerPassenger.setBounds(5, 5, 250, 30);
 			costInformation.add(pricePerPassenger);
 		
-		
+		JLabel extraCostHeaderLabel = new JLabel("Extra Costs"); 
+			extraCostHeaderLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+			extraCostHeaderLabel.setBounds(5, 30, 100, 30);
+			costInformation.add(extraCostHeaderLabel);
+			
+			int carryOnBagCount = model.getCarryOnBagCount();
+		JLabel carryOnBagsLabel = new JLabel("Carry on (x " + carryOnBagCount + ") : $" + carryOnBagCount * model.getCarryOnCost());
+			carryOnBagsLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
+			carryOnBagsLabel.setBounds(5, 60, 150, 30);
+			costInformation.add(carryOnBagsLabel);
+			
+			
 		confirmationPage.add(costInformation);
 		
 		JButton confirmButton = new JButton("Book"); 
-			confirmButton.setBounds(465, 310, 95, 30);
+			confirmButton.setBounds(445, 310, 95, 30);
 			confirmationPage.add(confirmButton); 
 			confirmButton.addActionListener(new ActionListener() 
 			{
@@ -168,12 +184,10 @@ public class ConfirmationPage
 			    public void actionPerformed(ActionEvent e) 
 			    {
 			    	confirmButton.setVisible(false);
-			    
+			    	
 			    }
 			});
 		
-		
-	
 	}
 	
 	public JPanel returnPanel()

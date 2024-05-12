@@ -78,19 +78,21 @@ public class OptionPage extends JFrame
 		mealBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 			{
-				if(option != null) {
-				option.setMeal(mealBox.isSelected());	
+				if(option != null) 
+				{
+					option.setMeal(mealBox.isSelected());	
 				}
+				
 				if(mealBox.isSelected()) 
 				{
-				JPopupMenu mealMenu = new JPopupMenu();
-				JMenuItem Item1 = new JMenuItem("vegetarian");
-				JMenuItem Item2= new JMenuItem("Non-vegetarian");
-				Item1.setToolTipText("Roasted Vegetable Penne Pasta\", \"Price: $14.99");
-				Item2.setToolTipText("Grilled Salmon with Lemon Butter Sauce\", \"Price: $15.99");
-				mealMenu.add(Item1);
-				mealMenu.add(Item2);
-				mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
+					JPopupMenu mealMenu = new JPopupMenu();
+					JMenuItem Item1 = new JMenuItem("vegetarian");
+					JMenuItem Item2= new JMenuItem("Non-vegetarian");
+					Item1.setToolTipText("Roasted Vegetable Penne Pasta\", \"Price: $14.99");
+					Item2.setToolTipText("Grilled Salmon with Lemon Butter Sauce\", \"Price: $15.99");
+					mealMenu.add(Item1);
+					mealMenu.add(Item2);
+					mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
 
 						}
 					}
@@ -141,24 +143,27 @@ public class OptionPage extends JFrame
 			{
 
 		
-			if(option != null) {
-			option.setMeal(bagsBox.isSelected());	
+			if(option != null) 
+			{
+//				option.setBaggage(bagsBox.isSelected());	
 			}
 			if(bagsBox.isSelected()) 
 			{
-			JPopupMenu bagsMenu = new JPopupMenu();
-			JMenuItem Item1 = new JMenuItem("Carry-on");
-			JMenuItem Item2= new JMenuItem("checked baggage");
-			Item1.setToolTipText("$10");
-			Item2.setToolTipText("$35");
-			bagsMenu.add(Item1);
-			bagsMenu.add(Item2);
-			bagsMenu.show(bagsBox, bagsBox.getWidth(), bagsBox.getHeight());
+				JPopupMenu bagsMenu = new JPopupMenu();
+				JMenuItem Item1 = new JMenuItem("Carry-on");
+				JMenuItem Item2= new JMenuItem("checked baggage");
+				Item1.setToolTipText("$10");
+				Item2.setToolTipText("$35");
+				bagsMenu.add(Item1);
+				bagsMenu.add(Item2);
+				bagsMenu.show(bagsBox, bagsBox.getWidth(), bagsBox.getHeight());
 
 					}
 				}
 			});
-			optionPage.add(bagsBox);		
+			optionPage.add(bagsBox);	
+			
+			
 		///////////////////////////////
 	    JButton backButton = new JButton("Back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));

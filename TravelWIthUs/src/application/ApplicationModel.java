@@ -24,6 +24,13 @@ public class ApplicationModel
 	private boolean oneWayFare;
 	private Traveler currentTraveler; 
 	private ArrayList<Traveler> travelerList = new ArrayList<Traveler>(); 
+	private int carryOnBagCount; 
+	
+	private final double CARRY_ON_BAG_COST = 20.00;
+	private final double CHECKED_BAG_COST = 50.00; 
+	private final double WIFI_CHARGE = 9.99; 
+	private final double ASSISTANCE_FEE = 9.99; 
+	
 	
 	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
 	 {
@@ -46,10 +53,12 @@ public class ApplicationModel
 
 	}
 	
-	public double getPrice()
+	public String getPrice()
 	{ 
-		return (baseFare*(getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity))));
+	    double price = baseFare * (getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity)));
+	    return String.format("%.2f", price);
 	}
+
 	
 	public double getSeasonMultiplier()
 	{ 	
@@ -229,4 +238,18 @@ public class ApplicationModel
 		return travelerList.get(index);
 	}
 	
+	public void addCarryOnBag() 
+	{ 
+		carryOnBagCount++; 
+	}
+	
+	public int getCarryOnBagCount()
+	{ 
+		return carryOnBagCount; 
+	}
+	
+	public double getCarryOnCost()
+	{
+		return CARRY_ON_BAG_COST;
+	}
 }
