@@ -73,22 +73,26 @@ public class Traveler
 
 	public void setFirstName(String firstName)
 	{ 
-		
 		this.firstName = (firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase());
 	}
 	
 	public void setMiddleName(String middleName)
 	{
-		this.middleName = middleName; 
+		this.middleName = (middleName.substring(0, 1).toUpperCase() + middleName.substring(1).toLowerCase());
 	}
 	public void setLastName(String lastName) 
 	{
-		this.lastName = lastName;
+		this.lastName = (lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase());
 	}
 	
 	public void setOptions(Option option)
 	{
 		this.option = option;
+	}
+	
+	public Option getOptions()
+	{ 
+		return option;
 	}
 	
 	

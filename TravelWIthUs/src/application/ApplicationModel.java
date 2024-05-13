@@ -238,6 +238,13 @@ public class ApplicationModel
 		return travelerList.get(index);
 	}
 	
+	public Traveler [] getTravelerArray()
+	{ 
+		Traveler [] travelerArray = new Traveler [travelerList.size()];
+		travelerArray = travelerList.toArray(travelerArray); 
+		return travelerArray;
+	}
+	
 	public void addCarryOnBag() 
 	{ 
 		carryOnBagCount++; 

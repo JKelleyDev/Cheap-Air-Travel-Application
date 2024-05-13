@@ -114,7 +114,7 @@ public class BookingPage extends JFrame
 		bookingPage.add(genderLabel);
 
 		/////////////////////////////////////////////////////	
-		String[] gender = {null,"Male", "Female"};
+		String[] gender = {"","Male", "Female"};
 		
 	    genderSelection = new JComboBox<String>(gender);
 		genderSelection.setBounds(405, 150, 150, 23);
@@ -157,12 +157,13 @@ public class BookingPage extends JFrame
 		            	phoneNumberField.setBackground(Color.WHITE);
 		            String dob = dobField.getText().trim();
 		            	dobField.setBackground(Color.WHITE);
-		            
+		            traveler.setGender(genderSelection.getSelectedItem().toString());
 		            	
 					////////////////////////////////////////////////////////////////////////////////
 					// Check to see all fields are completed, no empty fields //
 
-		            if(firstName.equals("") || middleName.equalsIgnoreCase("") || lastName.equalsIgnoreCase("") || email.equalsIgnoreCase(""))
+		            if(firstName.equals("") || middleName.equalsIgnoreCase("") || lastName.equalsIgnoreCase("") || email.equalsIgnoreCase("")
+		            		|| phoneNumber.equals("") || dob.equals("") || genderSelection.getSelectedItem().toString().equals("") )
 		            {
 		            	throw new IllegalArgumentException("Error, fill in all blank fields!");
 		            }
@@ -232,6 +233,7 @@ public class BookingPage extends JFrame
 		            	phoneNumberField.setBackground(Color.RED);
 		            	throw new IllegalArgumentException("Please enter the phone number in the format: xxx-xxx-xxxx");
 		            }
+		            traveler.setPhoneNumber(phoneNumber);
 		            
 					////////////////////////////////////////////////////////////////////////////////
 					// Parse and validate phone number format //
@@ -245,11 +247,11 @@ public class BookingPage extends JFrame
 		            	dobField.setBackground(Color.RED);
 		            	throw new IllegalArgumentException("Please enter the DOB in the format: dd/mm/yyyy");
 		            }
+		            traveler.setDob(dob);
 		            
 		            
 		            
-		            
-		            traveler.setGender(genderSelection.getSelectedItem().toString());
+		           
 		            
 		            model.addTraveler(traveler);
 		            c1.show(contentPane, "Option");

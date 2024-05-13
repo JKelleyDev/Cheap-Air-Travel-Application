@@ -5,10 +5,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -28,11 +34,17 @@ public class ConfirmationPage
 	private String destinationCity; 
 	private String returnDateTime;
 	private String returnFlightNumber; 
+	private String destinationArrivalTime;
+	private String returnArrivalTime; 
+	
+	private static int confirmationCounter;
+	private static final String CONFIRMATION_PREFIX = "TWU000";
 	
 	private JPanel flightInformation; 
 	private JPanel travelerInformation; 
 	private JPanel costInformation; 
-	
+	private Traveler [] travelerArray;
+	private String baseRate; 
 	
 	
 	
@@ -43,8 +55,23 @@ public class ConfirmationPage
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
+		this.travelerArray = model.getTravelerArray();
+		this.baseRate = model.getPrice();
+		this.departureFlight = model.getDepartureFlight();
+		this.departureFlightNumber = departureFlight.getFlightNumber();
+		this.departureCity = model.getDepartureCity();
+		this.destinationCity = model.getDestinationCity();
+		this.departureDateTime = departureFlight.getDepartureTime(); 
+		this.destinationArrivalTime = departureFlight.getArrivalTime(model.getDepartureDate());
 		
-	
+		if(model.getOneWayFareValue() == false)
+		{
+			this.returnFlight = model.getReturnFlight(); 
+			this.returnFlightNumber = returnFlight.getFlightNumber(); 
+			this.returnDateTime = returnFlight.getDepartureTime();
+			this.returnArrivalTime = returnFlight.getArrivalTime(model.getReturnDate());
+		}
+		
 		confirmationPage = new JPanel(); 
 		confirmationPage.setLayout(null);
 		frame.setTitle("Confirmation Page");
@@ -56,19 +83,19 @@ public class ConfirmationPage
 			flightInformation.setBounds(0, 0, 375, 145); 
 			flightInformation.setBackground(Color.red);
 			
-		JLabel flight1Label = new JLabel("Flight: " + model.getDepartureFlight().getFlightNumber());
+		JLabel flight1Label = new JLabel("Flight: " + departureFlightNumber);
 			flight1Label.setBounds(2, 0, 120, 30);
 			flight1Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			flightInformation.add(flight1Label);
 		
 		JLabel flightCities1 = new JLabel();
-			flightCities1.setText(model.getDepartureCity() + " >>>> " + model.getDestinationCity());
+			flightCities1.setText(departureCity + " >>>> " + destinationCity);
 			flightCities1.setBounds(3, 20, 400, 30);
 			flightCities1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			flightInformation.add(flightCities1);
 			
 		JLabel flight1Times = new JLabel(); 
-			flight1Times.setText(model.getDepartureFlight().getDepartureTime() + " >>>> " + model.getDepartureFlight().getArrivalTime(model.getDepartureDate()));
+			flight1Times.setText(departureDateTime + " >>>> " + destinationArrivalTime);
 			flight1Times.setBounds(3, 35, 400,40);
 			flight1Times.setFont(new Font("Tahoma", Font.ITALIC, 12));
 			flightInformation.add(flight1Times);
@@ -76,19 +103,19 @@ public class ConfirmationPage
 			
 		if(model.getOneWayFareValue() == false)
 		{
-			JLabel flight2Label = new JLabel("Flight: " + model.getReturnFlight().getFlightNumber());
+			JLabel flight2Label = new JLabel("Flight: " + returnFlightNumber);
 				flight2Label.setBounds(2, 70, 120, 30);
 				flight2Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 				flightInformation.add(flight2Label);
 		
 			JLabel flightCities2 = new JLabel();
-				flightCities2.setText(model.getDestinationCity() + " >>>> " + model.getDepartureCity());
+				flightCities2.setText(destinationCity + " >>>> " + departureCity);
 				flightCities2.setBounds(3, 90, 400, 30);
 				flightCities2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 				flightInformation.add(flightCities2);
 				
 			JLabel flight2Times = new JLabel(); 
-				flight2Times.setText(model.getReturnFlight().getDepartureTime() + " >>>> " + model.getReturnFlight().getArrivalTime(model.getReturnDate()));
+				flight2Times.setText(returnDateTime + " >>>> " + returnArrivalTime);
 				flight2Times.setBounds(3, 105, 400,40);
 				flight2Times.setFont(new Font("Tahoma", Font.ITALIC, 12));
 				flightInformation.add(flight2Times);
@@ -115,31 +142,31 @@ public class ConfirmationPage
 			JLabel traveler1Label = new JLabel(); 
 			traveler1Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler1Label.setBounds(2, 30, 375, 30);
-			traveler1Label.setText("Traveler 1: " + model.getTraveler(0).toString());
+			traveler1Label.setText("Traveler 1: " + travelerArray[0].toString());
 			travelerInformation.add(traveler1Label);
 			
 			JLabel traveler2Label = new JLabel(); 
 			traveler2Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler2Label.setBounds(2, 50, 375, 30);
-			traveler2Label.setText("Traveler 2: " + model.getTraveler(1).toString());
+			traveler2Label.setText("Traveler 2: " + travelerArray[1].toString());
 			travelerInformation.add(traveler2Label);
 			
 			JLabel traveler3Label = new JLabel(); 
 			traveler3Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler3Label.setBounds(2, 70, 375, 30);
-			traveler3Label.setText("Traveler 3: " + model.getTraveler(2).toString());
+			traveler3Label.setText("Traveler 3: " + travelerArray[2].toString());
 			travelerInformation.add(traveler3Label);
 			
 			JLabel traveler4Label = new JLabel(); 
 			traveler4Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler4Label.setBounds(2, 90, 375, 30);
-			traveler4Label.setText("Traveler 4: " + model.getTraveler(3).toString());
+			traveler4Label.setText("Traveler 4: " + travelerArray[3].toString());
 			travelerInformation.add(traveler4Label);
 			
 			JLabel traveler5Label = new JLabel(); 
 			traveler5Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler5Label.setBounds(2, 110, 375, 30);
-			traveler5Label.setText("Traveler 5: " + model.getTraveler(4).toString());
+			traveler5Label.setText("Traveler 5: " + travelerArray[4].toString());
 			travelerInformation.add(traveler5Label);
 			
 			
@@ -157,7 +184,7 @@ public class ConfirmationPage
 			costInformation.setBackground(Color.GRAY);
 
 			
-		JLabel pricePerPassenger = new JLabel("Price per Passenger: $" + model.getPrice());
+		JLabel pricePerPassenger = new JLabel("Price per Passenger: $" + baseRate);
 			pricePerPassenger.setBounds(5, 5, 250, 30);
 			costInformation.add(pricePerPassenger);
 		
@@ -184,6 +211,11 @@ public class ConfirmationPage
 			    public void actionPerformed(ActionEvent e) 
 			    {
 			    	confirmButton.setVisible(false);
+			    	flightInformation.setVisible(false);
+			    	travelerInformation.setVisible(false);
+			    	costInformation.setVisible(false); 
+			    	confirmationCounter++;
+			    	writeFile();
 			    	
 			    }
 			});
@@ -195,5 +227,70 @@ public class ConfirmationPage
 		return confirmationPage; 
 	}
 	
+	private void writeFile()
+	{
+		 JFileChooser dirChooser = new JFileChooser();
+	        dirChooser.setDialogTitle("Select a directory to save your file");
+	        dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+	        int userSelection = dirChooser.showSaveDialog(frame);
+
+	        if (userSelection == JFileChooser.APPROVE_OPTION) 
+	        {
+	            File directoryToSave = dirChooser.getSelectedFile();
+	            // Define the file name
+	            String fileName = CONFIRMATION_PREFIX + confirmationCounter + ".txt"; // Name of the file
+	            File fileToSave = new File(directoryToSave, fileName);
+	            
+	         // Write to the file using PrintWriter
+	            try (PrintWriter writer = new PrintWriter(fileToSave)) 
+	            {
+	                writer.println("Thank you for choosing travel with us, a cheap air service!\n"
+	                	           + "Booking Confirmation: " + CONFIRMATION_PREFIX + confirmationCounter);
+	                
+	                writer.println("\nFlight details:"
+	                			 + "\n---------------------------------");
+	                
+	                writer.println("Flight: " + departureFlightNumber 
+	                		    +"\n" + departureCity + " >>>>>> " + destinationCity
+	                		    +"\n "+ departureDateTime + " >>>>>> " + destinationArrivalTime
+	                		    +"\n Flight Time: " + route.getFlightDuration(departureCity, destinationCity)
+	                		    +"\n Total Miles: " + route.getFlightMiles(departureCity, destinationCity));
+	                
+	                		    if(model.getOneWayFareValue() == false)
+	                		    {
+	                		    	writer.print(
+		                		     "\nFlight: " + returnFlightNumber 
+		                		    +"\n" + destinationCity + " >>>>>> " + departureCity
+		                		    +"\n "+ returnDateTime + " >>>>>> " + returnArrivalTime
+		                		    +"\n Flight Time: " + route.getFlightDuration(destinationCity, departureCity)
+		                		    +"\n Total Miles: " + route.getFlightMiles(destinationCity, departureCity)
+		                		    +"\n\n"
+		                		    );
+	                		    }
+
+	                
+	                writer.println("\nTravelers:"
+	                		     + "\n---------------------------------"); 
+	                
+	                for(int i = 0; i < travelerArray.length; i++)
+	                {
+	                	writer.println(travelerArray[i].toString());
+	                	writer.println();
+	                }
+	                
+	                writer.println("Cost Breakdown:"
+	                		    + "\n---------------------------------"); 
+	                writer.println("Price per passenger: $" + baseRate);
+	                writer.println("Carry on (x " + model.getCarryOnBagCount() + ") : $" + model.getCarryOnBagCount() * model.getCarryOnCost());
+
+	                writer.flush();
+	                writer.close();
+	                JOptionPane.showMessageDialog(frame, "File saved successfully at " + fileToSave.getAbsolutePath(), "File Saved", JOptionPane.INFORMATION_MESSAGE);
+	            } catch (IOException ex) {
+	                JOptionPane.showMessageDialog(frame, "Error saving file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+	            }
+	        }
+	}
 	
 }
