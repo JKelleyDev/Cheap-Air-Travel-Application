@@ -1,6 +1,11 @@
 # Cheap Air Travel Application.
 
+# Table of Contents: 
+
 [Introduction](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#introduction)  
+[Weekly Updates](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#weekly-updates)  
+[ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#ulm-diagram)   
+[Requirements Traceability Matrix](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#requirements-traceability-matrix)  
 
 ## Introduction: 
 Our project aims to develop an Airline Management System using Java and Eclipse. This system will offer a comprehensive solution for managing various aspects of an airline's operations, including flight destination, passenger information handling, transactions, baggage,  boarding passes, and additional passenger options. The system will provide a user friendly  interface for both administrators and users, ensuring a smooth and efficient operations for the airline.
