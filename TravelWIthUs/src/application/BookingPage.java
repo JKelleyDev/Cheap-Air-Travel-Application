@@ -40,11 +40,13 @@ public class BookingPage extends JFrame
 	BookingPage(JFrame frame, Routes route, ApplicationModel model, 
 			CardLayout c1, JPanel contentPane)
 	{ 
+	
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
+		
 		this.traveler = new Traveler();
 		
 		bookingPage = new JPanel(); 
@@ -283,6 +285,7 @@ public class BookingPage extends JFrame
 			
 		}
 
+	
 		public JPanel returnPanel()
 		{ 
 			return bookingPage; 

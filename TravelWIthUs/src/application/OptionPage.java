@@ -7,14 +7,12 @@ import java.awt.event.ActionListener;
 public class OptionPage extends JFrame
 {
 	private JFrame frame;
-	private JPanel optionPage;
 	private Routes route; 
 	private ApplicationModel model;
 	private CardLayout c1; 
-	private JPanel contentPane; 
+	private JPanel contentPane;
+	private JPanel optionPage;
 	private Option option;
-	private JPanel seatDiagramPanel;
-	private Option finalOption;
 	private BookingPage bookingPage; 
 	private JCheckBox wifiBox; 
 	private JCheckBox mealBox; 
@@ -33,17 +31,18 @@ public class OptionPage extends JFrame
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
 						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
 	{ 
+		
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
 		this.bookingPage = bookingPage; 
-		this.option = new Option(model); 
 	
-		optionPage = new JPanel(); 
-		optionPage.setLayout(null);		
+		this.option = new Option(model); 
 		
+		optionPage = new JPanel(); 
+		optionPage.setLayout(null);	
 		JLabel lblNewLabel = new JLabel("Travel With Us: Add-ons");
 		lblNewLabel.setForeground(new Color(240, 255, 255));
 		lblNewLabel.setBackground(new Color(0, 0, 205));
@@ -129,10 +128,7 @@ public class OptionPage extends JFrame
 			});
 			optionPage.add(assistanceBox);
 		
-	
 
-			      
-				
 		///////////////////////////////
 		bagsBox = new JCheckBox("Bags");
 		bagsBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
@@ -192,6 +188,14 @@ public class OptionPage extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				model.getCurrentTraveler().setOptions(option);
+				
+				if(model.getTravelerArray().length == 6)
+				{
+					JOptionPane.showMessageDialog(frame, "Maximum number of travlers (6) entered, continuing to payment page" , "Input Error", JOptionPane.ERROR_MESSAGE);
+					c1.show(contentPane, "Payment");
+					frame.setTitle("Payment");
+				}
+				
 				bookingPage.clearDetails();
 				clearPage();
 				option = new Option(model); 
@@ -230,7 +234,7 @@ public class OptionPage extends JFrame
 			bagsBox.setSelected(false);
 		}
 		
-
+	
 		public JPanel returnPanel()
 		{ 
 			return optionPage; 

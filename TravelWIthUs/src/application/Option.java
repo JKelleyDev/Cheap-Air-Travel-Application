@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Option
+public class Option 
 {
 
 	private Payment payment;
@@ -30,9 +30,9 @@ public class Option
 //	Then, the model.add### functions, accumulate a total count for all the travelers 
 
 	
-	public Option(ApplicationModel model)
+	public Option(ApplicationModel model) 
 	{
-
+	
 		wifi = false;
 		meal = false;
 		assistance = false;

@@ -169,6 +169,12 @@ public class ConfirmationPage
 			traveler5Label.setText("Traveler 5: " + travelerArray[4].returnFullName());
 			travelerInformation.add(traveler5Label);
 			
+			JLabel traveler6Label = new JLabel(); 
+			traveler6Label.setFont(new Font("Tahoma", Font.BOLD, 12));
+			traveler6Label.setBounds(2, 130, 375, 30);
+			traveler6Label.setText("Traveler 6: " + travelerArray[5].returnFullName());
+			travelerInformation.add(traveler6Label);
+			
 			
 		}catch(Exception e )
 		{
