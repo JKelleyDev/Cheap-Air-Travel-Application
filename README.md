@@ -26,7 +26,7 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 ## Conclusion: 
 The proposed Airline Management System will streamline the operations of the airline, enhance user experience, and improve overall efficiency. By leveraging modern technologies and best practices, we aim to deliver a high-quality solution that meets the needs of both the airline and its passengers
 
-
+## ULM Diagram:
 
 ![TravelWithUs ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/7fd40a5c-b8c8-4575-826e-895b426afa7b)
 
