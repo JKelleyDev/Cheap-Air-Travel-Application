@@ -21,7 +21,8 @@ public class Option
 	private int checkedBag;
 	private int carryOnBag; 
 	private ApplicationModel model;
-	private boolean vegiterianMeal; 
+	private boolean vegeterianMeal; 
+	private int mealTotal;
 	
 //	A travler is made -> that travler has a set options 
 //
@@ -38,14 +39,18 @@ public class Option
 		assistance = false;
 		baggage = false;
 		this.model = model; 
+		carryOnBag = 0;
+		checkedBag = 0;
+		mealTotal = 0;
 	}
-	
+	///////////////////////////
 	public void addCheckedBag() 
 	{ 
 		checkedBag++;  // if adding a checked bag, increase the amount of checked bags by 1
-		// model.addCheckedBag(); 
+		model.addCheckedBag(); 
 	}
 	
+	/////////////////////////////
 	public void addCarryOnBag() 
 	{ 
 		carryOnBag++; 
@@ -56,37 +61,60 @@ public class Option
 	public void setWifi(boolean selected) 
 	{
 		wifi = selected;
-		// model.addWifiCharge(); // For each travel, want to keep a total amount of wifi charges 
+		model.addWifiPackage(); // For each travel, want to keep a total amount of wifi charges 
 		
 	}
-
-	public void setMealVegiterian(boolean selected) 
+	/////////////////////////////////////
+	public void setMeal(boolean selected) 
 	{
-		this.vegiterianMeal = selected;	
-		// model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
+		meal = selected;
+		if(selected) 
+		{
+			model.addMealCharge();
+		}
 	}
-	public void setMealNonVegiterian(boolean selected) 
+	///////////////////////////////////////
+	public void setMealVegeterian(boolean selected) 
+	{
+		this.vegeterianMeal = selected;	
+		if(selected)
+		{
+		model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
+	    }
+	}
+	
+	////////////////////////////////////
+	public void setMealNonVegeterian(boolean selected) 
 	{
 		this.meal = selected;	
-		// model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
+		if (selected) 
+		{
+		model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
+		}
 	}
-
+	/////////////////////////
 	public void setAssistance(boolean selected) 
 	{
 		this.assistance = selected;
-		// model.addAssistanceFee(); // For each travel, want to keep a total amount of assistance charges 
+		if (selected) 
+		{
+		model.addAssistance(); // For each travel, want to keep a total amount of assistance charges 
+		}
 	}
 	
+	/////////////////////////////
 	public int getCarryOnStatus() 
 	{ 
 		return carryOnBag; 
 	}
 	
+	////////////////////////////////
 	public int getCheckedBagStatus()
 	{ 
 		return checkedBag; 
 	}
 	
+	//////////////////////////////
 	public String getWifiStatus() 
 	{ 
 		if(wifi == true) 
@@ -95,9 +123,10 @@ public class Option
 			return "No";
 	}
 	
+	////////////////////////
 	public String getMeal() 
 	{ 
-		if(vegiterianMeal == true) 
+		if(vegeterianMeal == true) 
 			return " " ;
 		else if( meal == true) 
 			return " "; 
@@ -105,6 +134,8 @@ public class Option
 			return "No meal added"; 
 	}
 	
+	
+	//////////////////////////////////
 	public String getAssistanceStatus() 
 	{ 
 		if(assistance == true) 
@@ -112,4 +143,6 @@ public class Option
 		else 
 			return "No Assistance required";
 	}
+	
+	
 }
