@@ -114,6 +114,15 @@ Submit code written so far.
 
 ### Week 6: 
 
+Add event handling to make the GUI functional (the "controller" part of MVC).
+
+Update project page with progress details.
+
+Submit code written so far.
+
+<img width="877" alt="Screen Shot 2024-05-12 at 6 58 24 PM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/e0f95275-3dbe-45e6-86d9-61028b5ab6f2">
+
+
 ### Week 7: 
 
 ### Week 8: 
