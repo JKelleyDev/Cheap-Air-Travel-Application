@@ -301,4 +301,20 @@ public class ApplicationModel
 	{
 		return ASSISTANCE_FEE * assistanceTotal; 
 	}
+	
+	public void addMealCharge() 
+	{
+		baseFare++;
+	}
+
+//	public int getmealCount() 
+//	{
+//		return  mealCount; 
+//	}
+//
+//	public int getVegeterianCost() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+
 }
