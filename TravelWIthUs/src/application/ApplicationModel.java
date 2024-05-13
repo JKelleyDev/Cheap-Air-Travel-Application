@@ -25,6 +25,9 @@ public class ApplicationModel
 	private Traveler currentTraveler; 
 	private ArrayList<Traveler> travelerList = new ArrayList<Traveler>(); 
 	private int carryOnBagCount; 
+	private int checkedBagCount;
+	private int wifiPackageCount; 
+	private int assistanceTotal; 
 	
 	private final double CARRY_ON_BAG_COST = 20.00;
 	private final double CHECKED_BAG_COST = 50.00; 
@@ -258,5 +261,44 @@ public class ApplicationModel
 	public double getCarryOnCost()
 	{
 		return CARRY_ON_BAG_COST;
+	}
+	public void addCheckedBag() 
+	{ 
+		checkedBagCount++; 
+	}
+	
+	public int getCheckedBagCount()
+	{ 
+		return checkedBagCount; 
+	}
+	
+	public double getCheckedBagCost()
+	{
+		return CHECKED_BAG_COST;
+	}
+	
+	public void addWifiPackage() 
+	{ 
+		wifiPackageCount++; 
+	}
+	
+	public int getWifiPackageCount()
+	{
+		return wifiPackageCount; 
+	}
+	
+	public double getWifiCost()
+	{
+		return WIFI_CHARGE;
+	}
+	
+	public void addAssistance()
+	{ 
+		assistanceTotal++;
+	}
+	
+	public double getAssistanceCharge()
+	{
+		return ASSISTANCE_FEE * assistanceTotal; 
 	}
 }

@@ -283,7 +283,9 @@ public class ConfirmationPage
 	                		    + "\n---------------------------------"); 
 	                writer.println("Price per passenger: $" + baseRate);
 	                writer.println("Carry on (x " + model.getCarryOnBagCount() + ") : $" + model.getCarryOnBagCount() * model.getCarryOnCost());
-
+                    writer.println("Checked Bags(x " +  model.getCheckedBagCount() + ") : $" + model.getCheckedBagCount() * model.getCheckedBagCost());
+                    writer.println("Wifi Packages(x " + model.getWifiPackageCount() + ") : $" + model.getWifiPackageCount() * model.getWifiCost());
+                    writer.println("Assistance Charges: $" + model.getAssistanceCharge());
 	                writer.flush();
 	                writer.close();
 	                JOptionPane.showMessageDialog(frame, "File saved successfully at " + fileToSave.getAbsolutePath(), "File Saved", JOptionPane.INFORMATION_MESSAGE);
