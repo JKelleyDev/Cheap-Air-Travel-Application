@@ -142,31 +142,31 @@ public class ConfirmationPage
 			JLabel traveler1Label = new JLabel(); 
 			traveler1Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler1Label.setBounds(2, 30, 375, 30);
-			traveler1Label.setText("Traveler 1: " + travelerArray[0].toString());
+			traveler1Label.setText("Traveler 1: " + travelerArray[0].returnFullName());
 			travelerInformation.add(traveler1Label);
 			
 			JLabel traveler2Label = new JLabel(); 
 			traveler2Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler2Label.setBounds(2, 50, 375, 30);
-			traveler2Label.setText("Traveler 2: " + travelerArray[1].toString());
+			traveler2Label.setText("Traveler 2: " + travelerArray[1].returnFullName());
 			travelerInformation.add(traveler2Label);
 			
 			JLabel traveler3Label = new JLabel(); 
 			traveler3Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler3Label.setBounds(2, 70, 375, 30);
-			traveler3Label.setText("Traveler 3: " + travelerArray[2].toString());
+			traveler3Label.setText("Traveler 3: " + travelerArray[2].returnFullName());
 			travelerInformation.add(traveler3Label);
 			
 			JLabel traveler4Label = new JLabel(); 
 			traveler4Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler4Label.setBounds(2, 90, 375, 30);
-			traveler4Label.setText("Traveler 4: " + travelerArray[3].toString());
+			traveler4Label.setText("Traveler 4: " + travelerArray[3].returnFullName());
 			travelerInformation.add(traveler4Label);
 			
 			JLabel traveler5Label = new JLabel(); 
 			traveler5Label.setFont(new Font("Tahoma", Font.BOLD, 12));
 			traveler5Label.setBounds(2, 110, 375, 30);
-			traveler5Label.setText("Traveler 5: " + travelerArray[4].toString());
+			traveler5Label.setText("Traveler 5: " + travelerArray[4].returnFullName());
 			travelerInformation.add(traveler5Label);
 			
 			
@@ -199,6 +199,23 @@ public class ConfirmationPage
 			carryOnBagsLabel.setBounds(5, 60, 150, 30);
 			costInformation.add(carryOnBagsLabel);
 			
+			int checkedBagCount = model.getCheckedBagCount(); 
+		JLabel checkedBagLabel = new JLabel("Checked Bags (x " + checkedBagCount + ") : $" + checkedBagCount * model.getCheckedBagCost());
+			checkedBagLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
+			checkedBagLabel.setBounds(5, 80, 150, 30);
+			costInformation.add(checkedBagLabel);
+			
+			int wifiPackageCount = model.getWifiPackageCount(); 
+		JLabel wifiPackageLabel = new JLabel("Wifi Packages (x " + wifiPackageCount + ") : $" + wifiPackageCount * model.getWifiCost());
+			wifiPackageLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
+			wifiPackageLabel.setBounds(5, 100, 150, 30);
+			costInformation.add(wifiPackageLabel);
+			
+			double assistanceCharges = model.getAssistanceCharge(); 
+			JLabel assistanceChargeLabel = new JLabel("Assistance Charges: $" + assistanceCharges);
+				assistanceChargeLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
+				assistanceChargeLabel.setBounds(5, 120, 150, 30);
+				costInformation.add(assistanceChargeLabel);
 			
 		confirmationPage.add(costInformation);
 		

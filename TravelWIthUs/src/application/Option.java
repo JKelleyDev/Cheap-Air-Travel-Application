@@ -76,6 +76,40 @@ public class Option
 		this.assistance = selected;
 		// model.addAssistanceFee(); // For each travel, want to keep a total amount of assistance charges 
 	}
-
 	
+	public int getCarryOnStatus() 
+	{ 
+		return carryOnBag; 
+	}
+	
+	public int getCheckedBagStatus()
+	{ 
+		return checkedBag; 
+	}
+	
+	public String getWifiStatus() 
+	{ 
+		if(wifi == true) 
+			return "Yes"; 
+		else 
+			return "No";
+	}
+	
+	public String getMeal() 
+	{ 
+		if(vegiterianMeal == true) 
+			return " " ;
+		else if( meal == true) 
+			return " "; 
+		else 
+			return "No meal added"; 
+	}
+	
+	public String getAssistanceStatus() 
+	{ 
+		if(assistance == true) 
+			return "Assistance required"; 
+		else 
+			return "No Assistance required";
+	}
 }

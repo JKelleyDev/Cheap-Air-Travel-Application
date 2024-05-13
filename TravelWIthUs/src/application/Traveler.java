@@ -11,46 +11,7 @@ public class Traveler
 	private String phoneNumber;
 	private Option option;
 
-	
-	///////////////////////////// Getter Methods 
-	public String getFirstName() 
-	{
-		return firstName;
-	}
-	
-	public String getMiddleName() 
-	{
-		return middleName;
-	}
-	
-	public String getLastName() 
-	{
-		return lastName;
-	}
-	
-	public String getDob() 
-	{
-		return dob;
-	}
-	
-	public String getGender() 
-	{
-		return gender;
-	}
-	
-	public String getPhoneNumber() 
-	{
-		return phoneNumber;
-	}
-	
-	public String getEmail()
-	{
-		return email;
-	}
-	
-	////////////////////////////// Setter Methods 
-	
-	
+
 	public void setDob(String dob) 
 	{
 		this.dob = dob;
@@ -95,11 +56,24 @@ public class Traveler
 		return option;
 	}
 	
-	
+	public String returnFullName() 
+	{ 
+		return firstName + " " + middleName.charAt(0) + ". " + lastName; 
+	}
 	 @Override
 	    public String toString() 
 	 	{
-	        return firstName + " " + lastName ;
+	        return firstName + " " + middleName.charAt(0) + ". " + lastName +
+	        	   "\n  DOB: " + dob + 
+	        	   "\n  Gender: " + gender + 
+	        	   "\n  Phone Number: " + phoneNumber +
+	        	   "\n  Email: " + email + 
+	        	   "\n  Carry On Bag: "  + option.getCarryOnStatus() + 
+	        	   "\n  Checked Bag: " + option.getCheckedBagStatus() + 
+	        	   "\n  Wifi: " + option.getWifiStatus() + 
+	        	   "\n  Meal: " + option.getMeal() +
+	        	   "\n  Assistance: " + option.getAssistanceStatus(); 
+		
 	    }
 	
 }
