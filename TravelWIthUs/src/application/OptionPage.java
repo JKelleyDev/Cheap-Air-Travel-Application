@@ -49,20 +49,20 @@ public class OptionPage extends JFrame
 		/**
 		 * 
 		 */
-		JLabel lblNewLabel = new JLabel("Travel With Us: Add-ons");
-		lblNewLabel.setForeground(new Color(240, 255, 255));
-		lblNewLabel.setBackground(new Color(0, 0, 205));
-		lblNewLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0,0, 600, 80);
-		lblNewLabel.setOpaque(true);
-		optionPage.add(lblNewLabel);
+		JLabel headerLabel = new JLabel("Travel With Us: Add-ons");
+		headerLabel.setForeground(new Color(240, 255, 255));
+		headerLabel.setBackground(new Color(0, 0, 205));
+		headerLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
+		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		headerLabel.setBounds(0,0, 600, 80);
+		headerLabel.setOpaque(true);
+		optionPage.add(headerLabel);
 	
 		/////////////////////////////////
 		/**
 		 * 
 		 */
-		wifiBox = new JCheckBox("wi-fi");
+		wifiBox = new JCheckBox("Wi-Fi");
 		wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		wifiBox.setHorizontalTextPosition(SwingConstants.RIGHT);
 		wifiBox.setBounds(10,100, 145, 23);
