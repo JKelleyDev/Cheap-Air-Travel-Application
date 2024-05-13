@@ -3,7 +3,7 @@
 # Table of Contents: 
 
 [Introduction](https://github.com/Estebansito1/Cheap-Air-Travel-Application/blob/main/README.md#introduction)  
-[Weekly Updates](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#weekly-updates)  
+[Weekly Updates](https://github.com/Estebansito1/Cheap-Air-Travel-Application/blob/main/README.md#weekly-updates)  
 [ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#ulm-diagram)   
 [Requirements Traceability Matrix](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#requirements-traceability-matrix)  
 
