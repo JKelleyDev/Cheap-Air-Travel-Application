@@ -1,6 +1,6 @@
 # Cheap Air Travel Application
 # Table of Contents: 
-[Introduction](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#introduction)
+[Introduction](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#introduction)   
 [Weekly Updates](https://github.com/jordankelley123/Cheap-Air-Travel-Application/blob/main/README.md#weekly-updates)
 
 ## Introduction: 
@@ -14,9 +14,9 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 •	Optimize system performance to handle a large volume of transactions efficiently.  
 •	Facilitate easy integration with other systems such as payments, option selections, and meal selections.  
 
-### ULM Diagram
+## ULM Diagram
 ![TravelWithUs ULM Diagram](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/7fd40a5c-b8c8-4575-826e-895b426afa7b)
-### GUI
+## Requirements Traceability Matrix
 ![Screenshot 2024-04-28 at 8 28 23 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/3e60760e-1294-4b42-b03b-5b8eaa586f53)
 
 
