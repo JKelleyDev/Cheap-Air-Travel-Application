@@ -1,4 +1,9 @@
 package application;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
+
 /**
  * Lead Author(s):
  * 
@@ -20,10 +25,6 @@ package application;
  * infromation as needed from a universal model, initialized during the start of the program. 
  * 
  */
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-
 public class ApplicationModel
 {
 	private int departMonth; // the model has a numeric departure month value
