@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 /**
 *
 * @author Jordan Kelley
@@ -28,7 +29,6 @@ import java.awt.event.ActionListener;
 
 public class OptionPage extends JFrame
 {
-
 	private static final long serialVersionUID = -4470953474727184028L;
 	private JPanel optionPage; // An OptionPage has a 
 	private Option option; // An OptionPage has an option object to store travelers options 
@@ -50,7 +50,6 @@ public class OptionPage extends JFrame
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
 						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
 	{ 
- 
 		this.option = new Option(model); 
 		optionPage = new JPanel(); 
 		optionPage.setLayout(null);	// uses a null layout so absolute positioning can be used on componenets 

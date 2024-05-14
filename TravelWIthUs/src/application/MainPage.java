@@ -32,6 +32,9 @@ import javax.swing.SwingConstants;
 * <br><br>
 * Responsibilities of class:<br>
 * 
+* Creates the mainpage view of the application. This page is responsible for setting the departure and return dates
+* and the departure and destination cities. 
+* 
 */
 
 public class MainPage extends JFrame
@@ -39,16 +42,19 @@ public class MainPage extends JFrame
 	private static final long serialVersionUID = -8739778071928687178L;
 	private JPanel mainPage;
  
-	
+	/** 
+	 * Purpose: Constructor to create the mainpage
+	 * @param frame
+	 * @param route
+	 * @param model
+	 * @param c1
+	 * @param contentPane
+	 * @param departureFlightsPage
+	 */
 	public MainPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane, FlightsPage departureFlightsPage)
 	{ 
- 
-		
-		mainPage = new JPanel(); 
-	
+		mainPage = new JPanel(); 	
 		mainPage.setLayout(null);
-		
-		
 
 		JLabel departureLabel = new JLabel("Departure Date:");
 		departureLabel.setFont(new Font("Sans Serif", Font.PLAIN, 13));
@@ -74,12 +80,10 @@ public class MainPage extends JFrame
 		lblNewLabel.setBounds(0,0, 600, 80);
 		lblNewLabel.setOpaque(true);
 		mainPage.add(lblNewLabel);
-		
-		
+			
 		String[] months = {null,"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", 
 				           "Sep", "Oct", "Nov", "Dec"};
-
-						
+					
 		JComboBox<String> departMonthSelection = new JComboBox<String>(months);
 		departMonthSelection.setBounds(119, 152, 75, 30);
 		mainPage.add(departMonthSelection);
@@ -116,8 +120,6 @@ public class MainPage extends JFrame
 		    }
 		});
 		
-
-	
 		JComboBox<Integer> departYearSelection = new JComboBox<Integer>(); 
 		departYearSelection.setBounds(245, 152, 88, 30);
 		departYearSelection.addItem(null); 
@@ -136,8 +138,6 @@ public class MainPage extends JFrame
 		        }
 		    }
 		});
-		
-
 		
 		JComboBox<String> returnMonthSelection = new JComboBox<String>(months);
 		returnMonthSelection.setBounds(109, 204, 75, 30);
@@ -193,8 +193,7 @@ public class MainPage extends JFrame
 		        }
 		    }
 		});
-		
-		
+			
 		JLabel departureCityListLabel = new JLabel("Departure City");
 		departureCityListLabel.setFont(new Font("Sans Serif", Font.BOLD, 12));
 		departureCityListLabel.setBounds(345, 122, 100, 30);
@@ -225,14 +224,11 @@ public class MainPage extends JFrame
 		seeFlightButton.setBackground(new Color(0, 0, 128));
 		seeFlightButton.setBounds(495, 310, 95, 30);
 		mainPage.add(seeFlightButton);
-		
-	
-		
+			
 		//Action Listeners
 		departureCityList.addListSelectionListener(new DepartureListSelectionHandler(departureCityList,destinationCityList, model)); //listener
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
 		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnMonthSelection, returnDaySelection, returnYearSelection, returnLabel));
-	
 		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane, departureFlightsPage, model, route));
  
 	}

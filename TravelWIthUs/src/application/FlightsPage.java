@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 /**
 *
 * @author Jordan Kelley
@@ -27,6 +26,7 @@ import javax.swing.JPanel;
 * Responsibilities of class:<br>
 * 
 */
+
 public class FlightsPage extends JFrame
 {
 	private static final long serialVersionUID = 2279549375098327669L;

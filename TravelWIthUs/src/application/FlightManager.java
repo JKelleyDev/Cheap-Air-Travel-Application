@@ -25,22 +25,24 @@ import java.util.Map;
 * <br><br>
 * Responsibilities of class:<br>
 * 
+* Creates flights assigning them uniuqe flightnumbers and has the ability to return formated departure and arrival times
 */
 
 public class FlightManager 
 {	
-	private static int flightNumberCounter = 0; 
-	private String departureTime; 
-	private String departureAirport; 
-	private String destinationAirport; 
-	private String flightNumberPrefix = "TU"; 
-	private int flightDurationMinutes;
-	private Routes route; 
-	private int flightNumber; 
+	private static int flightNumberCounter = 0; // flightManager has a static counter used to assign flight numbers in order of creation
+	private String departureTime; // each flight has a departureTime 
+	private String departureAirport; // each flight has a departure airport
+	private String destinationAirport; // each flight has a destination airport
+	private String flightNumberPrefix = "TU"; // each flight number has a TU prefix 
+	private int flightDurationMinutes; // each flight has a flight duration 
+	private Routes route; // the flightManager has a reference to the route
+	private int flightNumber; // each flight has a flight number 
 	
-
+    // Create a hashmap for the timezones for each airport code
 	private static final Map<String, ZoneId> timeZoneMap = new HashMap<>();
-    static {
+    static 
+    {
     	
     	timeZoneMap.put("LAX", ZoneId.of("America/Los_Angeles")); // Los Angeles Airport
         timeZoneMap.put("NRT", ZoneId.of("Asia/Tokyo")); // Narita, Tokyo
@@ -55,6 +57,14 @@ public class FlightManager
         timeZoneMap.put("HKG", ZoneId.of("Asia/Hong_Kong")); // Hong Kong International
     }
 	
+    /** 
+     * Purpose: Constructor to create the flightManager
+     * @param departureTime
+     * @param departureAirport
+     * @param destinationAirport
+     * @param flightDurationMinutes
+     * @param route
+     */
 	public FlightManager(String departureTime, String departureAirport, String destinationAirport, int flightDurationMinutes, Routes route)
 	{
 		this.departureTime = departureTime;  
@@ -62,14 +72,14 @@ public class FlightManager
 		this.destinationAirport = destinationAirport; 
 		this.flightDurationMinutes = flightDurationMinutes; 
 		this.route = route; 
-
-		
 		flightNumberCounter++; 
 		this.flightNumber = flightNumberCounter;
 	}
 	
-	
-	
+	/** 
+	 * Purpose: takes the date and time of the departure and formats it for the timezone of the departure airport
+	 * @return formated departure date and time
+	 */
 	public String getDepartureTime()
 	{ 
 		    String departureDateString = route.getDepartDate(); 
@@ -86,10 +96,13 @@ public class FlightManager
 	        DateTimeFormatter extendedFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	        // Format the output to include date
-	       
 	        return departureTime.format(extendedFormatter);
 	}
 	
+	/** 
+	 * Purpose: returns a formated flight number to be of the proper length
+	 * @return formated flight number
+	 */
 	public String getFlightNumber() 
 	{ 
 		if(flightNumber < 10)
@@ -101,13 +114,18 @@ public class FlightManager
 			return flightNumberPrefix + "0" + flightNumber; 
 	}
 	
+	/** 
+	 * Purpose: takes the departure date and time, the flight time, and the time zone of the arrival airport to calculate arrival time
+	 * @param takeOffDate
+	 * @return arrival time of flight
+	 */
 	public String getArrivalTime(String takeOffDate) 
 	{ 
 		
 		 ZoneId departureZone = timeZoneMap.get(departureAirport);
 	     ZoneId destinationZone = timeZoneMap.get(destinationAirport);
 
-	     // Parse the departure date
+	        // Parse the departure date
 	        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 	        LocalDate departureDate = LocalDate.parse(takeOffDate, dateFormatter);
 
@@ -129,7 +147,6 @@ public class FlightManager
 	        DateTimeFormatter extendedFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
 	        // Format the output to include date
-	        
 	        return arrivalTimeInDestinationZone.format(extendedFormatter);
 
 	}
