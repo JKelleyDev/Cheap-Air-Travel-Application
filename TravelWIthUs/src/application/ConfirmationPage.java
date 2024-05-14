@@ -309,11 +309,13 @@ public class ConfirmationPage
                     writer.println("Checked Bags(x " +  model.getCheckedBagCount() + ") : $" + model.getCheckedBagCount() * model.getCheckedBagCost());
                     writer.println("Wifi Packages(x " + model.getWifiPackageCount() + ") : $" + model.getWifiPackageCount() * model.getWifiCost());
                     writer.println("Assistance Charges: $" + model.getAssistanceCharge());
+                    writer.println("Meals(x " + model.getmealCount() + ") : $" + model.getMealCost() * model.getmealCount());
 	                writer.flush();
 	                writer.close();
 	                JOptionPane.showMessageDialog(frame, "File saved successfully at " + fileToSave.getAbsolutePath(), "File Saved", JOptionPane.INFORMATION_MESSAGE);
 	            } catch (IOException ex) {
 	                JOptionPane.showMessageDialog(frame, "Error saving file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+	                writeFile();
 	            }
 	        }
 	}

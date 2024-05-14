@@ -25,7 +25,7 @@ public class Option
 	//TODO: Comment the HAS-A Relationships for each private variable, look at Application Model for example
 	private boolean wifi; // Option has a wifi choice of true or false
 	private boolean standardMeal;
-	private boolean vegeterianMeal;
+	private boolean vegetarianMeal;
 	private boolean assistance;
 	private int checkedBag;
 	private int carryOnBag; 
@@ -88,11 +88,11 @@ public class Option
 	 * Purpose:
 	 * @param
 	 */
-	public void setMealVegeterian(boolean selected) 
+	public void setMealVegetarian(boolean selected) 
 	{
 		if(selected)
 		{
-			vegeterianMeal = true;
+			vegetarianMeal = true;
 			model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
 	    }
 	}
@@ -147,8 +147,8 @@ public class Option
     { 
     	if(standardMeal == true)
     		return "Standard Meal"; 
-    	else if(vegeterianMeal = true)
-    		return "Vegeterian Meal";
+    	else if(vegetarianMeal = true)
+    		return "Vegetarian Meal";
     	else 
     		return "No Meal Selected"; 
     }

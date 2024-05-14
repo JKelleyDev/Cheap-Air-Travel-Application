@@ -110,7 +110,7 @@ public class OptionPage extends JFrame
 		            {
 		                public void actionPerformed(ActionEvent e) 
 		                {
-		                    option.setMealVegeterian(true);  
+		                    option.setMealVegetarian(true);  
 		                }
 		            });
 		            nonVegetarianItem.addActionListener(new ActionListener() 

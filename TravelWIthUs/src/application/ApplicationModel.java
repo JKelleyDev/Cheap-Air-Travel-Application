@@ -50,7 +50,7 @@ public class ApplicationModel
 	private final double CHECKED_BAG_COST = 50.00;  // the model has a final checked bag cost
 	private final double WIFI_CHARGE = 9.99; // the model has a final Wi-Fi charge
 	private final double ASSISTANCE_FEE = 9.99; // the model has a final assistance fee
-	
+	private final double MEAL_CHARGE = 14.99;   // the model has a final meal charge
 	
 	/** 
 	 * Purpose: Creates a hasmap to access integer value of a shortned string month (key)
@@ -474,5 +474,13 @@ public class ApplicationModel
 		return  mealsOrderedTotal; 
 	}
 
+	/** 
+	 * Purpose: Retrieves the charge per meal
+	 * @return MEAL_CHARGE
+	 */
+	public double getMealCost() 
+	{ 
+		return MEAL_CHARGE; 
+	}
 
 }
