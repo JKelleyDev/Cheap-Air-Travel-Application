@@ -21,6 +21,7 @@ import java.util.Hashtable;
 * Responsibilities of class:<br>
 * 
 * This class creates multiple hashmaps to store mileage between destinations, flight time in minutes between destinations. 
+* 
 */
 
 public class Routes 
