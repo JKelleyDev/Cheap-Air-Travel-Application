@@ -97,7 +97,7 @@ public class MainPage extends JFrame
 		});
 		
 		JComboBox<Integer> departDaySelection = new JComboBox<Integer>();
-		departDaySelection.setBounds(190, 152, 60, 30);
+		departDaySelection.setBounds(190, 152, 65, 30);
 		departDaySelection.addItem(null);
 		 for(int i = 1; i <= 31; i++) 
 			{
@@ -140,7 +140,7 @@ public class MainPage extends JFrame
 
 		
 		JComboBox<String> returnMonthSelection = new JComboBox<String>(months);
-		returnMonthSelection.setBounds(119, 204, 75, 30);
+		returnMonthSelection.setBounds(109, 204, 75, 30);
 		mainPage.add(returnMonthSelection);
 		
 		returnMonthSelection.addItemListener(new ItemListener() {
@@ -156,7 +156,7 @@ public class MainPage extends JFrame
 		});
 		
 		JComboBox<Integer> returnDaySelection = new JComboBox<Integer>();
-		returnDaySelection.setBounds(190, 204, 60, 30);
+		returnDaySelection.setBounds(180, 204, 70, 30);
 		returnDaySelection.addItem(null);
 		 for(int i = 1; i <= 31; i++) 
 			{	
