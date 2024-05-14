@@ -1,27 +1,26 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
 
 class TravelWithUsTest
 {
