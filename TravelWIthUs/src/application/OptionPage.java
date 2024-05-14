@@ -4,36 +4,28 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
-
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- * TODO: Type our the responsiblility of the class, look at Application model if you need a reference 
- * 
- */
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
 
 public class OptionPage extends JFrame
 {
-	private JFrame frame;
+	private static final long serialVersionUID = -7630291301848917213L;
 	private JPanel optionPage;
-	private Routes route; 
-	private ApplicationModel model;
-	private CardLayout c1; 
-	private JPanel contentPane; 
 	private Option option;
-	private BookingPage bookingPage; 
 	private JCheckBox wifiBox; 
 	private JCheckBox mealBox; 
 	private JCheckBox assistanceBox;
@@ -51,13 +43,7 @@ public class OptionPage extends JFrame
 	 */
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
 						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
-	{ 
-		this.frame = frame; 
-		this.route = route; 
-		this.model = model; 
-		this.c1 = c1; 
-		this.contentPane = contentPane;
-		this.bookingPage = bookingPage; 
+	{  
 		this.option = new Option(model); 
 		optionPage = new JPanel(); 
 		optionPage.setLayout(null);	// uses a null layout so absolute positioning can be used on componenets 

@@ -1,42 +1,11 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
-
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.time.Year;
-import java.time.format.DateTimeFormatter;
-
-import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -45,30 +14,35 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
 
 public class MainPage extends JFrame
 {
-	private JFrame frame;
+	private static final long serialVersionUID = -8739778071928687178L;
 	private JPanel mainPage;
-	private Routes route; 
-	private ApplicationModel model;
-	private CardLayout c1; 
-	private JPanel contentPane; 
-	private FlightsPage departureFlightsPage; 
+ 
 	
 	public MainPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1, JPanel contentPane, FlightsPage departureFlightsPage)
 	{ 
-		this.frame = frame; 
-		this.route = route; 
-		this.model = model; 
-		this.c1 = c1; 
-		this.contentPane = contentPane;
-		this.departureFlightsPage = departureFlightsPage; 
+ 
 		
 		mainPage = new JPanel(); 
 	

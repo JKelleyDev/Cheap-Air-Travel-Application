@@ -16,20 +16,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- * Lead Author(s):
+ *
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
  * 
- * @auth or Jordan Kelley
- * @auth or Esteban Naranjo
+ * @version 2024.05.24.001
  * 
- * Other contributors:
- * 
- * References:
+ * @see
+ * 	References:<br>
  *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
  * 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
+ *
+ * <br><br>
+ * Responsibilities of class:<br>
  * This class represents the confirmation page where the user can review their booking details.
  */
 public class ConfirmationPage 

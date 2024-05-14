@@ -13,27 +13,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Lead Author(s):
- * 
  * @author Jordan Kelley
  * @author Esteban Naranjo
- *       
- * Other contributors:
  * 
- * References:
+ * @version 2024.05.24.001
+ * 
+ * @see
+ * 	References:
+ * <br>
  *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
+ *         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+ * <br><br>
  * 		CardLayout: 
- * 		1.) https://docs.oracle.com/javase%2Ftutorial%2Fuiswing%2F%2F/layout/card.html 
- *      2.) https://www.geeksforgeeks.org/java-awt-cardlayout-class/ 
- *      3.) https://youtu.be/ocb3x0TeoUw?si=I7B3eGt1_Ph4utEC
- * 
-
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
+ * 	<br>	1.) {@link https://docs.oracle.com/javase%2Ftutorial%2Fuiswing%2F%2F/layout/card.html}
+ *  <br>    2.) {@link https://www.geeksforgeeks.org/java-awt-cardlayout-class/}
+ *  <br>    3.) {@link https://youtu.be/ocb3x0TeoUw?si=I7B3eGt1_Ph4utEC}
+ *
+ * <br><br>
+ * Responsibilities of class:<br>
  * This class represents the main view for the travel booking application.
  * It sets up the main frame, initializes the pages, and handles navigation
  * between different pages.

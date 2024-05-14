@@ -1,51 +1,40 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
-
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.SwingConstants;
 
+
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
 public class FlightsPage extends JFrame
 {
+	private static final long serialVersionUID = 2279549375098327669L;
 	private JFrame frame;
 	private JPanel flightsPage;
 	private Routes route; 
 	private ApplicationModel model;
-	private CardLayout c1; 
-	private JPanel contentPane; 
-	
+
 	private FlightManager flight1; 
 	private FlightManager flight2; 
 	private FlightManager flight3; 
@@ -83,8 +72,6 @@ public class FlightsPage extends JFrame
 		this.frame = frame; 
 		this.route = route; 
 		this.model = model; 
-		this.c1 = c1; 
-		this.contentPane = contentPane;
 	
 		// Set up the page and layout // 
 		flightsPage = new JPanel(); 

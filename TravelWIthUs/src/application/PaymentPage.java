@@ -1,61 +1,48 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
 import javax.swing.JFrame;
-
 import java.awt.CardLayout;  
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
+
 public class PaymentPage extends JFrame
 {
-	private JFrame frame;
+	private static final long serialVersionUID = 7179689988923288046L;
 	private JPanel paymentPage;
-	private Routes route; 
-	private ApplicationModel model;
-	private CardLayout c1; 
-	private JPanel contentPane; 
 	private JTextField nameField;
 	private JTextField cardNumberField;
 	private JTextField securityCodeField;
-	private JTextField emailField;
 	private JTextField zipField;
 	private JTextField cityField;
 	private JTextField expirationDateField;
-	private JComboBox<String> contryTerritoryComboBox;
+	private JComboBox<String> countryTerritorySelection;
 	private JComboBox<String> stateSelection;
 	private JLabel stateLabel; 
 	private JLabel cityLabel;
@@ -65,11 +52,7 @@ public class PaymentPage extends JFrame
 	public PaymentPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1,
 			JPanel contentPane, Payment payment) 
 	{
-		this.frame = frame; 
-		this.route = route; 
-		this.model = model; 
-		this.c1 = c1; 
-		this.contentPane = contentPane;
+
 		paymentPage = new JPanel(); 
 		paymentPage.setLayout(null);
 				 
@@ -122,7 +105,7 @@ public class PaymentPage extends JFrame
 				
 		String[] countries = {"","United States", "London", "Tokyo", "Doha", "Paris","Stockholm", "Singapore", "Hong Kong"};
 		
-		JComboBox<String> countryTerritorySelection = new JComboBox<String>(countries);
+		countryTerritorySelection = new JComboBox<String>(countries);
 		countryTerritorySelection.setBounds(405, 150, 150, 20);
 		paymentPage.add(countryTerritorySelection);
 		
@@ -211,7 +194,7 @@ public class PaymentPage extends JFrame
 	            @Override
 	            public void actionPerformed(ActionEvent e) 
 	            {
-	            	Payment payment = new Payment(model);
+	            	Payment payment = new Payment();
 	            	try {	
 
 	            		String name = nameField.getText().trim(); 

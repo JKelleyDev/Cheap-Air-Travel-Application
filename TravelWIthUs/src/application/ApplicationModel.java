@@ -5,26 +5,24 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
-
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- * Creates a centralized class for storing key information throughout the booking process. This will allow the application to access and modify 
- * infromation as needed from a universal model, initialized during the start of the program. 
- * 
- */
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* Creates a centralized class for storing key information throughout the booking process. This will allow the application to access and modify 
+* infromation as needed from a universal model, initialized during the start of the program. 
+* 
+*/
 public class ApplicationModel
 {
 	private int departMonth; // the model has a numeric departure month value

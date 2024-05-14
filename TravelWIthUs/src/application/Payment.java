@@ -1,24 +1,22 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+*/
 
 public class Payment 
 {	
@@ -26,14 +24,8 @@ public class Payment
 	private String cardHolderName; 
 	private String expiryDate; 
 	private String cvv;
-	private ApplicationModel model; 
+ 
 	
-	
-	//////////////////////////////////// Setter Methods 
-	public Payment (ApplicationModel model) 
-	{ 
-		this.model = model; 
-	}
 	public void setCardNumber(String cardNumber)
 	{ 
 		this.cardNumber = cardNumber; 

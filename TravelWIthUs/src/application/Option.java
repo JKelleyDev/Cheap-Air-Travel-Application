@@ -25,6 +25,7 @@ public class Option
 	//TODO: Comment the HAS-A Relationships for each private variable, look at Application Model for example
 	private boolean wifi; // Option has a wifi choice of true or false
 	private boolean standardMeal;
+	@SuppressWarnings("unused")
 	private boolean vegetarianMeal;
 	private boolean assistance;
 	private int checkedBag;
