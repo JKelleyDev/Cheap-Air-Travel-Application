@@ -1,40 +1,40 @@
 package application;
 /**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
-
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- * TODO: Type our the responsiblility of the class, look at Application model if you need a reference 
- * 
- */
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* The responsibility of the class is to manage various options or choices related to travel, 
+* such as baggage selection, meal preferences, wi-fi, and assistance requirements.
+* 
+*/
 
 public class Option 
 {
-	//TODO: Comment the HAS-A Relationships for each private variable, look at Application Model for example
 	private boolean wifi; // Option has a wifi choice of true or false
-	private boolean standardMeal;
+	private boolean standardMeal; // Option has a choice for a standard meal.
 	@SuppressWarnings("unused")
-	private boolean vegetarianMeal;
-	private boolean assistance;
-	private int checkedBag;
-	private int carryOnBag; 
-	private ApplicationModel model;
+	private boolean vegetarianMeal; // Option has a choice for a vegetarian meal.
+	private boolean assistance; // Option has a choice for assistance.
+	private int checkedBag; // Option has a checked bag count.
+	private int carryOnBag; //Option has a carry-on bag count.
+	private ApplicationModel model; // Option has a refrence to the application model.
 
 	/** 
-	 * Purpose: Creates a Option object which belongs to a traveler, this has a reference to the model to store apppropriate information
-	 * @param model
+	 * Purpose: Creates a Option object which belongs to a traveler, 
+	 * this has a reference to the model to store appropriate information.
+	 * 
+	 * @param model this information model to store information.
 	 */
 	public Option(ApplicationModel model) 
 	{
@@ -43,8 +43,8 @@ public class Option
 		carryOnBag = 0;
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
+	/** 
+	 * Purpose: add checked bag and update the model.
 	 */
 	public void addCheckedBag() 
 	{ 
@@ -52,8 +52,8 @@ public class Option
 		model.addCheckedBag(); // Increment the total amount of checked bags in the model
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
+	/** 
+	 * Purpose: add a carry-on bag and updates the model.
 	 */
 	public void addCarryOnBag() 
 	{ 
@@ -61,9 +61,10 @@ public class Option
 		model.addCarryOnBag(); // Increment the total amount of carry on bags in the model
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @param
+	/** 
+	 * Purpose: select the wi-fi option and update the model
+	 * 
+	 * @param selected true if the wi-fi is selected, false otherwise.
 	 */
 	public void setWifi(boolean selected) 
 	{
@@ -72,9 +73,10 @@ public class Option
 		
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @param 
+	/** 
+	 * Purpose: set the standard meal option and update the model.
+	 * 
+	 * @param selected true if the standard meal is selected, false otherwise.
 	 */
 	public void setStandardMeal(boolean selected) 
 	{
@@ -85,10 +87,11 @@ public class Option
 		}
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @param
-	 */
+	/** 
+     * Purpose: Sets the vegetarian meal option and updates the model.
+     * 
+     * @param selected true if the vegetarian meal is selected, false otherwise.
+     */
 	public void setMealVegetarian(boolean selected) 
 	{
 		if(selected)
@@ -98,10 +101,11 @@ public class Option
 	    }
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @param 
-	 */
+	/** 
+     * Purpose: sets the assistance option and updates the model.
+     * 
+     * @param selected true if assistance is selected, false otherwise.
+     */
 	public void setAssistance(boolean selected) 
 	{
 		this.assistance = selected;
@@ -111,27 +115,31 @@ public class Option
 		}
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @return 
-	 */
+	 /** 
+     * Purpose: retrieves the carry-on bag count.
+     * 
+     * @return the number of carry-on bags.
+     */
 	public int getCarryOnStatus() 
 	{ 
 		return carryOnBag; 
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 */
+	/** 
+     * Purpose: retrieves the checked bag count.
+     * 
+     * @return the number of checked bags.
+     */
 	public int getCheckedBagStatus()
 	{ 
 		return checkedBag; 
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @return 
-	 */
+	 /** 
+     * Purpose: Retrieves the wifi status.
+     * 
+     * @return "Yes" if wi-fi is selected, "No" otherwise.
+     */
 	public String getWifiStatus() 
 	{ 
 		if(wifi == true) 
@@ -140,10 +148,11 @@ public class Option
 			return "No";
 	}
 	
-	/** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @return 
-	 */
+	 /** 
+     * Purpose: retrieves the meal selection.
+     * 
+     * @return the selected meal type or "No Meal Selected".
+     */
     public String getMeal()
     { 
     	if(standardMeal == true)
@@ -154,10 +163,12 @@ public class Option
     		return "No Meal Selected"; 
     }
 	
-    /** TODO: Comment the purpose and the @return or @param if they exist 
-	 * Purpose:
-	 * @return 
-	 */
+    /** 
+     * Purpose: retrieves the assistance status.
+     * 
+     * @return "Assistance required" if assistance is selected, 
+     * 			"No Assistance required" otherwise.
+     */
 	public String getAssistanceStatus() 
 	{ 
 		if(assistance == true) 
