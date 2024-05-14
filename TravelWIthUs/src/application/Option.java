@@ -1,120 +1,136 @@
 package application;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
 
-
-import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ * TODO: Type our the responsiblility of the class, look at Application model if you need a reference 
+ * 
+ */
 
 public class Option 
 {
-
-	private Payment payment;
-	private boolean wifi;
-	private boolean meal;
-	private boolean baggage;
+	//TODO: Comment the HAS-A Relationships for each private variable, look at Application Model for example
+	private boolean wifi; // Option has a wifi choice of true or false
+	private boolean standardMeal;
+	private boolean vegeterianMeal;
 	private boolean assistance;
-	private String selectedBag;
 	private int checkedBag;
 	private int carryOnBag; 
 	private ApplicationModel model;
-	private boolean vegeterianMeal; 
-	private int mealTotal;
-	
-//	A travler is made -> that travler has a set options 
-//
-//	When you set the option based on selection, it stores it for that traveler inside option (each traveler has their own option) 
-//
-//	Then, the model.add### functions, accumulate a total count for all the travelers 
 
-	
+	/** 
+	 * Purpose: Creates a Option object which belongs to a traveler, this has a reference to the model to store apppropriate information
+	 * @param model
+	 */
 	public Option(ApplicationModel model) 
 	{
-	
-		wifi = false;
-		meal = false;
-		assistance = false;
-		baggage = false;
 		this.model = model; 
+		checkedBag = 0; 
 		carryOnBag = 0;
-		checkedBag = 0;
-		mealTotal = 0;
 	}
-	///////////////////////////
+	
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 */
 	public void addCheckedBag() 
 	{ 
 		checkedBag++;  // if adding a checked bag, increase the amount of checked bags by 1
-		model.addCheckedBag(); 
+		model.addCheckedBag(); // Increment the total amount of checked bags in the model
 	}
 	
-	/////////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 */
 	public void addCarryOnBag() 
 	{ 
-		carryOnBag++; 
-		model.addCarryOnBag();  // For each travel, want to keep a total amount of carry on bag counts so we can add the cost later for all bags
+		carryOnBag++; // if adding a carry on bag, increase the amount of carry on bags by 1 
+		model.addCarryOnBag(); // Increment the total amount of carry on bags in the model
 	}
 	
-	///////////////////////////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @param
+	 */
 	public void setWifi(boolean selected) 
 	{
 		wifi = selected;
 		model.addWifiPackage(); // For each travel, want to keep a total amount of wifi charges 
 		
 	}
-	/////////////////////////////////////
-	public void setMeal(boolean selected) 
+	
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @param 
+	 */
+	public void setStandardMeal(boolean selected) 
 	{
-		meal = selected;
 		if(selected) 
 		{
+			standardMeal = true;
 			model.addMealCharge();
 		}
 	}
-	///////////////////////////////////////
+	
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @param
+	 */
 	public void setMealVegeterian(boolean selected) 
 	{
-		this.vegeterianMeal = selected;	
 		if(selected)
 		{
-		model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
+			vegeterianMeal = true;
+			model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
 	    }
 	}
 	
-	////////////////////////////////////
-	public void setMealNonVegeterian(boolean selected) 
-	{
-		this.meal = selected;	
-		if (selected) 
-		{
-		model.addMealCharge(); // For each travel, want to keep a total amount of meal charges
-		}
-	}
-	/////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @param 
+	 */
 	public void setAssistance(boolean selected) 
 	{
 		this.assistance = selected;
 		if (selected) 
 		{
-		model.addAssistance(); // For each travel, want to keep a total amount of assistance charges 
+			model.addAssistance(); // For each travel, want to keep a total amount of assistance charges 
 		}
 	}
 	
-	/////////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @return 
+	 */
 	public int getCarryOnStatus() 
 	{ 
 		return carryOnBag; 
 	}
 	
-	////////////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 */
 	public int getCheckedBagStatus()
 	{ 
 		return checkedBag; 
 	}
 	
-	//////////////////////////////
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @return 
+	 */
 	public String getWifiStatus() 
 	{ 
 		if(wifi == true) 
@@ -123,19 +139,24 @@ public class Option
 			return "No";
 	}
 	
-	////////////////////////
-	public String getMeal() 
-	{ 
-		if(vegeterianMeal == true) 
-			return " " ;
-		else if( meal == true) 
-			return " "; 
-		else 
-			return "No meal added"; 
-	}
+	/** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @return 
+	 */
+    public String getMeal()
+    { 
+    	if(standardMeal == true)
+    		return "Standard Meal"; 
+    	else if(vegeterianMeal = true)
+    		return "Vegeterian Meal";
+    	else 
+    		return "No Meal Selected"; 
+    }
 	
-	
-	//////////////////////////////////
+    /** TODO: Comment the purpose and the @return or @param if they exist 
+	 * Purpose:
+	 * @return 
+	 */
 	public String getAssistanceStatus() 
 	{ 
 		if(assistance == true) 

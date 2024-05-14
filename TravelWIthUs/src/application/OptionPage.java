@@ -3,6 +3,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
+
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ * TODO: Type our the responsiblility of the class, look at Application model if you need a reference 
+ * 
+ */
 
 public class OptionPage extends JFrame
 {
@@ -13,8 +33,6 @@ public class OptionPage extends JFrame
 	private CardLayout c1; 
 	private JPanel contentPane; 
 	private Option option;
-	private JPanel seatDiagramPanel;
-	private Option finalOption;
 	private BookingPage bookingPage; 
 	private JCheckBox wifiBox; 
 	private JCheckBox mealBox; 
@@ -41,14 +59,9 @@ public class OptionPage extends JFrame
 		this.contentPane = contentPane;
 		this.bookingPage = bookingPage; 
 		this.option = new Option(model); 
-	
 		optionPage = new JPanel(); 
-		optionPage.setLayout(null);	
+		optionPage.setLayout(null);	// uses a null layout so absolute positioning can be used on componenets 
 		
-		///////////////////////////
-		/**
-		 * 
-		 */
 		JLabel headerLabel = new JLabel("Travel With Us: Add-ons");
 		headerLabel.setForeground(new Color(240, 255, 255));
 		headerLabel.setBackground(new Color(0, 0, 205));
@@ -58,10 +71,9 @@ public class OptionPage extends JFrame
 		headerLabel.setOpaque(true);
 		optionPage.add(headerLabel);
 	
-		/////////////////////////////////
-		/**
-		 * 
-		 */
+		/////////////////////////////////////////////////////////
+		////////// Wi-Fi CheckBox ///////////////////////////////
+		/////////////////////////////////////////////////////////
 		wifiBox = new JCheckBox("Wi-Fi");
 		wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		wifiBox.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -78,40 +90,9 @@ public class OptionPage extends JFrame
 		});
 		optionPage.add(wifiBox);
 
-		////////////////////////////////////////////////////////
-		/**
-		 * 
-		 */
-//		mealBox = new JCheckBox("Meal");
-//		mealBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-//		mealBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-//		mealBox.setBounds(10,150, 145, 23);
-//		mealBox.addActionListener(new ActionListener() 
-//		{
-//			public void actionPerformed(ActionEvent e)
-//			{
-//				if(option != null) 
-//			{
-//				//option.setMeal(mealBox.isSelected());	
-//			}
-//			/**
-//			 * 
-//			 */
-//			if(mealBox.isSelected()) 
-//			{
-//				JPopupMenu mealMenu = new JPopupMenu();
-//				JMenuItem Item1 = new JMenuItem("vegetarian");
-//				JMenuItem Item2= new JMenuItem("Non-vegetarian");
-//				Item1.setToolTipText("Roasted Vegetable Penne Pasta\", \"Price: $14.99");
-//				Item2.setToolTipText("Grilled Salmon with Lemon Butter Sauce\", \"Price: $15.99");
-//				mealMenu.add(Item1);
-//				mealMenu.add(Item2);
-//				mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
-//			}
-//		  }
-//		});
-//		optionPage.add(mealBox);
-////		
+		/////////////////////////////////////////////////////////
+		////////// Meals CheckBox ///////////////////////////////
+		/////////////////////////////////////////////////////////
 		mealBox = new JCheckBox("Meal");
 		mealBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		mealBox.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -120,9 +101,6 @@ public class OptionPage extends JFrame
 		{
 		    public void actionPerformed(ActionEvent e) 
 		    {
-		        if(option != null) {
-		            option.setMeal(mealBox.isSelected());
-		        }
 		        if(mealBox.isSelected()) 
 		        {
 		            JPopupMenu mealMenu = new JPopupMenu();
@@ -132,14 +110,14 @@ public class OptionPage extends JFrame
 		            {
 		                public void actionPerformed(ActionEvent e) 
 		                {
-		                    option.setMeal(true);  
+		                    option.setMealVegeterian(true);  
 		                }
 		            });
 		            nonVegetarianItem.addActionListener(new ActionListener() 
 		            {
 		                public void actionPerformed(ActionEvent e) 
 		                {
-		                    option.setMeal(true);  
+		                    option.setStandardMeal(true);  
 		                }
 		            });
 		            mealMenu.add(vegetarianItem);
@@ -149,14 +127,10 @@ public class OptionPage extends JFrame
 		    }
 		});
 		optionPage.add(mealBox);
-		
-		
-		
-							
+			
 		/////////////////////////////////////////////////////////
-		/**
-		 * 
-		 */
+		////////// Assistance CheckBox //////////////////////////
+		/////////////////////////////////////////////////////////
 		assistanceBox = new JCheckBox("Assistance");
 		assistanceBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		assistanceBox.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -195,10 +169,9 @@ public class OptionPage extends JFrame
 		});
 		optionPage.add(assistanceBox);
 					
-		///////////////////////////////
-		/**
-		 * 
-		 */
+		/////////////////////////////////////////////////////////
+		////////// Bags CheckBox ////////////////////////////////
+		/////////////////////////////////////////////////////////
 		bagsBox = new JCheckBox("Bags");
 		bagsBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
 		bagsBox.setHorizontalTextPosition(SwingConstants.RIGHT);
@@ -240,10 +213,9 @@ public class OptionPage extends JFrame
 		});
 		optionPage.add(bagsBox);
 		
-		///////////////////////////////
-		/**
-		 * 
-		 */
+		/////////////////////////////////////////////////////////
+		////////// Back Button         //////////////////////////
+		/////////////////////////////////////////////////////////
 	    JButton backButton = new JButton("Back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 	    backButton.setBackground(new Color(0, 0, 128));
@@ -259,10 +231,9 @@ public class OptionPage extends JFrame
 		    }
 		});	       
 		
-		////////////////////////////////////////////////////////////////
-		/**
-		 * 
-		 */
+		/////////////////////////////////////////////////////////
+		////////// Next Traveler Button  ////////////////////////
+		/////////////////////////////////////////////////////////
 		JButton anotherTravelerButton = new JButton("Next Traveler"); 
 		anotherTravelerButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		anotherTravelerButton.setBackground(new Color(0, 0, 128));
@@ -274,18 +245,17 @@ public class OptionPage extends JFrame
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
-				model.getCurrentTraveler().setOptions(option);
-				bookingPage.clearDetails();
-				clearPage();
-				option = new Option(model); 
-				c1.show(contentPane, "bookingDetails");
+				model.getCurrentTraveler().setOptions(option); // Store the current set of options into the traveler who selected them 
+				bookingPage.clearDetails(); // clear the input on the booking page of the previous traveler 
+				clearPage();// clear the page of all selections so they are ready for the next traveler 
+				option = new Option(model); // create a new option object for the next traveler 
+				c1.show(contentPane, "bookingDetails"); // show the booking details page on the frame 
 			}
 		});
 		
-		//////////////////////////////	
-		/**
-		 * 
-		 */
+		/////////////////////////////////////////////////////////
+		////////// Payment Button      //////////////////////////
+		/////////////////////////////////////////////////////////
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		seePaymentButton.setBackground(new Color(0, 0, 128));
@@ -297,15 +267,17 @@ public class OptionPage extends JFrame
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
-				model.getCurrentTraveler().setOptions(option);
-				c1.show(contentPane, "Payment");
-				frame.setTitle("Payment");
+				model.getCurrentTraveler().setOptions(option);  // Store the current set of options into the traveler who selected them 
+				c1.show(contentPane, "Payment"); // Display now the payment pane on the screen 
+				frame.setTitle("Payment"); // Change the title of the frame to "Payment" 
 			}
 		 });			    
 	    }
 	
-		//////////////////////////////////////
+	
 		/**
+		 * TODO
+		 * Purpose: 
 		 * 
 		 */
 		public void clearPage()
@@ -316,10 +288,8 @@ public class OptionPage extends JFrame
 			bagsBox.setSelected(false);
 		}
 		
-		//////////////////////////////
 		/**
-		 * Returns the option panel.
-		 * 
+		 * Purpose: Returns the option panel. 
 		 * @return the option panel as a JPanel object.
 		 */
 		public JPanel returnPanel()
