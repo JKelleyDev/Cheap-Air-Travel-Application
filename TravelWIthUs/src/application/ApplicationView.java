@@ -1,80 +1,84 @@
 package application;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
+ * 		CardLayout: 
+ * 		1.) https://docs.oracle.com/javase%2Ftutorial%2Fuiswing%2F%2F/layout/card.html 
+ *      2.) https://www.geeksforgeeks.org/java-awt-cardlayout-class/ 
+ *      3.) https://youtu.be/ocb3x0TeoUw?si=I7B3eGt1_Ph4utEC
+ * 
 
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ * This class represents the main view for the travel booking application.
+ * It sets up the main frame, initializes the pages, and handles navigation
+ * between different pages.
+ * 
+ */
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JSpinner;
-
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JCheckBox;
-import javax.swing.JScrollPane;
 
 
 public class ApplicationView extends JFrame
 {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JPanel mainPage; 
-	private JPanel departureFlightsPage; 
-	private JPanel returnFlightsPage;
-	private JPanel bookingPage; 
-	private JPanel confirmationPage; 
-	private Routes route ;
-    private JPanel paymentPage;
-	private JPanel optionPage;
-	@SuppressWarnings("unused")
-	private ApplicationModel model; 
-	private CardLayout c1;
-	private Payment payment;
+	private JPanel contentPane; // An applicationView has a contentPane to display current view 
+	private JPanel mainPage;    // An applicationView has a mainPage which is the first page to be viewed
+	private JPanel departureFlightsPage; // An applicationView has a departureFlightsPage where the user chooses flight options
+	private JPanel bookingPage;// An applicationView has a bookingPage where the user enters traveler details 
+    private JPanel paymentPage;// An applicationView has a paymentPage where the user enters payment information
+	private JPanel optionPage; // An applicationView has an optionPage where the user selects extra options 
+	private CardLayout c1;     // An applicationView has a cardLayout that organizes multiple JPanels to displayed by calling a keyword
+	private Payment payment;   // An applicationView has a payment which stores payment information
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args)
-	{
-		EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-			{
-				try
-				{
-					
-					Routes route = new Routes();
-					ApplicationView frame = new ApplicationView(new ApplicationModel(route), route);
-					frame.setVisible(true);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	 /**
+     * Purpose: Launches the application.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Routes route = new Routes();
+                    ApplicationView frame = new ApplicationView(new ApplicationModel(route), route);
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-	/**
-	 * Create the frame.
-	 */
+	 /**
+     * Purpose: Creates the main frame of the application.
+     *
+     * @param model the application model
+     * @param route the routes information
+     */
 	public ApplicationView(ApplicationModel model, Routes route)
 	{
-		this.model = model; 
-		this.route = route; 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setPreferredSize(new Dimension(600, 400));
 		this.setResizable(false);
@@ -82,6 +86,7 @@ public class ApplicationView extends JFrame
 		this.pack();
 		this.setLocationRelativeTo(null);
 			
+		// Use the cardlayout to display different views onto the frame, each page is it's own JPanel
 		c1 = new CardLayout();
 		contentPane = new JPanel();
 		contentPane.setLayout(c1);
@@ -91,56 +96,37 @@ public class ApplicationView extends JFrame
 		setJMenuBar(menuBar);
 
 		JMenu menu = new JMenu("Menu");
-			JMenuItem homePage = new JMenuItem("Home Page"); 
-			homePage.addActionListener(new ActionListener() {
-			    @Override
-			    public void actionPerformed(ActionEvent e) 
-			    {
-			      c1.show(contentPane, "main");
-			      resetModel();
-			    }
-			});
-			
-		JMenu printOption = new JMenu("Print Confirmation");
-
-			
-		menuBar.add(menu);
-			menu.add(homePage); 
-			menu.add(printOption);
+		JMenuItem homePage = new JMenuItem("Home Page"); 
 		
-			
+		// Add Actionlistener to handle when a user clicks on the "Home Page" menu item
+		homePage.addActionListener(new ActionListener() { 
+			@Override
+			public void actionPerformed(ActionEvent e) {  
+				  dispose();  // Close the current application frame 
+			      main(null); // Restart an instance of the application by calling the main method
+			    }
+		});
+		menuBar.add(menu);
+		menu.add(homePage); 
+	
 		// Create the panels for each page
-
 		FlightsPage departureFlightsPageClass = new FlightsPage(this, route, model, c1, contentPane);
 		departureFlightsPage = departureFlightsPageClass.returnPanel(); 
 		contentPane.add(departureFlightsPage, "departure flights");
 	
 		mainPage = (new MainPage(this, route, model, c1, contentPane, departureFlightsPageClass).returnPanel()); 
-			contentPane.add(mainPage, "main"); 
+		contentPane.add(mainPage, "main"); 
 			
 		BookingPage bookingPageClass = new BookingPage(this,route,model,c1,contentPane);
 		bookingPage = (bookingPageClass.returnPanel()); 
 		contentPane.add(bookingPage, "bookingDetails");
     
 		optionPage = (new OptionPage(this,route,model,c1,contentPane, bookingPageClass).returnPanel()); 
-			contentPane.add(optionPage, "Option");
+		contentPane.add(optionPage, "Option");
 		
 		paymentPage = (new PaymentPage(this,route,model,c1,contentPane, payment).returnPanel()); 
-			contentPane.add(paymentPage, "Payment");
-			
-
-			
-			
-			c1.show(contentPane, "main"); // Start on the main page		
-					
-			//c1.show(contentPane, "Payment");
-
-	}
-
-	public void resetModel() 
-	{ 
-		main(null); 
-	}
+		contentPane.add(paymentPage, "Payment");
 	
-	
+		c1.show(contentPane, "main"); // Start on the main page		
+	}
 }

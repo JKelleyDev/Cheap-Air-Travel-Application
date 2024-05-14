@@ -44,6 +44,7 @@ public class ApplicationModel
 	private int wifiPackageCount; // the model has a total number of Wi-Fi packages 
 	private int assistanceTotal;  // the model has a total number of asssitance packages
 	private int mealsOrderedTotal; // the model has a total number of meals ordered
+	private Payment payment; // the model has a payment object to store payment information
 	
 	private double baseFare = 50.00; // the model has a base fare value, initially 50.00 but will change to 25.00 if oneway fare is set
 	private final double CARRY_ON_BAG_COST = 20.00; // the model has a final carry on bag cost
@@ -53,7 +54,7 @@ public class ApplicationModel
 	private final double MEAL_CHARGE = 14.99;   // the model has a final meal charge
 	
 	/** 
-	 * Purpose: Creates a hasmap to access integer value of a shortned string month (key)
+	 * Purpose: Creates a hashmap to access integer value of a shortned string month (key)
 	 */
 	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
 	 {
@@ -481,6 +482,24 @@ public class ApplicationModel
 	public double getMealCost() 
 	{ 
 		return MEAL_CHARGE; 
+	}
+	
+	/** 
+	 * Purpose: Stores the payment information as a payment object
+	 * @param payment
+	 */
+	public void setPayment(Payment payment)
+	{
+		this.payment = payment;
+	}
+	
+	/** 
+	 * Purpose: Retrieves the payment object 
+	 * @return payment
+	 */
+	public Payment getPayment()
+	{
+		return payment;
 	}
 
 }

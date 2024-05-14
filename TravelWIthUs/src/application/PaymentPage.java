@@ -1,5 +1,24 @@
 package application;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
 
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ *
+ * 
+ */
 import javax.swing.JFrame;
 
 import java.awt.CardLayout;  
@@ -16,6 +35,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -28,7 +48,7 @@ public class PaymentPage extends JFrame
 	private ApplicationModel model;
 	private CardLayout c1; 
 	private JPanel contentPane; 
-	private JTextField firstNameField;
+	private JTextField nameField;
 	private JTextField cardNumberField;
 	private JTextField securityCodeField;
 	private JTextField emailField;
@@ -36,6 +56,10 @@ public class PaymentPage extends JFrame
 	private JTextField cityField;
 	private JTextField expirationDateField;
 	private JComboBox<String> contryTerritoryComboBox;
+	private JComboBox<String> stateSelection;
+	private JLabel stateLabel; 
+	private JLabel cityLabel;
+	private JLabel zipCode; 
 	
 
 	public PaymentPage(JFrame frame, Routes route, ApplicationModel model, CardLayout c1,
@@ -46,105 +70,123 @@ public class PaymentPage extends JFrame
 		this.model = model; 
 		this.c1 = c1; 
 		this.contentPane = contentPane;
-
-
-		
 		paymentPage = new JPanel(); 
-	
 		paymentPage.setLayout(null);
 				 
 		
-		JLabel lblNewLabel = new JLabel("Travel With Us: Payment Debit/Credit ");
-		lblNewLabel.setForeground(new Color(240, 255, 255));
-		lblNewLabel.setBackground(new Color(0, 0, 205));
-		lblNewLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0,0, 600, 80);
-		lblNewLabel.setOpaque(true);
-		paymentPage .add(lblNewLabel);
+		JLabel headerLabel = new JLabel("Travel With Us: Payment Debit/Credit ");
+		headerLabel.setForeground(new Color(240, 255, 255));
+		headerLabel.setBackground(new Color(0, 0, 205));
+		headerLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
+		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		headerLabel.setBounds(0,0, 600, 80);
+		headerLabel.setOpaque(true);
+		paymentPage .add(headerLabel);
 		
 		///////////////////////////////////////////////////////	
-		JLabel lbNameLabel = new JLabel("Name on Card*:");
-		lbNameLabel.setBounds(105,80,100,20);
-		paymentPage .add(lbNameLabel);
-		firstNameField = new JTextField();
-		firstNameField.setBounds(100,100,150,20);
-		paymentPage .add(firstNameField);
+		JLabel nameLabel = new JLabel("Name on Card:");
+		nameLabel.setBounds(105,80,100,20);
+		paymentPage .add(nameLabel);
+		nameField = new JTextField();
+		nameField.setBounds(100,100,150,20);
+		paymentPage .add(nameField);
 		
 		//////////////////////////////////////////
-		JLabel lbCardNumberLabel = new JLabel("Card number*:");
-		lbCardNumberLabel.setBounds(255,80,150,20);
-		paymentPage .add(lbCardNumberLabel);
+		JLabel cardNumberLabel = new JLabel("Card number:");
+		cardNumberLabel.setBounds(255,80,150,20);
+		paymentPage .add(cardNumberLabel);
 		cardNumberField = new JTextField();
 		cardNumberField.setBounds(250,100,150,20);
 		paymentPage .add(cardNumberField);
 		
 		/////////////////////////////////////////
-		JLabel lbSecurityCodeLabel = new JLabel("Security code*:");
-		lbSecurityCodeLabel.setBounds(405,80,100,20);
-		paymentPage.add(lbSecurityCodeLabel);
+		JLabel securityCodeLabel = new JLabel("Security code:");
+		securityCodeLabel.setBounds(405,80,100,20);
+		paymentPage.add(securityCodeLabel);
 		securityCodeField = new JTextField();
 		securityCodeField.setBounds(400,100,150,20);
 		paymentPage.add(securityCodeField);
 		
-		//////////////////////////////////////////////////	
-		JLabel lbEmailLabel = new JLabel("Email:");
-		lbEmailLabel.setBounds(105, 130, 80 ,20);
-		paymentPage .add(lbEmailLabel);
-	    emailField = new JTextField();
-		emailField.setBounds(100,150,150,20);
-		paymentPage.add(emailField);
-		
 		////////////////////////////////////////////
-		JLabel lbExpirationDateLabel = new JLabel("Expiration date*:");
-		lbExpirationDateLabel.setBounds(255,130,150,20);
-		paymentPage.add(lbExpirationDateLabel);
+		JLabel expirationDate = new JLabel("Expiration date:");
+		expirationDate.setBounds(255,130,150,20);
+		paymentPage.add(expirationDate);
 	    expirationDateField = new JTextField();
 	    expirationDateField.setBounds(250,150,150,20);
 	    paymentPage.add(expirationDateField);
 		
 		/////////////////////////////////////////////////////////
-		JLabel lbContryTerritoryLabel = new JLabel("Country/Territory:");
-		lbContryTerritoryLabel.setBounds(405,130,150,20);
-		paymentPage.add(lbContryTerritoryLabel);
+		JLabel countryTerritoryLabel = new JLabel("Country/Territory:");
+		countryTerritoryLabel.setBounds(405,130,150,20);
+		paymentPage.add(countryTerritoryLabel);
 				
-		String[] gender = {null,"United States", "London", "Tokyo", "Doha", "Paris","Stockholm", "Singapore", "Hong Kong"};
+		String[] countries = {"","United States", "London", "Tokyo", "Doha", "Paris","Stockholm", "Singapore", "Hong Kong"};
 		
-		JComboBox<String> contryTerritorySelection = new JComboBox<String>(gender);
-		contryTerritorySelection.setBounds(405, 150, 150, 20);
-		paymentPage.add(contryTerritorySelection);
-			
+		JComboBox<String> countryTerritorySelection = new JComboBox<String>(countries);
+		countryTerritorySelection.setBounds(405, 150, 150, 20);
+		paymentPage.add(countryTerritorySelection);
+		
+		countryTerritorySelection.addActionListener(new ActionListener() 
+		{
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Get the selected item
+                String selectedCountry = (String) countryTerritorySelection.getSelectedItem();
+                
+                // Perform action based on the selection
+                if (selectedCountry.equals("United States")) 
+                {
+                    stateSelection.setVisible(true);;
+                    stateLabel.setVisible(true); 
+                    cityLabel.setVisible(true);; 
+                    cityField.setVisible(true);
+                    zipCode.setVisible(true);
+                    zipField.setVisible(true);
+                }
+                else
+                {
+                	stateSelection.setVisible(false);;
+                    stateLabel.setVisible(false); 
+                    cityLabel.setVisible(false);; 
+                    cityField.setVisible(false);
+                    zipCode.setVisible(false);
+                    zipField.setVisible(false);
+                }
+            }
+        });
+		
 		///////////////////////////////////
-		JLabel lbStateLabel = new JLabel("State:");
-		lbStateLabel.setBounds(405, 180,150, 20);
-		paymentPage.add(lbStateLabel);
+	    stateLabel = new JLabel("State:");
+		stateLabel.setBounds(405, 180,150, 20);
+		paymentPage.add(stateLabel);
 		
-		String[] Traveler = {null, "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
+		String[] states = {"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE",
 				"FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", 
 				"MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
 				"NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", 
-				"TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",};
+				"TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"};
 		
-		JComboBox<String> stateSelection = new JComboBox<String>(Traveler);
+		stateSelection = new JComboBox<String>(states);
 		stateSelection.setEditable(true);
 		stateSelection.setBounds(405,200,150,20);
 		paymentPage.add(stateSelection);
 		
 		///////////////////////////////////
-		JLabel lbcityLabel = new JLabel("City:");
-		lbcityLabel.setBounds(105, 180, 80, 20);
-		paymentPage.add(lbcityLabel);
+		cityLabel = new JLabel("City:");
+		cityLabel.setBounds(105, 180, 80, 20);
+		paymentPage.add(cityLabel);
 	    cityField = new JTextField();
 	    cityField.setBounds(100,200,145,20);
 	    paymentPage.add(cityField);
 	    
 		////////////////////////////////////////  
-	    JLabel lbZipLabel = new JLabel("Zip code:");
-		lbZipLabel.setBounds(255, 180, 80, 20);
-		paymentPage.add(lbZipLabel);
+	    zipCode = new JLabel("Zip code:");
+	    zipCode.setBounds(255, 180, 80, 20);
+		paymentPage.add(zipCode);
 	    zipField = new JTextField();
 	    zipField.setBounds(250,200,145,20);
 	    paymentPage.add(zipField);
+	    
 	    ///////////////////////////////////////////
 	    JButton backButton = new JButton("Back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -169,9 +211,104 @@ public class PaymentPage extends JFrame
 	            @Override
 	            public void actionPerformed(ActionEvent e) 
 	            {
-	                JPanel confirmationPage = (new ConfirmationPage(frame, route, model, c1, contentPane).returnPanel());
-	                contentPane.add(confirmationPage, "Confirmation");
-	                c1.show(contentPane, "Confirmation");
+	            	Payment payment = new Payment(model);
+	            	try {	
+
+	            		String name = nameField.getText().trim(); 
+	            		for(int i = 0; i < name.length(); i++)
+	            		{ 
+	            			if(name.charAt(i) == ' ')
+	            			{
+	            				name = name.substring(0, i) + name.substring(i);
+	            			}
+	            		}
+	            		payment.setCardHolderName(name);
+
+	            		String cardNumber = cardNumberField.getText().trim();
+	            		cardNumberField.setBackground(Color.WHITE);
+	            		if(cardNumber.length() != 16)
+		            		{
+		            			throw new IllegalArgumentException("Card number must be 16 digits long");
+		            		}
+	            		
+	            		for (int i = 0; i < cardNumber.length(); i++) 
+				            {
+				                if (Character.isLetter(cardNumber.charAt(i))) 
+				                {
+				                	cardNumberField.setBackground(Color.RED);
+				                    throw new IllegalArgumentException("Card Number must only be digits 0 - 9!");
+				                }
+				            }
+	            		payment.setCardNumber(cardNumber);
+	            		
+	            		String selectedCountry = (String) countryTerritorySelection.getSelectedItem();
+	            		if(selectedCountry.equalsIgnoreCase(""))
+		            		{
+	            				throw new IllegalArgumentException("Please select a country");
+		            		}
+	            		payment.setCountry(selectedCountry);
+	            		
+	            		
+	            		String securityCode = securityCodeField.getText().trim();
+	            		if(securityCode.length() > 4)
+	            		{ 
+	            			securityCodeField.setBackground(Color.RED);
+	            			throw new IllegalArgumentException("The security code should be 3 or 4 digits.");
+	            		}
+	            		for (int i = 0; i < securityCode.length(); i++) 
+			            {
+			                if (Character.isLetter(securityCode.charAt(i))) 
+			                {
+			                	securityCodeField.setBackground(Color.RED);
+			                    throw new IllegalArgumentException("Security code must only be digits 0 - 9!");
+			                }
+			            }
+	            		payment.setCVV(securityCode);
+	            		
+	            		if(selectedCountry.equals("United States"))
+	            		{
+	            			
+	            			String state = (String) stateSelection.getSelectedItem();
+	            			payment.setState(state);
+	            			
+	            			String city = cityField.getText().trim(); 
+	            			for(int i = 0; i< city.length();i++) 
+	            			{
+	            				if(!Character.isLetter(city.charAt(i)))
+	            				{
+	            					cityField.setBackground(Color.RED);
+	            					throw new IllegalArgumentException("City field cannot have numbers.");
+	            				}
+	            			}
+	            			payment.setCity(city);
+	            			
+	            			
+	            			String zipCode = zipField.getText().trim();
+	            			for(int i = 0; i< zipCode.length();i++) 
+	            			{
+	            				if(Character.isLetter(zipCode.charAt(i)))
+	            				{
+	            					zipField.setBackground(Color.RED);
+	            					throw new IllegalArgumentException("Zip code must only be digits 0 - 9.");
+	            				}
+	            			}
+	            			payment.setZipCode(zipCode);
+	            		}
+	            			
+	            		model.setPayment(payment);
+		                JPanel confirmationPage = (new ConfirmationPage(frame, route, model, c1, contentPane).returnPanel());
+		                contentPane.add(confirmationPage, "Confirmation");
+		                c1.show(contentPane, "Confirmation");
+	            		
+	            		} catch (IllegalArgumentException ex) 
+		        			{
+	            				JOptionPane.showMessageDialog(frame, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
+		        			} 
+	            		catch (Exception ex) 
+			        		{
+		            			JOptionPane.showMessageDialog(frame, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			        		}
+	            
 	            }
 	        });	
 	}   

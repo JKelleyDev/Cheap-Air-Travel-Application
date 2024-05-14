@@ -1,5 +1,24 @@
 package application;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
 
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ *
+ * 
+ */
 import java.awt.CardLayout; 
 import java.awt.Color;
 import java.awt.Component;
@@ -250,11 +269,7 @@ public class BookingPage extends JFrame
 		            	throw new IllegalArgumentException("Please enter the DOB in the format: dd/mm/yyyy");
 		            }
 		            traveler.setDob(dob);
-		            
-		            
-		            
-		           
-		            
+
 		            model.addTraveler(traveler);
 		            c1.show(contentPane, "Option");
 		            frame.setTitle("Option");

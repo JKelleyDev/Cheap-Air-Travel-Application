@@ -1,5 +1,24 @@
 package application;
+/**
+ * Lead Author(s):
+ * 
+ * @author Jordan Kelley
+ * @author Esteban Naranjo
+ *       
+ * Other contributors:
+ * 
+ * References:
+ *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+ *         Retrieved from
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
 
+ * Version/date: 2024.05.24.001
+ * 
+ * Responsibilities of class:
+ *
+ * 
+ */
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -310,6 +329,14 @@ public class ConfirmationPage
                     writer.println("Wifi Packages(x " + model.getWifiPackageCount() + ") : $" + model.getWifiPackageCount() * model.getWifiCost());
                     writer.println("Assistance Charges: $" + model.getAssistanceCharge());
                     writer.println("Meals(x " + model.getmealCount() + ") : $" + model.getMealCost() * model.getmealCount());
+                    
+                    
+                    
+                    
+                    writer.println("\nPayment Information:" 
+                    		     + "\n---------------------------------"); 
+                    writer.println(model.getPayment().toString());
+               
 	                writer.flush();
 	                writer.close();
 	                JOptionPane.showMessageDialog(frame, "File saved successfully at " + fileToSave.getAbsolutePath(), "File Saved", JOptionPane.INFORMATION_MESSAGE);
