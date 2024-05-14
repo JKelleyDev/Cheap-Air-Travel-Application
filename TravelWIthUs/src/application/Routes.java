@@ -1,40 +1,31 @@
 package application;
-/**
- * Lead Author(s):
- * 
- * @author Jordan Kelley
- * @author Esteban Naranjo
- *       
- * Other contributors:
- * 
- * References:
- *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
- *         Retrieved from
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- * 
 
- * Version/date: 2024.05.24.001
- * 
- * Responsibilities of class:
- *
- * 
- */
 import java.util.HashMap;
 import java.util.Hashtable;
 
-/** 
- * 
- * 
- * 
- * Reference: 
- * https://www.airmilescalculator.com  // used to determine mileage and route of flights 
- */
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+*         <br> <br>
+*         Flight Mileage: {@link https://www.airmilescalculator.com}
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+* This class creates multiple hashmaps to store mileage between destinations, flight time in minutes between destinations. 
+*/
+
 public class Routes 
 {
-
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
-	private String departDate; 
+	private String departDate; // routes has a departDate, used for some classes who can't access the model
 	
 	// Setup the list of departures and the airport codes table 
 	private String departures [] = {"San Diego", "New York", "London", "Tokyo", "Doha", "Paris","Stockholm", "Singapore", "Hong Kong"};
@@ -161,7 +152,9 @@ public class Routes
 	private FlightManager [] HKG_SIN_Flights;
 	
 	
-    // setup HashMaps 
+    /** 
+     * Purpose: Initializes and sets up all of the hashmaps of the routes 
+     */
     public Routes() 
     {
     	///////////////////////////////////
@@ -475,12 +468,20 @@ public class Routes
     	HongKongFlights.put("Singapore", HKG_SIN_Flights);
     }
     
-  
+    /** 
+     * Purpose: retrieves the array of departures
+     * @return departures
+     */
 	public String[] getDepartures() 
 	{ 
 		return departures; 
 	}
 	
+	/** 
+	 * Purpose: gets the destinations of the city the flight is departing from 
+	 * @param departCity
+	 * @return array of destination cities 
+	 */
 	public String[] getDestinations(String departCity)
 	{ 
 		if("San Diego".equals(departCity))
@@ -504,6 +505,12 @@ public class Routes
 		return null; 
 	} 
 	
+	/** 
+	 * Purpose: gets the mileage for a flight between two cities 
+	 * @param departureCity
+	 * @param destinationCity
+	 * @return mileage of flight 
+	 */
 	public int getFlightMiles(String departureCity, String destinationCity) 
 	{ 
 		switch(departureCity)
@@ -532,6 +539,12 @@ public class Routes
 		}
 	}
 	
+	/** 
+	 * Purpose: Retrieves the time to fly between two cities 
+	 * @param departureCity
+	 * @param destinationCity
+	 * @return formated flight time in hours and minutes 
+	 */
 	public String getFlightDuration(String departureCity, String destinationCity)
 	{
 		int rawMinutes = 0; 
@@ -566,15 +579,26 @@ public class Routes
 			rawMinutes = hongKongFlightDuration.get(destinationCity); 
 			break;
 		}
-		
+		// Use modular math to convert total minutes into hours:minutes
 		return rawMinutes/60 + " Hours" + " " + rawMinutes % 60 + " Minutes";
 	}
 	
+	/** 
+	 * Purpose: retrieves the airport code for a given city
+	 * @param city
+	 * @return airport code from airport code map
+	 */
 	public String getAirportCode(String city)
 	{
 		return airportCodes.get(city);
 	}
 	
+	/** 
+	 * Purpose: gets a list of flights avaiable between two cities 
+	 * @param departureCity
+	 * @param destinationCity
+	 * @return array of flights
+	 */
 	public FlightManager [] getListOfFlights(String departureCity, String destinationCity) 
 	{ 
 		switch(departureCity) 
@@ -602,15 +626,21 @@ public class Routes
 		}
 	}
 	
+	/** 
+	 * Purpose: sets the departure date into the route
+	 * @param departDate
+	 */
 	public void setDepartDate(String departDate)
 	{
 		this.departDate = departDate;
 	}
 	
+	/** 
+	 * Purpose: retrieves the stored departdate
+	 * @return departDate
+	 */
 	public String getDepartDate()
 	{ 
 		return departDate;
 	}
-	
-	
 }
