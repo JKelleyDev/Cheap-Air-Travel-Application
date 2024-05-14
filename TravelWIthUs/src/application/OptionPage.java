@@ -19,17 +19,23 @@ import java.awt.event.ActionListener;
 * <br><br>
 * Responsibilities of class:<br>
 * 
+* The class is responsible for managing the user interface (UI)
+* for selecting various travel options within the travel booking application. 
+* Moreover the class acts as an intermediary between the user interface and the underlying application logic, 
+* facilitating the selection and management of travel options within the travel booking application.
+* 
 */
 
 public class OptionPage extends JFrame
 {
-	private static final long serialVersionUID = -7630291301848917213L;
-	private JPanel optionPage;
-	private Option option;
-	private JCheckBox wifiBox; 
-	private JCheckBox mealBox; 
-	private JCheckBox assistanceBox;
-	private JCheckBox bagsBox; 
+
+	private static final long serialVersionUID = -4470953474727184028L;
+	private JPanel optionPage; // An OptionPage has a 
+	private Option option; // An OptionPage has an option object to store travelers options 
+	private JCheckBox wifiBox; // An OptionPage has a wifi check box 
+	private JCheckBox mealBox; // An OptionPage has a meals check box 
+	private JCheckBox assistanceBox; // An OptionPage has an assistance check box
+	private JCheckBox bagsBox; // An OptionPage has a bags check box
 
 	/** 
 	 * Purpose: Constructor that creates the page view for options
@@ -43,7 +49,8 @@ public class OptionPage extends JFrame
 	 */
 	public OptionPage(JFrame frame, Routes route, ApplicationModel model,
 						CardLayout c1, JPanel contentPane, BookingPage bookingPage)
-	{  
+	{ 
+ 
 		this.option = new Option(model); 
 		optionPage = new JPanel(); 
 		optionPage.setLayout(null);	// uses a null layout so absolute positioning can be used on componenets 
@@ -200,13 +207,14 @@ public class OptionPage extends JFrame
 		optionPage.add(bagsBox);
 		
 		/////////////////////////////////////////////////////////
-		////////// Back Button         //////////////////////////
+		////////// Back Button //////////////////////////////////
 		/////////////////////////////////////////////////////////
 	    JButton backButton = new JButton("Back");
 		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 	    backButton.setBackground(new Color(0, 0, 128));
 		backButton.setBounds(10, 310, 95, 30);
 		optionPage.add(backButton);
+		
 		backButton.addActionListener(new ActionListener() 
 		{
 			@Override
@@ -218,7 +226,7 @@ public class OptionPage extends JFrame
 		});	       
 		
 		/////////////////////////////////////////////////////////
-		////////// Next Traveler Button  ////////////////////////
+		////////// Next Traveler Button /////////////////////////
 		/////////////////////////////////////////////////////////
 		JButton anotherTravelerButton = new JButton("Next Traveler"); 
 		anotherTravelerButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -240,7 +248,7 @@ public class OptionPage extends JFrame
 		});
 		
 		/////////////////////////////////////////////////////////
-		////////// Payment Button      //////////////////////////
+		////////// Payment Button ///////////////////////////////
 		/////////////////////////////////////////////////////////
 		JButton seePaymentButton = new JButton("Payment");
 		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -262,8 +270,7 @@ public class OptionPage extends JFrame
 	
 	
 		/**
-		 * TODO
-		 * Purpose: 
+		 * Purpose: reset the check boxes.
 		 * 
 		 */
 		public void clearPage()
@@ -276,6 +283,7 @@ public class OptionPage extends JFrame
 		
 		/**
 		 * Purpose: Returns the option panel. 
+		 * 
 		 * @return the option panel as a JPanel object.
 		 */
 		public JPanel returnPanel()
@@ -284,18 +292,3 @@ public class OptionPage extends JFrame
 		}	
 	
 }
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
