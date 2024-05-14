@@ -19,13 +19,20 @@ import javax.swing.event.ListSelectionListener;
 *
 * <br><br>
 * Responsibilities of class:<br>
+* This is a custom selection handler that sets the destination list according to what the departure city was set to in the model
 * 
 */
+
 public class DestinationCityListSelectionHandler implements ListSelectionListener
 {
-	private JList<String> destinationList; 
-	private ApplicationModel model; 
+	private JList<String> destinationList; // the selection handler has a JList of the destinations
+	private ApplicationModel model; // the selection handler has a reference to the model
 	
+	/** 
+	 * Purpose: Constructor that creates the custom selection handler
+	 * @param destinationList
+	 * @param model
+	 */
 	public  DestinationCityListSelectionHandler(JList<String> destinationList, ApplicationModel model)
 	{ 
 		this.destinationList = destinationList; 
@@ -41,9 +48,8 @@ public class DestinationCityListSelectionHandler implements ListSelectionListene
 	            
 	            if (selectedDestination != null) 
 	            {
-	                // Set destinations based on the selected departur
-	                model.setDestinationCity(selectedDestination);
-	               
+	                // Set destinations based on the selected departure
+	                model.setDestinationCity(selectedDestination); 
 	            }
 	        }
 		

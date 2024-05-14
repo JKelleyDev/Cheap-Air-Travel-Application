@@ -19,16 +19,23 @@ import javax.swing.event.ListSelectionListener;
 *
 * <br><br>
 * Responsibilities of class:<br>
+* This class is a custom selection handler that will handle actions for the departure city
 * 
 */
 
 public class DepartureListSelectionHandler implements ListSelectionListener
 {
 
-	private JList<String> departureCityList;
-    private JList<String> destinationCityList;
-    private ApplicationModel model; 
+	private JList<String> departureCityList; // the selection handler has-a JList for the departure cities 
+    private JList<String> destinationCityList; // the selection handler has-a JList for the destination cities
+    private ApplicationModel model; // the selection handler has a reference to the model 
 
+    /** 
+     * Purpose: Constructor that initializes the handler
+     * @param departureCityList
+     * @param destinationCityList
+     * @param model
+     */
     public DepartureListSelectionHandler(JList<String> departureCityList, JList<String> destinationCityList, ApplicationModel model) 
     {
 
