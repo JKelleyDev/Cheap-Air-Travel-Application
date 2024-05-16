@@ -76,7 +76,7 @@ public class ConfirmationPage
         this.route = route;
         this.model = model;
         this.travelerArray = model.getTravelerArray();
-        this.baseRate = model.getPrice();
+        this.baseRate = String.format("%.2f", model.getPrice());
         this.departureFlight = model.getDepartureFlight();
         this.departureFlightNumber = departureFlight.getFlightNumber();
         this.departureCity = model.getDepartureCity();
@@ -239,6 +239,18 @@ public class ConfirmationPage
         assistanceChargeLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
         assistanceChargeLabel.setBounds(5, 120, 150, 30);
         costInformation.add(assistanceChargeLabel);
+        
+        double mealCharges = model.getmealCount() * model.getmealCount(); 
+        JLabel mealChargeLabel = new JLabel("Meals(x " + model.getmealCount() + ") : $" + mealCharges);
+        mealChargeLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
+        mealChargeLabel.setBounds(5, 140, 150, 30);
+        costInformation.add(mealChargeLabel);
+        
+        
+        JLabel totalPriceLabel = new JLabel("Total Cost: $" + model.getTotalBookingPrice());
+        totalPriceLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+        totalPriceLabel.setBounds(5, 270, 150, 30);
+        costInformation.add(totalPriceLabel);
 
         confirmationPage.add(costInformation);
     }
@@ -293,7 +305,7 @@ public class ConfirmationPage
                             + "\n " + returnDateTime + " >>>>>> " + returnArrivalTime
                             + "\n Flight Time: " + route.getFlightDuration(destinationCity, departureCity)
                             + "\n Total Miles: " + route.getFlightMiles(destinationCity, departureCity)
-                            + "\n\n"
+                            + "\n"
                     );
                 }
 
@@ -314,6 +326,7 @@ public class ConfirmationPage
                 writer.println("Wifi Packages(x " + model.getWifiPackageCount() + ") : $" + model.getWifiPackageCount() * model.getWifiCost());
                 writer.println("Assistance Charges: $" + model.getAssistanceCharge());
                 writer.println("Meals(x " + model.getmealCount() + ") : $" + model.getMealCost() * model.getmealCount());
+                writer.println("\nTotal Cost: $" + model.getTotalBookingPrice());
 
                 writer.println("\nPayment Information:"
                         + "\n---------------------------------");

@@ -44,6 +44,7 @@ public class ApplicationModel
 	private Payment payment; // the model has a payment object to store payment information
 	private String departDate; 
 	private String returnDate; 
+	private double price;
 	private double baseFare = 50.00; // the model has a base fare value, initially 50.00 but will change to 25.00 if oneway fare is set
 	private final double CARRY_ON_BAG_COST = 20.00; // the model has a final carry on bag cost
 	private final double CHECKED_BAG_COST = 50.00;  // the model has a final checked bag cost
@@ -64,10 +65,10 @@ public class ApplicationModel
 	 * Purpose: Calculates a flight price based on base fare, season multiplier, capicity multiplier, and a mileage rate
 	 * @return total flight price 
 	 */
-	public String getPrice()
+	public double getPrice()
 	{ 
-	    double price = baseFare * (getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity)));
-	    return String.format("%.2f", price); // format return as .00 
+	    price = baseFare * (getSeasonMultiplier() + getCapacity() + getMileageRate(route.getFlightMiles(departureCity, destinationCity)));
+	    return price;
 	}
 
 	/** 
@@ -464,6 +465,22 @@ public class ApplicationModel
 	public void removeCheckedBag()
 	{
 		checkedBagCount--;	
+	}
+	
+	/** 
+	 * Purpose: 
+	 * @return 
+	 */
+	public String getTotalBookingPrice() 
+	{ 
+		double total = ( travelerList.size() * getPrice() ) + 
+				       (getCarryOnBagCount() * getCarryOnCost()) + 
+				       (getCheckedBagCount() * getCheckedBagCost()) + 
+				       (getWifiPackageCount() * getWifiCost()) + 
+				       (getmealCount() * getMealCost()) + 
+				       ( getAssistanceCharge()); 
+		
+		return String.format("%.2f", total);
 	}
 
 }

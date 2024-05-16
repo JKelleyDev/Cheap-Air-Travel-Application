@@ -23,7 +23,6 @@ import javax.swing.text.MaskFormatter;
 
 import org.jdatepicker.impl.JDatePickerImpl;
 
-
 /**
 *
 * @author Jordan Kelley
