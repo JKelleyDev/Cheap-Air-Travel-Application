@@ -124,7 +124,6 @@ public class ConfirmationPage
         flightInformation = new JPanel();
         flightInformation.setLayout(null);
         flightInformation.setBounds(0, 0, 375, 145);
-        flightInformation.setBackground(Color.red);
 
         JLabel flight1Label = new JLabel("Flight: " + departureFlightNumber);
         flight1Label.setBounds(2, 0, 120, 30);
@@ -174,7 +173,6 @@ public class ConfirmationPage
         travelerInformation = new JPanel();
         travelerInformation.setLayout(null);
         travelerInformation.setBounds(0, 145, 375, 255);
-        travelerInformation.setBackground(Color.WHITE);
 
         JLabel travelersLabel = new JLabel("Travelers");
         travelersLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -205,7 +203,6 @@ public class ConfirmationPage
         costInformation = new JPanel();
         costInformation.setLayout(null);
         costInformation.setBounds(375, 0, 275, 300);
-        costInformation.setBackground(Color.GRAY);
 
         JLabel pricePerPassenger = new JLabel("Price per Passenger: $" + baseRate);
         pricePerPassenger.setBounds(5, 5, 250, 30);
@@ -240,7 +237,7 @@ public class ConfirmationPage
         assistanceChargeLabel.setBounds(5, 120, 150, 30);
         costInformation.add(assistanceChargeLabel);
         
-        double mealCharges = model.getmealCount() * model.getmealCount(); 
+        double mealCharges = model.getmealCount() * model.getMealCost(); 
         JLabel mealChargeLabel = new JLabel("Meals(x " + model.getmealCount() + ") : $" + mealCharges);
         mealChargeLabel.setFont(new Font("Tahoma", Font.ITALIC, 12));
         mealChargeLabel.setBounds(5, 140, 150, 30);
