@@ -77,6 +77,7 @@ public class Payment
 	{ 
 		return cardNumber; 
 	}
+	
 	 /**
      * returns the card holder's name.
      * 
@@ -86,6 +87,7 @@ public class Payment
 	{ 
 		return cardHolderName; 
 	}
+	
 	 /**
      * returns the expiry date of the card.
      * 
@@ -95,6 +97,7 @@ public class Payment
 	{ 
 		return expiryDate; 
 	}
+	
 	 /**
      * returns the CVV number.
      * 
