@@ -322,6 +322,7 @@ public class ConfirmationPage
                 JOptionPane.showMessageDialog(frame, "Error saving file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 writeFile(); // If there was a error, restart the selection process and retry
             }
+            System.exit(0);
         }
     }
 }

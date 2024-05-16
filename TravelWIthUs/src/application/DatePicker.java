@@ -15,9 +15,34 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 
-public class DatePicker {
+/**
+*
+* @author Jordan Kelley
+* @author Esteban Naranjo
+* 
+* @version 2024.05.24.001
+* 
+* @see
+* 	References:<br>
+*         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
+*         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
+* 
+*
+* <br><br>
+* Responsibilities of class:<br>
+* 
+* Creates a date picker object that can be instinated throughout the program as needed
+* 
+*/
+public class DatePicker 
+{
 
-    public static JDatePickerImpl createDatePicker() {
+	/**
+	 * Purpose: creates the datepicker 
+	 * @return JDatePicker
+	 */
+    public static JDatePickerImpl createDatePicker() 
+    {
         SqlDateModel model = new SqlDateModel();
         Properties properties = new Properties();
         properties.put("text.today", "Today");
@@ -28,13 +53,18 @@ public class DatePicker {
         return new JDatePickerImpl(datePanel, new DateLabelFormatter());
     }
 
-    public static class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
+    /** 
+     * Purpose: formats the date in the display and return of the J Date Picker
+     */
+    public static class DateLabelFormatter extends JFormattedTextField.AbstractFormatter 
+    {
         private static final long serialVersionUID = 5025323442693479022L;
-        private String datePattern = "yyyy-MM-dd";
+        private String datePattern = "MM/dd/yyyy";
         private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(datePattern);
 
         @Override
-        public Object stringToValue(String text) throws ParseException {
+        public Object stringToValue(String text) throws ParseException 
+        {
             try {
                 LocalDate localDate = LocalDate.parse(text, dateFormatter);
                 return GregorianCalendar.from(localDate.atStartOfDay(ZoneId.systemDefault()));
@@ -44,7 +74,8 @@ public class DatePicker {
         }
 
         @Override
-        public String valueToString(Object value) throws ParseException {
+        public String valueToString(Object value) throws ParseException 
+        {
             if (value != null) {
                 Calendar cal = (Calendar) value;
                 LocalDate localDate = cal.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

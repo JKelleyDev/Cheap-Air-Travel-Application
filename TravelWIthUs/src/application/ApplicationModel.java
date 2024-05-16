@@ -432,15 +432,38 @@ public class ApplicationModel
 		return payment;
 	}
 	
+	/** 
+	 * Purpose: sets the departure date of the booking
+	 * @param departDate
+	 */
 	public void setDepartDate(String departDate)
 	{
 		this.departDate = departDate; 
 		setDepartMonth(departDate);
 	}
 	
+	/** 
+	 * Purpose: sets the return date of the booking
+	 * @param returnDate
+	 */
 	public void setReturnDate(String returnDate) 
 	{ 
 		this.returnDate = returnDate; 
+	}
+	/** 
+	 * Purpose: removes a carry on bag from the total count
+	 */
+	public void removeCarryOnBag()
+	{
+		carryOnBagCount--; 	
+	}
+
+	/** 
+	 * Purpose: removes a checked bag from the total count
+	 */
+	public void removeCheckedBag()
+	{
+		checkedBagCount--;	
 	}
 
 }

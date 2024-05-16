@@ -35,7 +35,8 @@ public class OptionPage extends JFrame
 	private JCheckBox wifiBox; // An OptionPage has a wifi check box 
 	private JCheckBox mealBox; // An OptionPage has a meals check box 
 	private JCheckBox assistanceBox; // An OptionPage has an assistance check box
-	private JCheckBox bagsBox; // An OptionPage has a bags check box
+	private JCheckBox carryOnBox; // An OptionPage has a carry on check box 
+   private JCheckBox checkedBagBox; // An OptionPage has a checked bag check box 
 
 	/** 
 	 * Purpose: Constructor that creates the page view for options
@@ -59,161 +60,96 @@ public class OptionPage extends JFrame
 		headerLabel.setBackground(new Color(0, 0, 205));
 		headerLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
 		headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		headerLabel.setBounds(0,0, 600, 80);
+		headerLabel.setBounds(0, 0, 600, 50);
 		headerLabel.setOpaque(true);
 		optionPage.add(headerLabel);
 	
-		/////////////////////////////////////////////////////////
-		////////// Wi-Fi CheckBox ///////////////////////////////
-		/////////////////////////////////////////////////////////
 		wifiBox = new JCheckBox("Wi-Fi");
-		wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		wifiBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-		wifiBox.setBounds(10,100, 145, 23);
-		wifiBox.addActionListener(new ActionListener() 
-		{
-		public void actionPerformed(ActionEvent e)
-		{
-				if(option != null) 
-				{
-					option.setWifi(wifiBox.isSelected());
-				}
-			}
-		});
-		optionPage.add(wifiBox);
+        wifiBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        wifiBox.setBounds(30, 70, 200, 30);
+        wifiBox.addActionListener(e -> {
+            if (option != null) {
+                option.setWifi(wifiBox.isSelected());
+            }
+        });
+        optionPage.add(wifiBox);
 
-		/////////////////////////////////////////////////////////
-		////////// Meals CheckBox ///////////////////////////////
-		/////////////////////////////////////////////////////////
-		mealBox = new JCheckBox("Meal");
-		mealBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		mealBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-		mealBox.setBounds(10,150, 145, 23);
-		mealBox.addActionListener(new ActionListener() 
-		{
-		    public void actionPerformed(ActionEvent e) 
-		    {
-		        if(mealBox.isSelected()) 
-		        {
-		            JPopupMenu mealMenu = new JPopupMenu();
-		            JMenuItem vegetarianItem = new JMenuItem("Vegetarian");
-		            JMenuItem nonVegetarianItem = new JMenuItem("Non-Vegetarian");
-		            vegetarianItem.addActionListener(new ActionListener() 
-		            {
-		                public void actionPerformed(ActionEvent e) 
-		                {
-		                    option.setMealVegetarian(true);  
-		                }
-		            });
-		            nonVegetarianItem.addActionListener(new ActionListener() 
-		            {
-		                public void actionPerformed(ActionEvent e) 
-		                {
-		                    option.setStandardMeal(true);  
-		                }
-		            });
-		            mealMenu.add(vegetarianItem);
-		            mealMenu.add(nonVegetarianItem);
-		            mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
-		        }
-		    }
-		});
-		optionPage.add(mealBox);
+        mealBox = new JCheckBox("Meal");
+        mealBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        mealBox.setBounds(30, 110, 200, 30);
+        mealBox.addActionListener(e -> {
+            if (mealBox.isSelected()) {
+                JPopupMenu mealMenu = new JPopupMenu();
+                JMenuItem vegetarianItem = new JMenuItem("Vegetarian");
+                JMenuItem nonVegetarianItem = new JMenuItem("Non-Vegetarian");
+                vegetarianItem.addActionListener(evt -> option.setMealVegetarian(true));
+                nonVegetarianItem.addActionListener(evt -> option.setStandardMeal(true));
+                mealMenu.add(vegetarianItem);
+                mealMenu.add(nonVegetarianItem);
+                mealMenu.show(mealBox, mealBox.getWidth(), mealBox.getHeight());
+            }
+        });
+        optionPage.add(mealBox);
 			
-		/////////////////////////////////////////////////////////
-		////////// Assistance CheckBox //////////////////////////
-		/////////////////////////////////////////////////////////
-		assistanceBox = new JCheckBox("Assistance");
-		assistanceBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		assistanceBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-		assistanceBox.setBounds(10,200, 145, 23);
-		assistanceBox.addActionListener(new ActionListener() 
-		{
-		    public void actionPerformed(ActionEvent e)
-		    {
-		        if(option != null) {
-		            option.setAssistance(assistanceBox.isSelected());
-		        }
-		        if(assistanceBox.isSelected()) 
-		        {
-		            JPopupMenu assistanceMenu = new JPopupMenu();
-		            JMenuItem baggageItem = new JMenuItem("Baggage");
-		            JMenuItem fastTrackItem = new JMenuItem("Fast Track boarding pass");
-		            baggageItem.addActionListener(new ActionListener() 
-		            {
-		                public void actionPerformed(ActionEvent e) 
-		                {
-		                    option.setAssistance(true);  
-		                }
-		            });
-		            fastTrackItem.addActionListener(new ActionListener() 
-		            {
-		                public void actionPerformed(ActionEvent e) 
-		                {
-		                    option.setAssistance(true);  
-		                }
-		            });
-		            assistanceMenu.add(baggageItem);
-		            assistanceMenu.add(fastTrackItem);
-		            assistanceMenu.show(assistanceBox, assistanceBox.getWidth(), assistanceBox.getHeight());
-		        }
-		    }
-		});
-		optionPage.add(assistanceBox);
-					
-		/////////////////////////////////////////////////////////
-		////////// Bags CheckBox ////////////////////////////////
-		/////////////////////////////////////////////////////////
-		bagsBox = new JCheckBox("Bags");
-		bagsBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
-		bagsBox.setHorizontalTextPosition(SwingConstants.RIGHT);
-		bagsBox.setBounds(255,150, 145, 20);
-		bagsBox.addActionListener(new ActionListener() 
-		{
-		    public void actionPerformed(ActionEvent e) 
-		    {
-		        if(option != null) 
-		        {
-		            if(bagsBox.isSelected())
-		            {
-		                JPopupMenu bagsMenu = new JPopupMenu();
-		                JMenuItem carryOnItem = new JMenuItem("Carry-on");
-		                JMenuItem checkedBagItem = new JMenuItem("Checked baggage");
-		                
-		                carryOnItem.addActionListener(new ActionListener()
-		                {
-		                    public void actionPerformed(ActionEvent e) 
-		                    {
-		                        option.addCarryOnBag(); 		                         
-		                    }
-		                });
-		                
-		                checkedBagItem.addActionListener(new ActionListener() 
-		                {
-		                    public void actionPerformed(ActionEvent e) 
-		                    {
-		                        option.addCheckedBag(); 		                     
-		                    }
-		                });
-		                
-		                bagsMenu.add(carryOnItem);
-		                bagsMenu.add(checkedBagItem);
-		                bagsMenu.show(bagsBox, bagsBox.getWidth(), bagsBox.getHeight());
-		            }
-		        }
-		    }
-		});
-		optionPage.add(bagsBox);
-		
-		/////////////////////////////////////////////////////////
-		////////// Back Button //////////////////////////////////
-		/////////////////////////////////////////////////////////
-	    JButton backButton = new JButton("Back");
-		backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-	    backButton.setBackground(new Color(0, 0, 128));
-		backButton.setBounds(10, 310, 95, 30);
-		optionPage.add(backButton);
-		
+        assistanceBox = new JCheckBox("Assistance");
+        assistanceBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        assistanceBox.setBounds(30, 150, 200, 30);
+        assistanceBox.addActionListener(e -> {
+            if (option != null) {
+                option.setAssistance(assistanceBox.isSelected());
+            }
+            if (assistanceBox.isSelected()) {
+                JPopupMenu assistanceMenu = new JPopupMenu();
+                JMenuItem baggageItem = new JMenuItem("Baggage");
+                JMenuItem fastTrackItem = new JMenuItem("Fast Track boarding pass");
+                baggageItem.addActionListener(evt -> option.setAssistance(true));
+                fastTrackItem.addActionListener(evt -> option.setAssistance(true));
+                assistanceMenu.add(baggageItem);
+                assistanceMenu.add(fastTrackItem);
+                assistanceMenu.show(assistanceBox, assistanceBox.getWidth(), assistanceBox.getHeight());
+            }
+        });
+        optionPage.add(assistanceBox);
+
+        JLabel bagsLabel = new JLabel("Bags:");
+        bagsLabel.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        bagsLabel.setBounds(30, 190, 200, 30);
+        optionPage.add(bagsLabel);
+
+        carryOnBox = new JCheckBox("Carry-on");
+        carryOnBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        carryOnBox.setBounds(30, 220, 200, 30);
+        carryOnBox.addActionListener(e -> {
+            if (option != null) {
+                if (carryOnBox.isSelected()) {
+                    option.addCarryOnBag();
+                } else {
+                    option.removeCarryOnBag();
+                }
+            }
+        });
+        optionPage.add(carryOnBox);
+
+        checkedBagBox = new JCheckBox("Checked Bag");
+        checkedBagBox.setFont(new Font("Sans Serif", Font.PLAIN, 13));
+        checkedBagBox.setBounds(30, 250, 200, 30);
+        checkedBagBox.addActionListener(e -> {
+            if (option != null) {
+                if (checkedBagBox.isSelected()) {
+                    option.addCheckedBag();
+                } else {
+                    option.removeCheckedBag();
+                }
+            }
+        });
+        optionPage.add(checkedBagBox);
+
+        JButton backButton = new JButton("Back");
+        backButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        backButton.setBackground(new Color(0, 0, 128));
+        backButton.setBounds(10, 310, 95, 30);
+        optionPage.add(backButton);
+	
 		backButton.addActionListener(new ActionListener() 
 		{
 			@Override
@@ -224,13 +160,10 @@ public class OptionPage extends JFrame
 		    }
 		});	       
 		
-		/////////////////////////////////////////////////////////
-		////////// Next Traveler Button /////////////////////////
-		/////////////////////////////////////////////////////////
-		JButton anotherTravelerButton = new JButton("Next Traveler"); 
-		anotherTravelerButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		JButton anotherTravelerButton = new JButton("Next Traveler");
+	    anotherTravelerButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		anotherTravelerButton.setBackground(new Color(0, 0, 128));
-		anotherTravelerButton.setBounds(495, 280, 95, 30);
+		anotherTravelerButton.setBounds(250, 310, 150, 30);
 		optionPage.add(anotherTravelerButton);
 			
 		anotherTravelerButton.addActionListener(new ActionListener() 
@@ -246,14 +179,11 @@ public class OptionPage extends JFrame
 			}
 		});
 		
-		/////////////////////////////////////////////////////////
-		////////// Payment Button ///////////////////////////////
-		/////////////////////////////////////////////////////////
-		JButton seePaymentButton = new JButton("Payment");
-		seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		seePaymentButton.setBackground(new Color(0, 0, 128));
-		seePaymentButton.setBounds(495, 310, 95, 30);
-		optionPage.add(seePaymentButton);
+	    JButton seePaymentButton = new JButton("Payment");
+	    seePaymentButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+	    seePaymentButton.setBackground(new Color(0, 0, 128));
+	    seePaymentButton.setBounds(475, 310, 95, 30);
+	    optionPage.add(seePaymentButton);
 	
 		seePaymentButton.addActionListener(new ActionListener() 
 		{ 
@@ -265,8 +195,7 @@ public class OptionPage extends JFrame
 				frame.setTitle("Payment"); // Change the title of the frame to "Payment" 
 			}
 		 });			    
-	    }
-	
+         }
 	
 		/**
 		 * Purpose: reset the check boxes.
@@ -277,7 +206,8 @@ public class OptionPage extends JFrame
 			wifiBox.setSelected(false);
 			mealBox.setSelected(false);
 			assistanceBox.setSelected(false);
-			bagsBox.setSelected(false);
+			carryOnBox.setSelected(false);
+	        checkedBagBox.setSelected(false);
 		}
 		
 		/**

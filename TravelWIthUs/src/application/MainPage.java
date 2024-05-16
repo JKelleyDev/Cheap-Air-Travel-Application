@@ -89,24 +89,33 @@ public class MainPage extends JFrame
 		mainPage.add(departureDatePicker);
 		departureDatePicker.addActionListener(e -> 
 		{
-            Object selectedDateObject = departureDatePicker.getModel().getValue();
-            if (selectedDateObject != null) 
-            {
-                departureDate = (Date) selectedDateObject;
-                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-                String departureDateString = sdf.format(departureDate);
-                
-                // Perform the validation
-                Date today = new Date();
-
-                if (departureDate.compareTo(today) < 0) 
-                {
-                    JOptionPane.showMessageDialog(frame, "Selected date must be after today.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
-                    
-                } 
-                
-                model.setDepartDate(departureDateString);
-            }
+			try { 
+				Object selectedDateObject = departureDatePicker.getModel().getValue();
+	            if (selectedDateObject != null) 
+	            {
+	                departureDate = (Date) selectedDateObject;
+	                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	                String departureDateString = sdf.format(departureDate);
+	                
+	                
+	                //Perform the validation
+	                Date today = new Date();
+	
+	                if (departureDate.compareTo(today) < 0) 
+	                {
+	                	
+	                	throw new IllegalArgumentException();
+	                } 
+	                
+	                model.setDepartDate(departureDateString);
+	              
+	            }
+	            
+			}catch(IllegalArgumentException f)
+			{ 
+				departureDatePicker.getModel().setValue(null);
+				JOptionPane.showMessageDialog(frame, "Selected date must be after today.", "Date Validation", JOptionPane.INFORMATION_MESSAGE); 
+			}
         });
 		
 		JDatePickerImpl returnDatePicker = DatePicker.createDatePicker();
@@ -114,7 +123,10 @@ public class MainPage extends JFrame
 		mainPage.add(returnDatePicker);
 		returnDatePicker.addActionListener(e -> 
 		{
+            try{ 
+            	
             Object selectedDateObject = returnDatePicker.getModel().getValue();
+            
             if (selectedDateObject != null) 
             {
                 returnDate = (Date) selectedDateObject;
@@ -124,17 +136,28 @@ public class MainPage extends JFrame
                 
                 // Perform the validation
                 Date today = new Date();
-               
-
-                if (returnDate.compareTo(today) < 0 ||returnDate.compareTo(departureDate) < 0  || returnDate.compareTo(departureDate) == 0) 
+                if(returnDate == null)
                 {
-                    JOptionPane.showMessageDialog(frame, "Selected date must after departure date.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+                	throw new NullPointerException();
+                }
+
+                if (returnDate.compareTo(today) < 0 || returnDate.compareTo(departureDate) < 0  || returnDate.compareTo(departureDate) == 0 || returnDate.compareTo(today) == 0) 
+                {
+                   throw new IllegalArgumentException();
                 } 
                 
                 model.setReturnDate(returnDateString);
             }
+            }catch(IllegalArgumentException f)
+            {
+            	returnDatePicker.getModel().setValue(null);
+            	JOptionPane.showMessageDialog(frame, "Selected date must after departure date.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+            }catch(NullPointerException f)
+            {
+            	returnDatePicker.getModel().setValue(null);
+            	JOptionPane.showMessageDialog(frame, "Select a departure date first!", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+            }   
         });
-
 		
 		JLabel departureCityListLabel = new JLabel("Departure City");
 		departureCityListLabel.setFont(new Font("Sans Serif", Font.BOLD, 12));

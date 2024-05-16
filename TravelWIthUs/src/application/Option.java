@@ -176,6 +176,21 @@ public class Option
 		else 
 			return "No Assistance required";
 	}
+
+	public void removeCarryOnBag()
+	{
+		carryOnBag--; 
+		model.removeCarryOnBag();
+		
+		
+	}
+
+	public void removeCheckedBag()
+	{
+		checkedBag--;
+		model.removeCheckedBag();
+		
+	}
 	
 	
 }

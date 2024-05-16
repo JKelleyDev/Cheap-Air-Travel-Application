@@ -5,16 +5,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.text.MaskFormatter;
 
 import org.jdatepicker.impl.JDatePickerImpl;
 
@@ -47,10 +52,10 @@ public class BookingPage extends JFrame
 	private JTextField middleNameField; // A booking page has a middleNameField where the traveler enters middle name
 	private JTextField lastNameField;   // A booking page has a lastNameField where the traveler enters last name
 	private JTextField emailField; // A booking page has an emailField where the traveler enters email address
-	private JTextField dobField;   // A booking page has a dobField where the traveler enters date of birth
-	private JTextField phoneNumberField;  // A booking page has a phoneNumberField where the traveler enters their phone number
+	private JDatePickerImpl DOBdatePicker;  // A booking page has a DOB date picker where the traveler enters date of birth
+	private JFormattedTextField phoneNumberField;  // A booking page has a phoneNumberField where the traveler enters their phone number
 	private JComboBox<String> genderSelection;  // A booking page has a genederSelection box where the traveler selects their gender
-
+    
 	
    /**
      * Purpose: Constructs the booking page.
@@ -68,74 +73,104 @@ public class BookingPage extends JFrame
         bookingPage.setLayout(null);
        		 
         // Main title Label
-		JLabel mainTitleLabel = new JLabel("Travel With Us: Who's traveling");
-		mainTitleLabel.setForeground(new Color(240, 255, 255));
-		mainTitleLabel.setBackground(new Color(0, 0, 205));
-		mainTitleLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
-		mainTitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		mainTitleLabel.setBounds(0,0, 600, 80);
-		mainTitleLabel.setOpaque(true);
-		bookingPage.add(mainTitleLabel);
-		
-	    // First name label and text field
+        JLabel mainTitleLabel = new JLabel("Travel With Us: Who's traveling");
+        mainTitleLabel.setForeground(new Color(240, 255, 255));
+        mainTitleLabel.setBackground(new Color(0, 0, 205));
+        mainTitleLabel.setFont(new Font("Sans Serif", Font.ITALIC, 17));
+        mainTitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainTitleLabel.setBounds(0, 0, 600, 50);
+        mainTitleLabel.setOpaque(true);
+        bookingPage.add(mainTitleLabel);
+
+        // First name label and text field
         JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameLabel.setBounds(105, 80, 80, 20);
+        firstNameLabel.setBounds(30, 60, 80, 20);
         bookingPage.add(firstNameLabel);
         firstNameField = new JTextField();
-        firstNameField.setBounds(100, 100, 150, 20);
+        firstNameField.setBounds(30, 80, 150, 25);
         bookingPage.add(firstNameField);
 
         // Middle name label and text field
         JLabel middleNameLabel = new JLabel("Middle Name:");
-        middleNameLabel.setBounds(255, 80, 90, 20);
+        middleNameLabel.setBounds(220, 60, 90, 20);
         bookingPage.add(middleNameLabel);
         middleNameField = new JTextField();
-        middleNameField.setBounds(250, 100, 150, 20);
+        middleNameField.setBounds(220, 80, 150, 25);
         bookingPage.add(middleNameField);
 
         // Last name label and text field
         JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameLabel.setBounds(405, 80, 90, 20);
+        lastNameLabel.setBounds(410, 60, 90, 20);
         bookingPage.add(lastNameLabel);
         lastNameField = new JTextField();
-        lastNameField.setBounds(400, 100, 150, 20);
+        lastNameField.setBounds(410, 80, 150, 25);
         bookingPage.add(lastNameField);
 
         // Email label and text field
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(105, 130, 80, 20);
+        emailLabel.setBounds(30, 120, 80, 20);
         bookingPage.add(emailLabel);
         emailField = new JTextField();
-        emailField.setBounds(100, 150, 150, 20);
+        emailField.setBounds(30, 140, 150, 25);
         bookingPage.add(emailField);
 
         // Phone number label and text field
-        JLabel phoneNumberLabel = new JLabel("Phone: xxx-xxx-xxxx");
-        phoneNumberLabel.setBounds(255, 130, 140, 20);
+        JLabel phoneNumberLabel = new JLabel("Phone Number:");
+        phoneNumberLabel.setBounds(220, 120, 140, 20);
         bookingPage.add(phoneNumberLabel);
-        phoneNumberField = new JTextField();
-        phoneNumberField.setBounds(250, 150, 150, 20);
+
+        // Create the formatted text field for the phone number
+        phoneNumberField = null;
+        try {
+            MaskFormatter phoneFormatter = new MaskFormatter("###-###-####");
+            phoneFormatter.setPlaceholderCharacter('0');
+            phoneNumberField = new JFormattedTextField(phoneFormatter);
+            phoneNumberField.setText("000-000-0000");
+            phoneNumberField.setBounds(220, 140, 150, 25);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         bookingPage.add(phoneNumberField);
 
         // Gender label and combo box
         JLabel genderLabel = new JLabel("Gender:");
-        genderLabel.setBounds(405, 130, 100, 20);
+        genderLabel.setBounds(410, 120, 100, 20);
         bookingPage.add(genderLabel);
         String[] gender = { "", "Male", "Female" };
         genderSelection = new JComboBox<>(gender);
-        genderSelection.setBounds(405, 150, 150, 23);
+        genderSelection.setBounds(410, 140, 150, 25);
         bookingPage.add(genderSelection);
 
-        
-        JDatePickerImpl DOBdatePicker = DatePicker.createDatePicker();
-        DOBdatePicker.setBounds(100, 190, 145, 30);
+        // DOB label and date picker
+        JLabel DOBLabel = new JLabel("Date of Birth:");
+        DOBLabel.setBounds(30, 180, 100, 20);
+        bookingPage.add(DOBLabel);
+
+        DOBdatePicker = DatePicker.createDatePicker();
+        DOBdatePicker.setBounds(30, 200, 150, 25);
         bookingPage.add(DOBdatePicker);
-        
+        DOBdatePicker.addActionListener(e -> {
+            Object selectedDateObject = DOBdatePicker.getModel().getValue();
+            if (selectedDateObject != null) {
+                Date selectedDate = (Date) selectedDateObject;
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                String selectedDateString = sdf.format(selectedDate);
+
+                Date maxDate = new Date();
+
+                if (selectedDate.compareTo(maxDate) >= 0) {
+                    JOptionPane.showMessageDialog(frame, "Selected date must be before today.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                traveler.setDob(selectedDateString);
+            }
+        });
+
         // Button to select options
         JButton seeOptionButton = new JButton("Select Options");
         seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
         seeOptionButton.setBackground(new Color(0, 0, 128));
-        seeOptionButton.setBounds(475, 310, 120, 30);
+        seeOptionButton.setBounds(230, 260, 140, 30);
         bookingPage.add(seeOptionButton);
 
         // Action listener for the select options button
@@ -154,10 +189,11 @@ public class BookingPage extends JFrame
                     String phoneNumber = phoneNumberField.getText().trim();
                     phoneNumberField.setBackground(Color.WHITE);                
                     traveler.setGender(genderSelection.getSelectedItem().toString());
+                    DOBdatePicker.setBackground(Color.WHITE);
 
                     // Check to see all fields are completed, no empty fields
                     if (firstName.equals("") || middleName.equalsIgnoreCase("") || lastName.equalsIgnoreCase("") || email.equalsIgnoreCase("")
-                            || phoneNumber.equals("")  || genderSelection.getSelectedItem().toString().equals("")) 
+                            || phoneNumber.equals("000-000-0000")  || genderSelection.getSelectedItem().toString().equals("") ) 
                     {
                         throw new IllegalArgumentException("Error, fill in all blank fields!");
                     }
@@ -219,6 +255,13 @@ public class BookingPage extends JFrame
                     }
                     traveler.setPhoneNumber(phoneNumber);
 
+                    if(DOBdatePicker.getModel().getValue() == null)
+                    {
+                    	DOBdatePicker.setBackground(Color.RED);
+                    	DOBdatePicker.repaint();
+                    	throw new IllegalArgumentException("Please enter a DOB.");
+                    }
+                    
                     model.addTraveler(traveler);
                     c1.show(contentPane, "Option");
                     frame.setTitle("Option");
@@ -242,7 +285,7 @@ public class BookingPage extends JFrame
         lastNameField.setText("");
         emailField.setText("");
         phoneNumberField.setText("");
-        dobField.setText("");
+        DOBdatePicker.getModel().setValue(null);
         genderSelection.setSelectedIndex(0);
     }
 

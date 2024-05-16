@@ -58,10 +58,14 @@ public class SeeFlightButtonHandler implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		String errorDateMessage = "              Missing Information! \n Ensure you have completed all selections"; 
+		String errorMessage = "Error";
 		
 		try {
-			
+			if(model.getDepartureDate().isBlank())
+			{
+				errorMessage = "Missing Departure Date";
+				throw new Exception(errorMessage);
+			}
 			route.setDepartDate(model.getDepartureDate());
 			departureFlightsPage.setDepartureData();
 			c1.show(contentPane, "departure flights");
@@ -73,7 +77,7 @@ public class SeeFlightButtonHandler implements ActionListener
 		}
 		catch(Exception f)
 		{ 
-			JOptionPane.showMessageDialog(null, errorDateMessage, "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
