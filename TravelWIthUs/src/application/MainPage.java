@@ -172,9 +172,9 @@ public class MainPage extends JFrame
 		departureScroll.setBounds(334, 150, 120, 150);
 		mainPage.add(departureScroll);
 		
-		JLabel destinationCityListLabel = new JLabel("Desination City");
+		JLabel destinationCityListLabel = new JLabel("Destination City");
 		destinationCityListLabel.setFont(new Font("Sans Serif", Font.BOLD, 12));
-		destinationCityListLabel.setBounds(475, 122, 100, 30);
+		destinationCityListLabel.setBounds(474, 122, 102, 30);
 		mainPage.add(destinationCityListLabel);
 		
 		JList<String> destinationCityList = new JList<String>();

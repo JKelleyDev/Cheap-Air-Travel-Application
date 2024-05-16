@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -271,7 +273,9 @@ public class ConfirmationPage
             // Write to the file using PrintWriter
             try (PrintWriter writer = new PrintWriter(fileToSave)) {
                 writer.println("Thank you for choosing travel with us, a cheap air service!\n"
-                        + "Booking Confirmation: " + CONFIRMATION_PREFIX + confirmationCounter);
+                        + "Booking Confirmation: " + CONFIRMATION_PREFIX + confirmationCounter
+                        + "\n" +  new Date());
+                
 
                 writer.println("\nFlight details:"
                         + "\n---------------------------------");

@@ -170,7 +170,7 @@ public class BookingPage extends JFrame
         JButton seeOptionButton = new JButton("Select Options");
         seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
         seeOptionButton.setBackground(new Color(0, 0, 128));
-        seeOptionButton.setBounds(230, 260, 140, 30);
+        seeOptionButton.setBounds(230, 300, 140, 30);
         bookingPage.add(seeOptionButton);
 
         // Action listener for the select options button
