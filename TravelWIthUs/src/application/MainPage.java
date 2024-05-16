@@ -3,18 +3,19 @@ package application;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.time.Year;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+
+import org.jdatepicker.impl.JDatePickerImpl;
 
 /**
 *
@@ -40,7 +41,9 @@ import javax.swing.SwingConstants;
 public class MainPage extends JFrame
 {
 	private static final long serialVersionUID = -8739778071928687178L;
-	private JPanel mainPage;
+	private JPanel mainPage; // The mainPage has a JPanel
+	private Date departureDate; 
+	private Date returnDate; 
  
 	/** 
 	 * Purpose: Constructor to create the mainpage
@@ -80,120 +83,59 @@ public class MainPage extends JFrame
 		lblNewLabel.setBounds(0,0, 600, 80);
 		lblNewLabel.setOpaque(true);
 		mainPage.add(lblNewLabel);
-			
-		String[] months = {null,"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", 
-				           "Sep", "Oct", "Nov", "Dec"};
-					
-		JComboBox<String> departMonthSelection = new JComboBox<String>(months);
-		departMonthSelection.setBounds(119, 152, 75, 30);
-		mainPage.add(departMonthSelection);
+				
+		JDatePickerImpl departureDatePicker = DatePicker.createDatePicker();
+		departureDatePicker.setBounds(120, 152, 145, 30);
+		mainPage.add(departureDatePicker);
+		departureDatePicker.addActionListener(e -> 
+		{
+            Object selectedDateObject = departureDatePicker.getModel().getValue();
+            if (selectedDateObject != null) 
+            {
+                departureDate = (Date) selectedDateObject;
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                String departureDateString = sdf.format(departureDate);
+                
+                // Perform the validation
+                Date today = new Date();
+
+                if (departureDate.compareTo(today) < 0) 
+                {
+                    JOptionPane.showMessageDialog(frame, "Selected date must be after today.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+                    
+                } 
+                
+                model.setDepartDate(departureDateString);
+            }
+        });
 		
-		departMonthSelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		  
-		           model.setDepartMonth((String) e.getItem());      
-		        }
-		    }
-		});
+		JDatePickerImpl returnDatePicker = DatePicker.createDatePicker();
+		returnDatePicker.setBounds(120, 200, 145, 30);
+		mainPage.add(returnDatePicker);
+		returnDatePicker.addActionListener(e -> 
+		{
+            Object selectedDateObject = returnDatePicker.getModel().getValue();
+            if (selectedDateObject != null) 
+            {
+                returnDate = (Date) selectedDateObject;
+                
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+                String returnDateString = sdf.format(returnDate);
+                
+                // Perform the validation
+                Date today = new Date();
+               
+
+                if (returnDate.compareTo(today) < 0 ||returnDate.compareTo(departureDate) < 0  || returnDate.compareTo(departureDate) == 0) 
+                {
+                    JOptionPane.showMessageDialog(frame, "Selected date must after departure date.", "Date Validation", JOptionPane.INFORMATION_MESSAGE);
+                } 
+                
+                model.setReturnDate(returnDateString);
+            }
+        });
+
 		
-		JComboBox<Integer> departDaySelection = new JComboBox<Integer>();
-		departDaySelection.setBounds(190, 152, 65, 30);
-		departDaySelection.addItem(null);
-		 for(int i = 1; i <= 31; i++) 
-			{
-				departDaySelection.addItem(i);
-			}
-		mainPage.add(departDaySelection);
-		
-		departDaySelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		           model.setDepartDay(String.valueOf(e.getItem())); 
-		        }
-		    }
-		});
-		
-		JComboBox<Integer> departYearSelection = new JComboBox<Integer>(); 
-		departYearSelection.setBounds(245, 152, 88, 30);
-		departYearSelection.addItem(null); 
-		departYearSelection.addItem(Year.now().getValue()); 
-		departYearSelection.addItem(Year.now().getValue()+1);
-		mainPage.add(departYearSelection);
-		
-		departYearSelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		           model.setDepartYear(String.valueOf(e.getItem())); 
-		            
-		        }
-		    }
-		});
-		
-		JComboBox<String> returnMonthSelection = new JComboBox<String>(months);
-		returnMonthSelection.setBounds(109, 204, 75, 30);
-		mainPage.add(returnMonthSelection);
-		
-		returnMonthSelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		           model.setReturnMonth((String) e.getItem()); 
-		            
-		        }
-		    }
-		});
-		
-		JComboBox<Integer> returnDaySelection = new JComboBox<Integer>();
-		returnDaySelection.setBounds(180, 204, 70, 30);
-		returnDaySelection.addItem(null);
-		 for(int i = 1; i <= 31; i++) 
-			{	
-			 returnDaySelection.addItem(i);
-			}
-		mainPage.add(returnDaySelection);
-		
-		returnDaySelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		           model.setReturnDay(String.valueOf(e.getItem())); 
-		        }
-		    }
-		});
-	
-		JComboBox<Integer> returnYearSelection = new JComboBox<Integer>(); 
-		returnYearSelection.setBounds(245, 204, 88, 30);
-		returnYearSelection.addItem(null); 
-		returnYearSelection.addItem(Year.now().getValue()); 
-		returnYearSelection.addItem(Year.now().getValue()+1);
-		mainPage.add(returnYearSelection);
-		
-		returnYearSelection.addItemListener(new ItemListener() {
-		    @Override
-		    public void itemStateChanged(ItemEvent e) 
-		    {
-		        if (e.getStateChange() == ItemEvent.SELECTED) 
-		        {
-		           model.setReturnYear(String.valueOf(e.getItem())); 
-		            
-		        }
-		    }
-		});
-			
 		JLabel departureCityListLabel = new JLabel("Departure City");
 		departureCityListLabel.setFont(new Font("Sans Serif", Font.BOLD, 12));
 		departureCityListLabel.setBounds(345, 122, 100, 30);
@@ -228,10 +170,12 @@ public class MainPage extends JFrame
 		//Action Listeners
 		departureCityList.addListSelectionListener(new DepartureListSelectionHandler(departureCityList,destinationCityList, model)); //listener
 		destinationCityList.addListSelectionListener(new  DestinationCityListSelectionHandler(destinationCityList, model) );
-		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnMonthSelection, returnDaySelection, returnYearSelection, returnLabel));
+		oneWayCheckBox.addItemListener(new OneWayCheckBoxItemHandler(model,returnDatePicker, returnLabel));
 		seeFlightButton.addActionListener(new SeeFlightButtonHandler( frame, c1, contentPane, departureFlightsPage, model, route));
  
 	}
+	
+	
 	
 	public JPanel returnPanel()
 	{ 

@@ -1,7 +1,10 @@
 package application;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -26,13 +29,8 @@ import java.util.Random;
 public class ApplicationModel
 {
 	private int departMonth; // the model has a numeric departure month value
-	private int returnMonth; // the model has a numeric return month value
 	private String departureCity, destinationCity; // the model has a departure and destination city
 	private Routes route;  // the model has a route object to get information about the route
-	private String departDay;  // the model has a depart day
-	private String departYear; // the model has a depart year
-	private String returnDay;  // the model has a return day
-	private String returnYear; // the model has a return year
 	private FlightManager departureFlight; // the model has a departure flight 
 	private FlightManager returnFlight; // the model has a return flight
 	private boolean oneWayFare; // the model has an onewayfare truth value
@@ -44,7 +42,8 @@ public class ApplicationModel
 	private int assistanceTotal;  // the model has a total number of asssitance packages
 	private int mealsOrderedTotal; // the model has a total number of meals ordered
 	private Payment payment; // the model has a payment object to store payment information
-	
+	private String departDate; 
+	private String returnDate; 
 	private double baseFare = 50.00; // the model has a base fare value, initially 50.00 but will change to 25.00 if oneway fare is set
 	private final double CARRY_ON_BAG_COST = 20.00; // the model has a final carry on bag cost
 	private final double CHECKED_BAG_COST = 50.00;  // the model has a final checked bag cost
@@ -53,32 +52,12 @@ public class ApplicationModel
 	private final double MEAL_CHARGE = 14.99;   // the model has a final meal charge
 	
 	/** 
-	 * Purpose: Creates a hashmap to access integer value of a shortned string month (key)
-	 */
-	static HashMap<String, Integer> monthToInt = new HashMap<String, Integer>();
-	 {
-		monthToInt.put("Jan", 1);
-		monthToInt.put("Feb", 2);
-		monthToInt.put("Mar", 3);
-		monthToInt.put("Apr", 4);
-		monthToInt.put("May", 5);
-		monthToInt.put("Jun", 6);
-		monthToInt.put("Jul", 7);
-		monthToInt.put("Aug", 8);
-		monthToInt.put("Sep", 9);
-		monthToInt.put("Oct", 10);
-		monthToInt.put("Nov", 11);
-		monthToInt.put("Dec", 12);
-	}
-	
-	/** 
 	 * Purpose: Constructor to create the model, with a reference to the routes 
 	 * @param route
 	 */
 	public ApplicationModel(Routes route)
 	{
 		this.route = route; 	
-
 	}
 	
 	/** 
@@ -215,62 +194,20 @@ public class ApplicationModel
 	 * Purpose: Stores the departure month in the model as an integer
 	 * @param departMonth
 	 */
-	public void setDepartMonth(String departMonth)
+	public void setDepartMonth(String departDate)
 	{ 
-		this.departMonth = monthToInt.get(departMonth); // Use the month to int hashmap to get the integer value for the string month, then store
-	}
-	
-	/** 
-	 * Purpose: Stores the departure day in the model, formated as two digits 
-	 * @param departDay
-	 */
-	public void setDepartDay(String departDay)
-	{ 
-		if(Integer.parseInt(departDay) < 10) // Parse the integer value of the string day, if less than 10, append a 0 at beginning 
-			this.departDay = "0" + departDay; 
-		else 
-			this.departDay = departDay;	
-	}
-	
-	/** 
-	 * Purpose: Stores the departure year in the model
-	 * @param departYear
-	 */
-	public void setDepartYear(String departYear)
-	{
-		this.departYear = departYear; 
-	}
-	
-	/** 
-	 * Purpose: Stores the return day in the model
-	 * @param returnDay
-	 */
-	public void setReturnDay(String returnDay)
-	{
-		if(Integer.parseInt(returnDay) < 10) // Parse the integer value of the string day, if less than 10, append a 0 at beginning 
-			this.returnDay = "0" + returnDay; 
-		else 
-			this.returnDay = returnDay;
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        try {
+            Date date = sdf.parse(departDate);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            this.departMonth = calendar.get(Calendar.MONTH) + 1; // Calendar.MONTH is zero-based
+        } catch (ParseException e) {
+            e.printStackTrace();
+            
+        }
 	}
 
-	/** 
-	 * Purpose: Store the return month in the model
-	 * @param returnMonth
-	 */
-	public void setReturnMonth(String returnMonth)
-	{
-		this.returnMonth = monthToInt.get(returnMonth);	
-	}
-
-	/** 
-	 * Store the return year in the model
-	 * @param returnYear
-	 */
-	public void setReturnYear(String returnYear)
-	{
-		this.returnYear = returnYear;
-		
-	}
 	
 	/** 
 	 * Purpose: Retrieve the return date as mm/dd/yyyy
@@ -278,10 +215,7 @@ public class ApplicationModel
 	 */
 	public String getReturnDate()
 	{ 
-		if(returnMonth < 10)
-			return "0" + returnMonth + "/" + returnDay + "/" + returnYear; // correctly returns the string month with two digits so format is mm/dd/yyyy
-		else 
-			return returnMonth + "/" + returnDay + "/" + returnYear; 
+		return returnDate;
 	}
 	
 	/** 
@@ -290,10 +224,7 @@ public class ApplicationModel
 	 */
 	public String getDepartureDate()
 	{ 
-		if(departMonth < 10)
-			return "0" + departMonth + "/" + departDay + "/" + departYear; // correctly returns the string month with two digits so format is mm/dd/yyyy
-		else 
-			return departMonth + "/" + departDay + "/" + departYear; 
+		return departDate;
 	}
 	
 	/** 
@@ -499,6 +430,17 @@ public class ApplicationModel
 	public Payment getPayment()
 	{
 		return payment;
+	}
+	
+	public void setDepartDate(String departDate)
+	{
+		this.departDate = departDate; 
+		setDepartMonth(departDate);
+	}
+	
+	public void setReturnDate(String returnDate) 
+	{ 
+		this.returnDate = returnDate; 
 	}
 
 }

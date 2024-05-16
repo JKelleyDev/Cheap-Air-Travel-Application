@@ -16,6 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import org.jdatepicker.impl.JDatePickerImpl;
+
+
 /**
 *
 * @author Jordan Kelley
@@ -63,7 +66,7 @@ public class BookingPage extends JFrame
         this.traveler = new Traveler();
         bookingPage = new JPanel();
         bookingPage.setLayout(null);
-				 
+       		 
         // Main title Label
 		JLabel mainTitleLabel = new JLabel("Travel With Us: Who's traveling");
 		mainTitleLabel.setForeground(new Color(240, 255, 255));
@@ -123,14 +126,11 @@ public class BookingPage extends JFrame
         genderSelection.setBounds(405, 150, 150, 23);
         bookingPage.add(genderSelection);
 
-        // DOB label and text field
-        JLabel dobLabel = new JLabel("DOB: mm/dd/yyyy");
-        dobLabel.setBounds(105, 180, 120, 20);
-        bookingPage.add(dobLabel);
-        dobField = new JTextField();
-        dobField.setBounds(100, 200, 145, 20);
-        bookingPage.add(dobField);
-
+        
+        JDatePickerImpl DOBdatePicker = DatePicker.createDatePicker();
+        DOBdatePicker.setBounds(100, 190, 145, 30);
+        bookingPage.add(DOBdatePicker);
+        
         // Button to select options
         JButton seeOptionButton = new JButton("Select Options");
         seeOptionButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -152,14 +152,12 @@ public class BookingPage extends JFrame
                     String email = emailField.getText().trim();
                     emailField.setBackground(Color.WHITE);
                     String phoneNumber = phoneNumberField.getText().trim();
-                    phoneNumberField.setBackground(Color.WHITE);
-                    String dob = dobField.getText().trim();
-                    dobField.setBackground(Color.WHITE);
+                    phoneNumberField.setBackground(Color.WHITE);                
                     traveler.setGender(genderSelection.getSelectedItem().toString());
 
                     // Check to see all fields are completed, no empty fields
                     if (firstName.equals("") || middleName.equalsIgnoreCase("") || lastName.equalsIgnoreCase("") || email.equalsIgnoreCase("")
-                            || phoneNumber.equals("") || dob.equals("") || genderSelection.getSelectedItem().toString().equals("")) 
+                            || phoneNumber.equals("")  || genderSelection.getSelectedItem().toString().equals("")) 
                     {
                         throw new IllegalArgumentException("Error, fill in all blank fields!");
                     }
@@ -220,18 +218,6 @@ public class BookingPage extends JFrame
                         throw new IllegalArgumentException("Please enter the phone number in the format: xxx-xxx-xxxx");
                     }
                     traveler.setPhoneNumber(phoneNumber);
-
-                    // Parse and validate DOB format
-                    final String DOB_REGEX = "^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/(19|20)\\d\\d$";
-                    final Pattern DOB_PATTERN = Pattern.compile(DOB_REGEX);
-                    matcher = DOB_PATTERN.matcher(dob);
-
-                    if (!matcher.matches()) 
-                    {
-                        dobField.setBackground(Color.RED);
-                        throw new IllegalArgumentException("Please enter the DOB in the format: mm/dd/yyyy");
-                    }
-                    traveler.setDob(dob);
 
                     model.addTraveler(traveler);
                     c1.show(contentPane, "Option");

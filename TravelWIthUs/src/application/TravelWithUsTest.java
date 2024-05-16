@@ -49,9 +49,7 @@ class TravelWithUsTest
     	FlightManager TestFlight1 = SAN_Array [0];	
     	FlightManager TestFlight2 = SAN_Array [1]; 
 		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
-		model.setDepartDay("5");
-		model.setDepartMonth("Jun");
-		model.setDepartYear("2024");
+
 	    routes.setDepartDate(model.getDepartureDate());
 		assertEquals("2024-06-05 06:00", TestFlight1.getDepartureTime());
 	
@@ -90,9 +88,7 @@ class TravelWithUsTest
 	@Test 
 	void testDepartureDates() 
 	{ 
-		model.setDepartMonth("Jan");
-		model.setDepartDay("20");
-		model.setDepartYear("2024");
+
 		assertEquals("01/20/2024", model.getDepartureDate());
 		
 	}

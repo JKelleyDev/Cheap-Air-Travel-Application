@@ -2,8 +2,9 @@ package application;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
+
+import org.jdatepicker.impl.JDatePickerImpl;
 
 /**
 *
@@ -29,8 +30,7 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 {
 	private ApplicationModel model; // the custom handler has a reference to the model 
 	private JLabel returnLabel; // the custom handler has a reference to the return label 
-	private JComboBox<String> returnMonthSelection; // the custom handler has a reference to the returnMonthSelction box 
-	private JComboBox<Integer >returnDaySelection, returnYearSelection; // the custom handler has a reference to the day and year boxes 
+	private JDatePickerImpl returnDatePicker;
 
 	/** 
 	 * Purpose: Constructor creates the custom check box handler 
@@ -40,14 +40,11 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 	 * @param returnYearSelection
 	 * @param returnLabel
 	 */
-	public OneWayCheckBoxItemHandler(ApplicationModel model, JComboBox<String> returnMonthSelection, 
-			                         JComboBox<Integer> returnDaySelection, JComboBox<Integer> returnYearSelection, 
+	public OneWayCheckBoxItemHandler(ApplicationModel model, JDatePickerImpl returnDatePicker,
 			                         JLabel returnLabel)
 	{ 
 		this.model = model; 
-		this.returnMonthSelection = returnMonthSelection; 
-		this.returnDaySelection = returnDaySelection; 
-		this.returnYearSelection = returnYearSelection; 
+		this.returnDatePicker = returnDatePicker;
 		this.returnLabel = returnLabel;   
 	}
 	
@@ -57,21 +54,14 @@ public class OneWayCheckBoxItemHandler implements ItemListener
 		// if the flight is a one way flight, hide the options for return information
 		if(e.getStateChange() == ItemEvent.SELECTED)
 		{
-			returnMonthSelection.setVisible(false);
-				returnMonthSelection.setSelectedIndex(-1);
-			returnDaySelection.setVisible(false);
-				returnDaySelection.setSelectedIndex(-1);
-			returnYearSelection.setVisible(false);
-				returnYearSelection.setSelectedIndex(-1);
+			returnDatePicker.setVisible(false);
 			returnLabel.setVisible(false);
 			model.setOneWayFare(true); // update the one way values in the model 	
 		}
 	    // if the fight is returned to a roundtrip flight, reshow the return information 
 		else if(e.getStateChange() == ItemEvent.DESELECTED)
 		{
-			returnMonthSelection.setVisible(true);
-			returnDaySelection.setVisible(true);
-			returnYearSelection.setVisible(true);
+			returnDatePicker.setVisible(true);
 			returnLabel.setVisible(true);
 			model.setOneWayFare(false); // update the one way values in the model 
 		}
