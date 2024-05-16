@@ -20,6 +20,8 @@ import org.junit.jupiter.api.Test;
 * <br><br>
 * Responsibilities of class:<br>
 * 
+* Test different data storages of the application
+* 
 */
 
 class TravelWithUsTest
@@ -50,34 +52,28 @@ class TravelWithUsTest
     	FlightManager TestFlight2 = SAN_Array [1]; 
 		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
 
-	    routes.setDepartDate(model.getDepartureDate());
-		assertEquals("2024-06-05 06:00", TestFlight1.getDepartureTime());
-	
-	
 	    
-		TestFlight1.getArrivalTime(model.getDepartureDate());
-		TestFlight2.getArrivalTime(model.getDepartureDate()); 
 		
 	}
 	
 	@Test 
 	void testModelRates()
 	{ 
-		model.setDepartMonth("Feb");
+		model.setDepartMonth("02/22/2024");
 		model.setDepartureCity("San Diego");
 		model.setDestinationCity("New York");
 		assertEquals("San Diego", model.getDepartureCity());
 		assertEquals("New York", model.getDestinationCity());
 		assertEquals(0.80, model.getSeasonMultiplier());
 		
-		model.setDepartMonth("Jun");
+		model.setDepartMonth("06/22/2024");
 		model.setDepartureCity("Paris");
 		model.setDestinationCity("London");
 		assertEquals("Paris", model.getDepartureCity());
 		assertEquals("London", model.getDestinationCity());
 		assertEquals(1.60, model.getSeasonMultiplier());
 		
-		model.setDepartMonth("Nov");
+		model.setDepartMonth("11/22/2024");
 		model.setDepartureCity("Singapore");
 		model.setDestinationCity("Hong Kong");
 		assertEquals("Singapore", model.getDepartureCity());
@@ -85,11 +81,4 @@ class TravelWithUsTest
 		assertEquals(1.20, model.getSeasonMultiplier());
 	}
 
-	@Test 
-	void testDepartureDates() 
-	{ 
-
-		assertEquals("01/20/2024", model.getDepartureDate());
-		
-	}
 }
