@@ -48,8 +48,8 @@ class TravelWithUsTest
 		
 		// Test Flight times and Timezone adjustments 
 		FlightManager [] SAN_Array = routes.getListOfFlights("San Diego", "New York");
-    	FlightManager TestFlight1 = SAN_Array [0];	
-    	FlightManager TestFlight2 = SAN_Array [1]; 
+    	//FlightManager TestFlight1 = SAN_Array [0];	
+    	//FlightManager TestFlight2 = SAN_Array [1]; 
 		assertEquals(SAN_Array, routes.getListOfFlights("San Diego", "New York"));
 
 	    
