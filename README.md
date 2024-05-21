@@ -25,7 +25,7 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 
 
 
-
+## GUI Outlook
 <img width="598" alt="Screen Shot 2024-04-20 at 11 20 42 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/f854a1dd-053b-4910-9090-11f6eb3a4e64">
 
 
