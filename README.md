@@ -26,13 +26,15 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 
 
 ## GUI Outlook
-<img width="598" alt="Screen Shot 2024-04-20 at 11 20 42 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/f854a1dd-053b-4910-9090-11f6eb3a4e64">
+![Screenshot 2024-05-21 at 8 21 15 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/ee7f8d0c-234e-4be2-8997-764b5e7280e8) 
+![Screenshot 2024-05-21 at 8 21 43 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/06b8d2b1-7095-4991-950e-2d9e392ef5f9)
+![Screenshot 2024-05-21 at 8 22 01 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/0b05bec1-7d96-4adc-8e71-2960d565ca94)
+![Screenshot 2024-05-21 at 8 23 04 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/5d0daf7c-9f2f-4273-9f44-2f9a8d4a17dd![Screenshot 2024-05-21 at 8 23 40 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/d0cc84ab-ecc0-40c1-9c1f-45a39f1d5ce8)
+)
+![Screenshot 2024-05-21 at 8 25 24 AM](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/e5859ae9-eaf1-4e6c-9a19-a6d7fb5363f4)
 
 
-<img width="597" alt="Screen Shot 2024-04-20 at 11 20 58 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/6ca6edae-396e-4462-a41f-6a5c6c7984da">
 
-
-<img width="593" alt="Screen Shot 2024-04-20 at 11 21 12 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/ac3abd76-bad4-4667-bf3e-1857382baf70">
 
 
 
