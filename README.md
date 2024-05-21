@@ -24,40 +24,7 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 
 
 
-## Weekly Updates 
 
-### Week 1: 
-•	Created the Application View (Primary GUI space)     
-•	Created the differt page views as seperate class (Utilizing CardLayout to switch between views)    
-•	Completed routes,Traveler, Payment, MealOptions, Baggage backend code   
-•	Completed CRC cards and ULM diagrams   
-•	GUI templates created in PDF    
-•	Project proposal finished   
-•	Project Manager attatched on GITHUB projects     
-
-
-### Week 2: 
-• Completed the main page GUI
-• Completed the BookingDateHandler / Used to set the dates of departure and return into the model
-• Completed JUnit Tests for Routes, DepartureDates, and price modeling.
-• Started Booking Page (Traveler details) GUI interface.
-•	Completed the main page GUI     
-•	Completed the BookingDateHandler / Used to set the dates of departure and return into the model  
-• Completed JUnit Tests for Routes, DepartureDates, and price modeling.   
-• Started Booking Page (Traveler details) GUI interface.   
-
-
-### Week 3: 
-
-• Finish writing classes.
-
-• Determine where exception handling is needed to ensure the program fails gracefully.
-
-• Design the GUI (sketch it out on paper) - include the design in the Weekly update!
-
-• Update project page with progress details.
-
-• Submit code written so far.
 
 <img width="598" alt="Screen Shot 2024-04-20 at 11 20 42 AM" src="https://github.com/Estebansito1/Cheap-Air-Travel-Application/assets/164387242/f854a1dd-053b-4910-9090-11f6eb3a4e64">
 
@@ -69,22 +36,11 @@ Our project aims to develop an Airline Management System using Java and Eclipse.
 
 
 
-### Week 4: 
+
 [
 ](https://sdccd.instructure.com/users/8670649/files/147933833/preview?verifier=wCJq0Aq0SGW5YMPuYzf3npR2VFL1sWj6ZBk8CFtb)![image](https://github.com/jordankelley123/Cheap-Air-Travel-Application/assets/142934283/eb0504ee-15a1-4ffe-95f5-77ea8c814a99)
 
 
 
 
-### Week 5: 
-This week, our team achieved a significant milestone with our graphical user interface (GUI), successfully implementing seamless navigation across different pages. We are diligently testing the input functionalities to ensure robust error handling, as demonstrated in the video where the system correctly identifies dates that are not set before the current date.
 
-We are now developing the final page of our GUI, which will feature a confirmation page. This page will display all pertinent details before allowing users to finalize their booking with a "Book" button.
-
-In the upcoming week, our focus will be on ensuring that traveler information is accurately stored and retrieved. We will also start making graphic design enhancements to enhance user experience. Additionally, we plan to begin committing our code and conducting necessary refactoring to improve code quality and maintainability
-
-### Week 6: 
-
-### Week 7: 
-
-### Week 8: 
