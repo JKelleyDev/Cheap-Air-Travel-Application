@@ -26,8 +26,10 @@ import java.util.Properties;
 * 	References:<br>
 *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
 *         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
-* 
-*
+* <br><br>
+* 		  JDatePicker: <br> 
+* 		  1.) {@link https://sourceforge.net/projects/jdatepicker/}
+*	
 * <br><br>
 * Responsibilities of class:<br>
 * 

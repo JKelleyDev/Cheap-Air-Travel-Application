@@ -27,8 +27,8 @@ import javax.swing.JPanel;
  * 	References:<br>
  *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
  *         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
- * 
- *
+ * <br> Printwriter: {@link https://www.geeksforgeeks.org/java-io-printwriter-class-java-set-1/}
+ * <br> FileChooser: {@link https://docs.oracle.com/javase/8/docs/api/javax/swing/JFileChooser.html}
  * <br><br>
  * Responsibilities of class:<br>
  * This class represents the confirmation page where the user can review their booking details.

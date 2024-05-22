@@ -20,8 +20,8 @@ import java.util.Map;
 * 	References:<br>
 *         Morelli, R., & Walde, R. (2016). Java, Java, Java: Object-Oriented Problem Solving.
 *         Retrieved from {@link https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving}
-* 
-*
+* <br><br>
+*    TimeZones: {@link https://docs.oracle.com/middleware/12211/wcs/tag-ref/MISC/TimeZones.html}
 * <br><br>
 * Responsibilities of class:<br>
 * 
